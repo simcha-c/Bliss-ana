@@ -1,0 +1,6 @@
+# example for cloudinary
+# CLOUD_NAME: "cloud_name"
+# UPLOAD_PRESET: "some_number"
+
+# in index you can add a variable that are one of these ^ constants.
+# cloud_name = ENV['CLOUD_NAME']

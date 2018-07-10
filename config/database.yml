@@ -82,4 +82,4 @@ production:
   <<: *default
   database: Affluence_production
   username: Affluence
-  password: <%= ENV['AFFLUENCE_DATABASE_PASSWORD'] %>
+  password: <%= ENV['Affluence_DATABASE_PASSWORD'] %>
