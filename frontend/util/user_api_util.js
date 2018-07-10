@@ -9,7 +9,7 @@ export const updateUser = (user) => (
   $.ajax({
     method: "PATCH",
     url: `/api/users/${user.id}/edit`,
-    user
+    data: { user }
   })
 );
 
@@ -17,6 +17,6 @@ export const createUser = (user) => (
   $.ajax({
     method: "POST",
     url: `/api/users`,
-    user
+    data: { user }
   })
 );
