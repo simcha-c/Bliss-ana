@@ -5,7 +5,7 @@ class SessionForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      username: '',
+      email: '',
       password: ''
     };
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -38,33 +38,35 @@ class SessionForm extends React.Component {
   render() {
     return (
       <div className="login-form-container">
-        <form onSubmit={this.handleSubmit} className="login-form-box">
-          Welcome to Bliss-ana!
-          <br/>
-          Please {this.props.formType} or {this.props.otherForm}
-          <div onClick={this.props.closeModal} className="close-x">X</div>
-          {this.renderErrors()}
-          <div className="login-form">
-            <br/>
-            <label>Username:
-              <input type="text"
-                value={this.state.username}
-                onChange={this.update('username')}
-                className="login-input"
-              />
+        <div className="x-title">
+          <span id="modal-header">{this.props.formType}</span>
+
+          <div onClick={this.props.closeModal} className="close-x">×</div>
+
+        </div>
+
+        {this.renderErrors()}
+
+        <div className="login-form">
+          <form onSubmit={this.handleSubmit} className="login-form-box">
+            <label>
+              <p>Email Address</p>
+              <input type="text" value={this.state.email}
+                onChange={this.update('email')} className="login-input" />
             </label>
-            <br/>
-            <label>Password:
-              <input type="password"
-                value={this.state.password}
-                onChange={this.update('password')}
-                className="login-input"
-              />
+
+            <label>
+              <p>Password</p>
+              <input type="password" value={this.state.password}
+                onChange={this.update('password')} className="login-input" />
             </label>
-            <br/>
+
             <input className="session-submit" type="submit" value={this.props.formType} />
-          </div>
-        </form>
+
+          </form>
+        </div>
+
+        <span>Dont have an account? {this.props.otherForm}</span>
       </div>
     );
   }
