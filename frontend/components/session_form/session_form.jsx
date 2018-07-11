@@ -9,11 +9,19 @@ class SessionForm extends React.Component {
       password: ''
     };
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.loginDemo = this.loginDemo.bind(this);
   }
 
   update(field) {
     return e => this.setState({
       [field]: e.currentTarget.value
+    });
+  }
+
+  loginDemo(){
+    this.setState({
+      email: 'demo@bliss.com',
+      password: 'demo-password'
     });
   }
 
@@ -51,22 +59,23 @@ class SessionForm extends React.Component {
           <form onSubmit={this.handleSubmit} className="login-form-box">
             <label>
               <p>Email Address</p>
-              <input type="text" value={this.state.email}
+              <input type="text" value={this.state.email} placeholder="name@company.com"
                 onChange={this.update('email')} className="login-input" />
             </label>
 
             <label>
               <p>Password</p>
-              <input type="password" value={this.state.password}
+              <input type="password" value={this.state.password} placeholder="Password"
                 onChange={this.update('password')} className="login-input" />
             </label>
 
             <input className="session-submit" type="submit" value={this.props.formType} />
 
           </form>
+          <button onClick={this.loginDemo}><p id="demo" >Demo Log In</p></button>
+          <p>{this.props.otherFormText} {this.props.otherForm}</p>
         </div>
 
-        <span>Dont have an account? {this.props.otherForm}</span>
       </div>
     );
   }

@@ -5,9 +5,9 @@ const Navbar = ({ currentUser, logout, openModal }) => {
 
   const sessionLinks = () => (
     <nav className="login-signup">
-      <button onClick={() => openModal('login')}>Login</button>
+      <button onClick={() => openModal('Log In')}>Login</button>
       &nbsp;or&nbsp;
-      <button onClick={() => openModal('signup')}>Signup</button>
+      <button onClick={() => openModal('Sign Up')}>Signup</button>
       <Modal />
     </nav>
   );

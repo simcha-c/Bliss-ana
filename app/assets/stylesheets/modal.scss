@@ -13,23 +13,25 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  z-index: 2;
   width: 90%;
   height: auto;
 }
 
 .x-title {
   display: flex;
+  flex-direction: column;
 }
 
 .close-x {
-  color: #b7bfc6;
-  font-size: 2.5em;
+  color: rgba(183, 191, 198, 0.7);
+  font-size: 2.75em;
   position: absolute;
-  right: 20px;
-  top: 0;
+  right: 30px;
+  top: 10px;
 }
 
-.on-click {
+.other-form {
   font-weight: 300;
   color: #796eff;
 }
@@ -37,35 +39,78 @@
 .session-submit {
   background-color: #796eff;
   color: whitesmoke;
-  font-weight: 300;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  font-size: 1em;
+  padding: 20px;
+  border: 2px solid #796eff;
   border-radius: 3px;
-  padding: 5px;
+  width: 100%;
+  line-height: 20px;
+  padding: 15px;
+  text-align: center;
 }
 
 #modal-header {
   font-size: 2.5em;
+  text-align: center;
+}
 
+#demo {
+  color: rgba(156, 166, 175, 1);
+  font-weight: bold;
 }
 
 .login-form-container {
   background-color: whitesmoke;
-  padding: 10px 20px 20px 20px;
+  padding: 20px 20px 20px 20px;
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .login-form-box {
-  width: 90%;
+  width: 70%;
   height: auto;
-  padding: 5px;
+  padding-top: 50px;
+  padding-bottom: 50px;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  column-gap: 50px;
+}
+
+.login-form-box label {
+  padding-top: 20px;
+  padding-bottom: 20px;
 }
 
 .login-form-box label input {
   display: flex;
+  background-color: white;
+}
+
+.login-form-box label input::placeholder {
+  color: rgba(156, 166, 175, 0.8);
+  font-size: 1.5em;
+  font-weight: 200;
+}
+
+.login-form form label input[type=text],
+.login-form form label input[type=password],
+.login-form form label input[type=email]
+ {
+  border: 2px solid rgba(156, 166, 175, 0.3);
+  border-radius: 3px;
+  width: 100%;
+  line-height: 20px;
+  padding: 15px;
 }
 
 .login-form-box label p {
-  color: #67727d;
+  color: rgba(100, 111, 121, 1);
   font-size: 1em;
+  padding-bottom: 10px;
 }
