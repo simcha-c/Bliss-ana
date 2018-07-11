@@ -1,5 +1,5 @@
 {
-  "name": "Affluence",
+  "name": "Blissana",
   "private": true,
   "dependencies": {
     "babel-core": "^6.26.3",
@@ -33,15 +33,16 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/simcha-c/Affluence.git"
+    "url": "git+https://github.com/simcha-c/Bliss-ana.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/simcha-c/Affluence/issues"
+    
+    "url": "https://github.com/simcha-c/Bliss-ana/issues"
   },
-  "homepage": "https://github.com/simcha-c/Affluence#readme",
+  "homepage": "https://github.com/simcha-c/Bliss-ana#readme",
   "devDependencies": {
     "webpack-cli": "^3.0.8"
   }
