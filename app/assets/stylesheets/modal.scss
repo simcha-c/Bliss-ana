@@ -48,6 +48,7 @@
   letter-spacing: 0.5px;
   font-size: 1em;
   padding: 20px;
+  margin-top: 20px;
   border: 2px solid rgba(120, 109, 255, 1);
   border-radius: 3px;
   width: 100%;
@@ -59,6 +60,7 @@
 #modal-header {
   font-size: 2.5em;
   text-align: center;
+  padding-top: 20px;
 }
 
 #demo {
@@ -67,7 +69,8 @@
   font-size: 1em;
   padding: 10px;
   margin-bottom: 20px;
-  border: 1px solid rgba(120, 109, 255, 0.5);
+  border: 2px solid rgba(120, 109, 255, 0.5);
+  border-radius: 2px;
 }
 
 .login-form-container {
@@ -87,7 +90,7 @@
 
 .login-form p {
   display: flex;
-  padding-top: 20px;
+  padding-top: 0px;
   padding-bottom: 50px;
   font-size: 1em;
   color: rgba(156, 166, 175, 1);
@@ -96,7 +99,7 @@
 .login-form-box {
   width: 70%;
   height: auto;
-  padding-top: 50px;
+  padding-top: 70px;
   padding-bottom: 50px;
   display: flex;
   flex-direction: column;
@@ -115,7 +118,19 @@
 
 .login-form-box label input::placeholder {
   color: rgba(156, 166, 175, 0.8);
-  font-size: 1.5em;
+  font-size: 1em;
+  font-weight: 200;
+}
+
+.login-form form label input[type=text]:focus,
+.login-form form label input[type=password]:focus,
+.login-form form label input[type=email]:focus {
+  border: 2px solid rgba(120, 109, 255, 0.5);
+}
+
+.login-form form label input[value] {
+  color: rgba(100, 111, 121, 1);
+  font-size: 1em;
   font-weight: 200;
 }
 

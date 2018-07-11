@@ -8,4 +8,5 @@
 
 User.delete_all
 
-demo_user = User.create!(email: 'demo@bliss-ana.com', password: 'demo-password', full_name: 'Demo Guest')
+demo_user = User.create!(email: 'demo@bliss-ana.com', password: 'demo-password', first_name: 'Demo', last_name: 'Guest')
+me = User.create!(email: 'simcha', password: 'password', first_name: 'Simcha', last_name: 'Cohen')

@@ -13,7 +13,7 @@ const Navbar = ({ currentUser, logout, openModal }) => {
   );
   const personalNavbar = () => (
     <hgroup className="header-group">
-      <h2 className="header-name">Hi, {currentUser.full_name}!</h2>
+      <h2 className="header-name">Hi, {`${currentUser.first_name} ${currentUser.last_name}`}!</h2>
       <button className="header-button" onClick={logout}>Log Out</button>
     </hgroup>
   );
