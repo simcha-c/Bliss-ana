@@ -19,10 +19,8 @@ class SessionForm extends React.Component {
   }
 
   loginDemo(){
-    this.setState({
-      email: 'demo@bliss.com',
-      password: 'demo-password'
-    });
+    const user = {email: 'demo@bliss-ana.com', password: 'demo-password'};
+    setTimeout(this.props.loginDemo(user).then(this.props.closeModal), 100);
   }
 
   handleSubmit(e) {
@@ -72,7 +70,7 @@ class SessionForm extends React.Component {
             <input className="session-submit" type="submit" value={this.props.formType} />
 
           </form>
-          <button onClick={this.loginDemo}><p id="demo" >Demo Log In</p></button>
+          <button id="demo" onClick={this.loginDemo}>Demo Log In</button>
           <p>{this.props.otherFormText} {this.props.otherForm}</p>
         </div>
 
