@@ -1,7 +1,7 @@
 import React from 'react';
 import { openModal } from '../../actions/modal_actions';
 import Modal from '../modal/modal';
-import NavbarContainer from '../navbar/navbar_container';
+import NavbarContainer from '../navbar/login_nav/navbar_container';
 
 class Homepage extends React.Component {
 

@@ -1,5 +1,5 @@
 import React from 'react';
-import Modal from '../modal/modal';
+import Modal from '../../modal/modal';
 
 const Navbar = ({ currentUser, logout, openModal }) => {
   const logo = () => (

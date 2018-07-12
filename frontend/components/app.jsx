@@ -5,7 +5,7 @@ import { AuthRoute, ProtectedRoute, RootPathRoute } from '../util/route_util';
 import SignUpFormContainer from './session_form/sign_up_form_container';
 import LogInFormContainer from './session_form/login_form_container';
 import Homepage from './home/home';
-import NavbarContainer from './navbar/navbar_container';
+import NavbarContainer from './navbar/login_nav/navbar_container';
 
 const App = () => (
   <div>
