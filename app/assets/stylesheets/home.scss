@@ -36,7 +36,7 @@
   height: 50vh;
 }
 
-@media (max-height: 660px) {
+@media (max-height: 600px) {
   .wave {
     top: 60%;
     position: relative;
@@ -64,6 +64,7 @@
 .home-form button {
   margin: 0;
   width: 30%;
+  box-sizing: content-box;
 }
 
 .home-form input {

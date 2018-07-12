@@ -101,7 +101,7 @@ class SessionForm extends React.Component {
             <button id="demo" onClick={this.loginDemo}>
               Demo Log In
             </button>
-            <p> {this.props.otherFormText} {this.props.otherForm} </p>
+            <span> {this.props.otherFormText} {this.props.otherForm} </span>
           </div>
 
         </div>
