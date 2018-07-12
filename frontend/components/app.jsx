@@ -5,19 +5,18 @@ import { AuthRoute, ProtectedRoute } from '../util/route_util';
 import NavbarContainer from './navbar/navbar_container';
 import SignUpFormContainer from './session_form/sign_up_form_container';
 import LogInFormContainer from './session_form/login_form_container';
+import Homepage from './home/home';
 
 const App = () => (
   <div>
     <header>
-      <Link to="/">
-        <h1>Bliss-ana</h1>
-      </Link>
 
       <NavbarContainer />
+      <Homepage />
     </header>
 
     <Switch>
-      
+
     </Switch>
 
   </div>

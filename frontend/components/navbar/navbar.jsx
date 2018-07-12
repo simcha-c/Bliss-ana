@@ -2,27 +2,42 @@ import React from 'react';
 import Modal from '../modal/modal';
 
 const Navbar = ({ currentUser, logout, openModal }) => {
+  const logo = () => (
+    <div className="logo" onClick="/">
+      <img src={window.logo} />
+      <span>bliss-ana</span>
+    </div>
+  )
 
   const sessionLinks = () => (
-    <nav className="login-signup">
-      <button className="header-button" onClick={() => openModal('Log In')}>Login</button>
-      &nbsp;or&nbsp;
-      <button className="sign-up" onClick={() => openModal('Sign Up')}>Signup</button>
+    <div className="login-signup">
+      <button className="header-button" onClick={() => openModal('Log In')}>Log In</button>
+      <button className="box-button" onClick={() =>              openModal('Sign Up')}>Get Started</button>
       <Modal />
-    </nav>
+    </div>
   );
   const personalNavbar = () => (
     <hgroup className="header-group">
-      <h2 className="header-name">Hi, {`${currentUser.first_name} ${currentUser.last_name}`}!</h2>
-      <button className="header-button" onClick={logout}>Log Out</button>
+      <h2 className="header-name">Hi, {`${currentUser.first_name}`}!</h2>
+      <button className="box-button" onClick={logout}>Log Out</button>
     </hgroup>
   );
 
-  return (
-    currentUser ?
-    personalNavbar(currentUser, logout) :
-    sessionLinks()
-  );
+  if (currentUser) {
+    return (
+      <nav>
+        {logo()}
+        {personalNavbar(currentUser, logout)}
+      </nav>
+    )
+  } else {
+    return (
+      <nav>
+        {logo()}
+        {sessionLinks()}
+      </nav>
+    )
+  }
 };
 
 export default Navbar;

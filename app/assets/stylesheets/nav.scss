@@ -1,8 +1,49 @@
-.login-signup {
+.logo {
   display: flex;
-  padding-left: 20px;
+  align-items: center;
 }
 
-.header-button {
+.logo span {
+  font-size: 1.5em;
+}
 
+.logo img {
+  width: 30px;
+  height: 25px;
+  padding-right: 7px;
+  vertical-align: middle;
+}
+
+.login-signup, .header-group {
+  display: flex;
+}
+
+nav {
+  height: 56px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  position: absolute;
+  left: 20px;
+  right: 20px;
+  top: 2px;
+}
+
+.header-button, .header-name {
+  font-size: 1em;
+  font-weight: 500;
+  padding: 10px;
+  padding-right: 30px;
+  color: rgba(100, 111, 121, 1);
+}
+
+.box-button {
+  padding: 0px 20px;
+  border: 2px solid rgba(120, 109, 255, 1);
+  border-radius: 3px;
+  font-size: 1em;
+  font-weight: 500;
+  letter-spacing: 1px;
+  color: rgba(120, 109, 255, 1);
 }
