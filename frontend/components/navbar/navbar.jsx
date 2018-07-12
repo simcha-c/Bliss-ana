@@ -12,13 +12,13 @@ const Navbar = ({ currentUser, logout, openModal }) => {
   const sessionLinks = () => (
     <div className="login-signup">
       <button className="header-button" onClick={() => openModal('Log In')}>Log In</button>
-      <button className="box-button" onClick={() =>              openModal('Sign Up')}>Get Started</button>
+      <button className="box-button" onClick={() => openModal('Sign Up')}>Get Started</button>
       <Modal />
     </div>
   );
   const personalNavbar = () => (
     <hgroup className="header-group">
-      <h2 className="header-name">Hi, {`${currentUser.first_name}`}!</h2>
+      <h2 className="header-name">Hi, {`${currentUser.first}`}!</h2>
       <button className="box-button" onClick={logout}>Log Out</button>
     </hgroup>
   );

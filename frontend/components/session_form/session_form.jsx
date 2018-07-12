@@ -1,15 +1,17 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
+import { merge } from 'lodash';
 
 class SessionForm extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
+    const formInputs = {
       first: '',
       last: '',
       email: '',
       password: ''
     };
+    this.state = merge(formInputs, props.form);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.loginDemo = this.loginDemo.bind(this);
     this.renderErrors = this.renderErrors.bind(this);

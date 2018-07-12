@@ -106,37 +106,37 @@
   column-gap: 50px;
 }
 
-.login-form-box label {
+.login-form label {
   padding-top: 20px;
   padding-bottom: 20px;
 }
 
-.login-form-box label input {
+.login-input {
   display: flex;
   background-color: white;
 }
 
-.login-form-box label input::placeholder {
+.login-input::placeholder {
   color: rgba(156, 166, 175, 0.8);
   font-size: 1em;
   font-weight: 200;
 }
 
-.login-form form label input[type=text]:focus,
-.login-form form label input[type=password]:focus,
-.login-form form label input[type=email]:focus {
+.login-input[type=text]:focus,
+.login-input[type=password]:focus,
+.login-input[type=email]:focus {
   border: 2px solid rgba(120, 109, 255, 0.5);
 }
 
-.login-form form label input[value] {
+.login-input[value] {
   color: rgba(100, 111, 121, 1);
   font-size: 1em;
   font-weight: 200;
 }
 
-.login-form form label input[type=text],
-.login-form form label input[type=password],
-.login-form form label input[type=email]
+.login-input[type=text],
+.login-input[type=password],
+.login-input[type=email]
  {
   border: 2px solid rgba(156, 166, 175, 0.3);
   border-radius: 3px;
@@ -145,7 +145,7 @@
   padding: 15px;
 }
 
-.login-form-box label p {
+.login-form label p {
   color: rgba(100, 111, 121, 1);
   font-size: 1em;
   padding-bottom: 10px;
