@@ -6,8 +6,6 @@ import { Redirect } from 'react-router';
 
 // renders component if logged out, otherwise redirects to the root url
 const Auth = ({ component: Component, path, loggedIn, exact }) => {
-
-  debugger
   return (
   <Route path={path} exact={exact} render={(props) => {
       debugger
@@ -33,19 +31,22 @@ const Protected = ({ component: Component, path, loggedIn, exact }) => (
   )}/>
 );
 
-const RootPath = ({ exact, path, loggedIn }) => (
-  <Route path={path} exact={exact} render={(props) => (
+const RootPath = ({ exact, path, loggedIn }) => {
+  debugger
+  return <Route path={path} exact={exact} render={(props) => {
+  debugger
+    return (
      loggedIn ? (
-      <Redirect to="/projects" />
+      <Redirect to="/logged-in" />
     ) : (
       <Redirect to="/login" />
     )
-  )}/>
-);
+  )}}/>
+};
 
 // access the Redux state to check if the user is logged in
 const mapStateToProps = state => {
-  return { loggedIn: Boolean(state.session.currentUser) };
+  return { loggedIn: Boolean(state.session.id) };
 }
 
 // connect Auth to the redux state
