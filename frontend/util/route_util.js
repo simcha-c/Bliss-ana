@@ -4,20 +4,54 @@ import React from 'react';
 import { Route } from 'react-router';
 import { Redirect } from 'react-router';
 
+// renders component if logged out, otherwise redirects to the root url
+const Auth = ({ component: Component, path, loggedIn, exact }) => {
 
-
-const Auth = ({component: Component, path, loggedIn, exact}) => (
-  <Route path={path} exact={exact} render={(props) => (
-    !loggedIn ? (
+  debugger
+  return (
+  <Route path={path} exact={exact} render={(props) => {
+      debugger
+    return (!loggedIn ? (
       <Component {...props} />
     ) : (
       <Redirect to="/" />
+    ))
+  }
+  }
+  />
+)}
+
+
+// renders component if logged in, otherwise redirects to the login page
+const Protected = ({ component: Component, path, loggedIn, exact }) => (
+  <Route path={path} exact={exact} render={(props) => (
+     loggedIn ? (
+      <Component {...props} />
+    ) : (
+      <Redirect to="/login" />
     )
   )}/>
 );
 
-const mapStateToProps = state => {
-  return {loggedIn: Boolean(state.session.id)};
-};
+const RootPath = ({ exact, path, loggedIn }) => (
+  <Route path={path} exact={exact} render={(props) => (
+     loggedIn ? (
+      <Redirect to="/projects" />
+    ) : (
+      <Redirect to="/login" />
+    )
+  )}/>
+);
 
-export const AuthRoute = withRouter(connect(mapStateToProps, null)(Auth));
+// access the Redux state to check if the user is logged in
+const mapStateToProps = state => {
+  return { loggedIn: Boolean(state.session.currentUser) };
+}
+
+// connect Auth to the redux state
+export const AuthRoute = withRouter(connect(mapStateToProps)(Auth));
+
+// connect Protected to the redux state
+export const ProtectedRoute = withRouter(connect(mapStateToProps)(Protected));
+
+export const RootPathRoute = withRouter(connect(mapStateToProps)(RootPath));

@@ -3,11 +3,11 @@ import Modal from '../modal/modal';
 
 const Navbar = ({ currentUser, logout, openModal }) => {
   const logo = () => (
-    <div className="logo" onClick="/">
+    <div className="logo">
       <img src={window.logo} />
       <span>bliss-ana</span>
     </div>
-  )
+  );
 
   const sessionLinks = () => (
     <div className="login-signup">
@@ -29,14 +29,14 @@ const Navbar = ({ currentUser, logout, openModal }) => {
         {logo()}
         {personalNavbar(currentUser, logout)}
       </nav>
-    )
+    );
   } else {
     return (
       <nav>
         {logo()}
         {sessionLinks()}
       </nav>
-    )
+    );
   }
 };
 

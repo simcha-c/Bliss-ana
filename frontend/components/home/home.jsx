@@ -1,6 +1,7 @@
 import React from 'react';
 import { openModal } from '../../actions/modal_actions';
 import Modal from '../modal/modal';
+import NavbarContainer from '../navbar/navbar_container';
 
 class Homepage extends React.Component {
 
@@ -23,6 +24,7 @@ class Homepage extends React.Component {
   render() {
     return (
       <div  >
+        <NavbarContainer />
         <div className="home">
           <span className="home-bold" >
             Move work forward

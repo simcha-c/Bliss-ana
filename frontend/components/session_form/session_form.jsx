@@ -57,14 +57,14 @@ class SessionForm extends React.Component {
         firstName = (
           <label>
             <p> First Name </p>
-            <input type="text" value={this.state.first} placeholder="First Name"
+            <input required type="text" value={this.state.first} placeholder="First Name"
               onChange={this.update('first')} className="login-input" />
           </label>
         );
         lastName = (
           <label>
             <p>Last Name</p>
-            <input type="text" value={this.state.last} placeholder="First Name"
+            <input required type="text" value={this.state.last} placeholder="First Name"
               onChange={this.update('last')} className="login-input" />
           </label>
         );
@@ -87,13 +87,13 @@ class SessionForm extends React.Component {
 
               <label>
                 <p> Email Address </p>
-                <input type="text" value={this.state.email} placeholder="name@company.com"
+                <input required type="email" value={this.state.email} placeholder="name@company.com"
                   onChange={this.update('email')} className="login-input" />
               </label>
 
               <label>
                 <p>Password</p>
-                <input type="password" value={this.state.password} placeholder="Password"
+                <input required minLength="6" type="password" value={this.state.password} placeholder="Password"
                   onChange={this.update('password')} className="login-input" />
               </label>
 
