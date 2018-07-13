@@ -13,6 +13,8 @@
 #
 
 class TeamMembership < ApplicationRecord
+  validates :user_id, :team_id, presence: true
+  validates :user_id, uniqueness: { scope: :team_id }
 
 # A membership belongs to a user
   belongs_to :user,
@@ -21,7 +23,5 @@ class TeamMembership < ApplicationRecord
 # A membership belongs to a team
   belongs_to :team,
     class_name: :Team
-
-
 
 end
