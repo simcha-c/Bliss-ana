@@ -1,3 +1,17 @@
+# == Schema Information
+#
+# Table name: users
+#
+#  id              :bigint(8)        not null, primary key
+#  email           :string           not null
+#  password_digest :string           not null
+#  session_token   :string           not null
+#  created_at      :datetime         not null
+#  updated_at      :datetime         not null
+#  first           :string           not null
+#  last            :string           not null
+#
+
 class User < ApplicationRecord
 
   validates :email, :first, :last, :password_digest, presence: true
@@ -6,6 +20,18 @@ class User < ApplicationRecord
 
   attr_reader :password
   after_initialize :ensure_session_token
+
+# A user has many team memberships
+  has_many :team_memberships,
+    foreign_key: :user_id,
+    class_name: :TeamMembership
+
+# A user is a part of many teams
+  has_many :teams,
+    through: :team_memberships,
+    source: :team
+
+
 
   def self.generate_session_token
     SecureRandom::urlsafe_base64(16)
