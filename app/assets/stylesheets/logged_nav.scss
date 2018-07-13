@@ -26,6 +26,10 @@
   cursor: pointer;
 }
 
+.hambuger-menu-box:hover {
+  background-color: rgba(237, 241, 242, 1);
+}
+
 .hambuger-menu-icon {
   width: 16px;
   height: 1px;
@@ -44,6 +48,10 @@
   color: rgba(132, 143, 153, 1);
   cursor: pointer;
   font-size: 13px;
+}
+
+.link:hover {
+  color: #333333;
 }
 
 .avatar {
@@ -65,6 +73,7 @@
   font-size: 11px;
   color: #fff;
   line-height: 30px;
+  letter-spacing: 1px;
   text-align: center;
   background: rgba(253, 154, 0, 1);
   box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.2);

@@ -10,19 +10,25 @@ const Navbar = ({ currentUser, logout, openModal }) => {
     </div>
   );
 
+  const initials = `${currentUser.first[0].toUpperCase()}${currentUser.last[0].toUpperCase()}`
+
   const avatar = () => (
-    <secion className="avatar">
+    <section className="avatar">
       <div className="team-name">Engineering 101</div>
-      <div className="circle">SC</div>
-    </secion>
+      <div className="circle">{initials}</div>
+    </section>
   );
 
   const links = () => (
-    <secion className="links">
+    <section className="links">
       <a className="link" href="" >My Tasks</a>
       <a className="link" href="" >Inbox</a>
       <a className="link" href="" >Dashboard</a>
-    </secion>
+    </section>
+  );
+
+  const logoutButton = () => (
+    <button className="link" onClick={logout}>Log Out</button>
   );
 
   return (
@@ -30,6 +36,7 @@ const Navbar = ({ currentUser, logout, openModal }) => {
       {hamburger()}
       <section className="right-nav" >
         {links()}
+        {logoutButton()}
         {avatar(currentUser, logout)}
       </section>
     </nav>
