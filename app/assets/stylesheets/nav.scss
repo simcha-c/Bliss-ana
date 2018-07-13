@@ -18,15 +18,13 @@
   display: flex;
 }
 
-nav {
+.logging-nav {
   height: 56px;
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
   position: absolute;
-  left: 20px;
-  right: 20px;
   top: 2px;
 }
 

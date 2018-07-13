@@ -25,7 +25,7 @@ const Navbar = ({ currentUser, logout, openModal }) => {
 
   if (currentUser) {
     return (
-      <nav>
+      <nav className="logging-nav">
         {logo()}
         {personalNavbar(currentUser, logout)}
       </nav>
