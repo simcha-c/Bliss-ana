@@ -10,10 +10,31 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_07_12_175804) do
+ActiveRecord::Schema.define(version: 2018_07_13_142538) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "team_memberships", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "team_id", null: false
+    t.string "role"
+    t.string "department"
+    t.text "about_me"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["team_id"], name: "index_team_memberships_on_team_id"
+    t.index ["user_id", "team_id"], name: "index_team_memberships_on_user_id_and_team_id", unique: true
+    t.index ["user_id"], name: "index_team_memberships_on_user_id"
+  end
+
+  create_table "teams", force: :cascade do |t|
+    t.string "name", null: false
+    t.integer "lead_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["name", "lead_id"], name: "index_teams_on_name_and_lead_id", unique: true
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", null: false

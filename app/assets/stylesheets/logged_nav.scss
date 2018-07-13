@@ -24,7 +24,11 @@
   border-right: 0.5px solid rgba(237, 241, 242, 1);
   padding-top: 11px;
   cursor: pointer;
+  -webkit-transition: background-color 0.5s; /* Safari */
+  transition: background-color 0.5s;
 }
+
+.hambuger-menu-box {transition-timing-function: ease;}
 
 .hambuger-menu-box:hover {
   background-color: rgba(237, 241, 242, 1);
