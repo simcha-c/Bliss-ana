@@ -11,20 +11,15 @@
 class Team < ApplicationRecord
   validates :name, presence: true
 
-# A team belongs to a manager
-  belongs_to :manager,
-    class_name: :User,
-    optional: true
-
 # A team has many memberships
   has_many :memberships,
     foreign_key: :team_id,
-    class_name: :Team
+    class_name: :TeamMembership
 
 # Many users/members are part of a team
   has_many :members,
     through: :memberships,
     source: :user
 
-  
+
 end

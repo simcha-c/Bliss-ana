@@ -14,7 +14,7 @@ const Navbar = ({ currentUser, logout, openModal }) => {
 
   const avatar = () => (
     <section className="avatar">
-      <div className="team-name">Engineering 101</div>
+      <div className="link">Engineering 101</div>
       <div className="circle">{initials}</div>
     </section>
   );

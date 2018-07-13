@@ -22,7 +22,7 @@
   height: 40px;
   align-content: center;
   border-right: 0.5px solid rgba(237, 241, 242, 1);
-  padding-top: 11px;
+  padding-top: 17px;
   cursor: pointer;
   -webkit-transition: background-color 0.5s; /* Safari */
   transition: background-color 0.5s;
@@ -38,36 +38,29 @@
   width: 16px;
   height: 1px;
   background-color: rgba(132, 143, 153, 1);
-  margin: 6px 0;
-  margin-left: 13px;
+  margin: 5px 0;
+  margin-left: 12px;
 }
 
 .links {
   display: flex;
-  margin-left: 20px;
+  margin-left: -8px;
 }
 
 .link {
-  margin-right: 30px;
+  margin-left: 30px;
   color: rgba(132, 143, 153, 1);
   cursor: pointer;
   font-size: 13px;
 }
 
 .link:hover {
-  color: #333333;
+  color: rgba(50, 193, 255, 1);
 }
 
 .avatar {
   display: flex;
   align-items: center;
-}
-
-.team-name {
-  margin-right: 10px;
-  cursor: pointer;
-  font-size: 13px;
-  color: rgba(132, 143, 153, 1);
 }
 
 .circle {
@@ -82,5 +75,6 @@
   background: rgba(253, 154, 0, 1);
   box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.2);
   margin-right: 20px;
+  margin-left: 10px;
   cursor: pointer;
 }
