@@ -8,7 +8,6 @@ import { Redirect } from 'react-router';
 const Auth = ({ component: Component, path, loggedIn, exact }) => {
   return (
   <Route path={path} exact={exact} render={(props) => {
-      debugger
     return (!loggedIn ? (
       <Component {...props} />
     ) : (
@@ -32,9 +31,7 @@ const Protected = ({ component: Component, path, loggedIn, exact }) => (
 );
 
 const RootPath = ({ exact, path, loggedIn }) => {
-  debugger
   return <Route path={path} exact={exact} render={(props) => {
-  debugger
     return (
      loggedIn ? (
       <Redirect to="/logged-in" />

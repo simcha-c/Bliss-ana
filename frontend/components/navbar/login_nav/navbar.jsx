@@ -32,7 +32,7 @@ const Navbar = ({ currentUser, logout, openModal }) => {
     );
   } else {
     return (
-      <nav>
+      <nav className="logging-nav">
         {logo()}
         {sessionLinks()}
       </nav>

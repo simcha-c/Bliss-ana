@@ -1,6 +1,7 @@
 .logo {
   display: flex;
   align-items: center;
+  margin-left: 10px;
 }
 
 .logo span {
@@ -20,6 +21,7 @@
 
 .logging-nav {
   height: 56px;
+  width: 100%;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -44,4 +46,10 @@
   font-weight: 500;
   letter-spacing: 1px;
   color: rgba(120, 109, 255, 1);
+  margin-right: 10px;
+}
+
+.box-button:hover {
+  background-color: rgba(120, 109, 255, 1);
+  color: white;
 }
