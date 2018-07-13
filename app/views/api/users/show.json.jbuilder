@@ -1,4 +1,4 @@
-  json.current_user do
+  json.currentUser do
     json.extract! @user, :id, :first, :last, :email
   end
 

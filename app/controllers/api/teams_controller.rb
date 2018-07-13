@@ -4,7 +4,7 @@ class Api::TeamsController < ApplicationController
     @team = Team.new(team_params)
     @user = current_user
     if @team.save
-      TeamMembership.new(user_id: @user.id, team_id: @team.id)
+      TeamMembership.create(user_id: @user.id, team_id: @team.id)
       render :show
     else
       render json: @team.errors.full_messages, status: 401

@@ -7,9 +7,9 @@ json.members do
     json.set! member.id do
       membership = member.team_memberships.first
       json.extract! member, :id, :first, :last, :email
-      json.extract! membership, :role, :description, :about_me
+      json.extract! membership, :role, :department, :about_me
     end
-    
+
   end
 
 end
