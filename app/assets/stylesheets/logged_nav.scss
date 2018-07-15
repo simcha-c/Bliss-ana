@@ -61,6 +61,10 @@
   color: rgba(20, 170, 245, 1);
 }
 
+.link:active {
+  color: black;
+}
+
 .avatar {
   display: flex;
   align-items: center;
@@ -120,6 +124,11 @@
 
 .avatar-link:hover {
   background-color: rgba(20, 170, 245, 1);
+  color: white;
+}
+
+.avatar-link:active {
+  background-color: black;
   color: white;
 }
 

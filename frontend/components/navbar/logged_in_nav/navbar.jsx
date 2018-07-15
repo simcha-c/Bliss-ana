@@ -50,7 +50,7 @@ class Navbar extends React.Component {
 
   profileDropdown() {
     const allTeams = Object.values(this.props.teams).map((team, idx) => {
-      return <li key={idx} className="avatar-link"> {team.name} </li>
+      return <li key={idx} className="avatar-link"> {team.name}</li>
     })
 
     return (
