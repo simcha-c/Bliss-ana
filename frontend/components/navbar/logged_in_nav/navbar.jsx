@@ -6,17 +6,12 @@ class Navbar extends React.Component {
 
   constructor(props) {
     super(props);
-    this.currentUser = props.currentUser;
-    this.logout = props.logout;
-    this.openModal = props.openModal;
-    this.team = props.team;
-
     this.avatar = this.avatar.bind(this);
   }
 
   componentDidMount() {
-    const temp = 0;
-    this.props.fetchUser(this.currentUser.id)
+    debugger
+    this.props.fetchUser(this.props.currentUser.id)
   }
 
   hamburger() {
@@ -30,11 +25,20 @@ class Navbar extends React.Component {
   };
 
   avatar(){
-    const initials = `${this.currentUser.first[0].toUpperCase()}${this.currentUser.last[0].toUpperCase()}`
+    const initials = `${this.props.currentUser.first[0].toUpperCase()}${this.props.currentUser.last[0].toUpperCase()}`
+
+    let firstTeam;
+    if (Object.keys(this.props.teams).length === 0){
+      firstTeam = {name: ''};
+
+    } else {
+      firstTeam = this.props.teams[Object.keys(this.props.teams)[0]];
+    }
+
     return (
       <section className="avatar">
-        <div className="link">{this.team.name}</div>
-        <div className="circle">{this.initials}</div>
+        <div className="link">{firstTeam.name}</div>
+        <div className="circle">{initials}</div>
       </section>
     )
   }
@@ -51,7 +55,7 @@ class Navbar extends React.Component {
 
   logoutButton() {
     return (
-      <button className="link" onClick={this.logout}>Log Out</button>
+      <button className="link" onClick={this.props.logout}>Log Out</button>
     );
   }
 
@@ -71,46 +75,3 @@ class Navbar extends React.Component {
 }
 
 export default Navbar;
-
-// const Navbar = ({ currentUser, logout, openModal, team }) => {
-//   const hamburger = () => (
-//     <div className="hambuger-menu-box">
-//       <div className="hambuger-menu-icon"></div>
-//       <div className="hambuger-menu-icon"></div>
-//       <div className="hambuger-menu-icon"></div>
-//     </div>
-//   );
-//
-//   const initials = `${currentUser.first[0].toUpperCase()}${currentUser.last[0].toUpperCase()}`
-//
-//   const avatar = () => (
-//     <section className="avatar">
-//       <div className="link">{team.name}</div>
-//       <div className="circle">{initials}</div>
-//     </section>
-//   );
-//
-//   const links = () => (
-//     <section className="links">
-//       <a className="link" href="" >My Tasks</a>
-//       <a className="link" href="" >Inbox</a>
-//       <a className="link" href="" >Dashboard</a>
-//     </section>
-//   );
-//
-//   const logoutButton = () => (
-//     <button className="link" onClick={logout}>Log Out</button>
-//   );
-//
-//   return (
-//     <nav className="logged_nav">
-//       {hamburger()}
-//       <section className="right-nav" >
-//         {links()}
-//         {logoutButton()}
-//         {avatar(currentUser, logout)}
-//       </section>
-//     </nav>
-//   );
-//
-// }
