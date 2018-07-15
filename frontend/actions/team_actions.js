@@ -2,10 +2,10 @@ import * as TeamAPIUtil from '../util/team_api_util';
 
 export const RECEIVE_NEW_TEAM = "RECEIVE_NEW_TEAM";
 
-export const receiveTeam = (members) => {
+export const receiveTeam = (teams) => {
   return {
     type: RECEIVE_NEW_TEAM,
-    members: members,
+    teams: teams,
   };
 };
 
