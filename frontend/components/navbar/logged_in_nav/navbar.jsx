@@ -11,12 +11,12 @@ class Navbar extends React.Component {
     this.openModal = props.openModal;
     this.team = props.team;
 
-    this.avatar = this.avatar.bind(this)
-    this.logout = this.logout.bind(this)
+    this.avatar = this.avatar.bind(this);
   }
 
   componentDidMount() {
-    debugger
+    const temp = 0;
+    this.props.fetchUser(this.currentUser.id)
   }
 
   hamburger() {

@@ -9,7 +9,7 @@ export const receiveTeam = (teams) => {
   };
 };
 
-export const fetchTeam = (id) => {
+export const fetchTeam = (id) => dispatch => {
   return TeamAPIUtil.fetchTeam(id).then(
     members => dispatch(receiveTeam(members)),
     errors => dispatch(receiveErrors(errors.responseJSON))
