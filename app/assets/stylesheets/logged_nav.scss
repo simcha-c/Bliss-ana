@@ -49,13 +49,16 @@
 
 .link {
   margin-left: 30px;
+}
+
+.link, .avatar-link {
   color: rgba(132, 143, 153, 1);
   cursor: pointer;
   font-size: 13px;
 }
 
 .link:hover {
-  color: rgba(50, 193, 255, 1);
+  color: rgba(20, 170, 245, 1);
 }
 
 .avatar {
@@ -64,7 +67,7 @@
 }
 
 .avatar:hover {
-  color: rgba(50, 193, 255, 1);
+  color: rgba(20, 170, 245, 1);
 }
 
 .circle {
@@ -81,4 +84,50 @@
   margin-right: 20px;
   margin-left: 10px;
   cursor: pointer;
+}
+
+#avatar-menu {
+  position: absolute;
+  background: white;
+  width: 300px;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  top: 41px;
+  right: 20px;
+  border-radius: 2px;
+  border: 1px solid rgba(132, 143, 153, 0.25);
+  box-shadow: 0px 0px 7px 1px rgba(0,0,0,0.1);
+}
+
+.avatar-section {
+  display: flex;
+  border-bottom: 1px solid rgba(132, 143, 153, 0.25);
+  margin-top: 5px;
+}
+
+.avatar-list{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.avatar-link {
+  line-height: 40px;
+  align-items: center;
+  padding-left: 30px;
+}
+
+.avatar-link:hover {
+  background-color: rgba(20, 170, 245, 1);
+  color: white;
+}
+
+.logout-button {
+  margin: 0;
+  font-size: 13px;
+}
+
+.hidden {
+  display: none;
 }

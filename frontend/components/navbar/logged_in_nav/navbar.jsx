@@ -7,10 +7,10 @@ class Navbar extends React.Component {
   constructor(props) {
     super(props);
     this.avatar = this.avatar.bind(this);
+    this.profileDropdown = this.profileDropdown.bind(this);
   }
 
   componentDidMount() {
-    debugger
     this.props.fetchUser(this.props.currentUser.id)
   }
 
@@ -23,6 +23,11 @@ class Navbar extends React.Component {
       </div>
     )
   };
+
+  toggleHiddenClass() {
+    const menu = document.getElementById('user-profile-info')
+    menu.classList.toggle("hidden")
+  }
 
   avatar(){
     const initials = `${this.props.currentUser.first[0].toUpperCase()}${this.props.currentUser.last[0].toUpperCase()}`
@@ -38,8 +43,32 @@ class Navbar extends React.Component {
     return (
       <section className="avatar">
         <div className="link">{firstTeam.name}</div>
-        <div className="circle">{initials}</div>
+        <div className="circle" onClick={this.toggleHiddenClass} >{initials}</div>
       </section>
+    )
+  }
+
+  profileDropdown() {
+    const allTeams = Object.values(this.props.teams).map((team, idx) => {
+      return <li key={idx} className="avatar-link"> {team.name} </li>
+    })
+
+    return (
+      <div id="user-profile-info" className="hidden">
+        <aside id="avatar-menu">
+          <section className="avatar-section">
+            <ul className="avatar-list">
+              {allTeams}
+            </ul>
+          </section>
+          <section className="avatar-section">
+            <ul className="avatar-list">
+              <li className="avatar-link">My Profile Settings...</li>
+              <li className="avatar-link">{this.logoutButton()}</li>
+            </ul>
+          </section>
+        </aside>
+      </div>
     )
   }
 
@@ -55,20 +84,22 @@ class Navbar extends React.Component {
 
   logoutButton() {
     return (
-      <button className="link" onClick={this.props.logout}>Log Out</button>
+      <button className="logout-button" onClick={this.props.logout}>Log Out</button>
     );
   }
 
   render() {
     return (
-      <nav className="logged_nav">
-        {this.hamburger()}
-        <section className="right-nav" >
-          {this.links()}
-          {this.logoutButton()}
-          {this.avatar()}
-        </section>
-      </nav>
+      <div>
+        <nav className="logged_nav">
+          {this.hamburger()}
+          <section className="right-nav" >
+            {this.links()}
+            {this.avatar()}
+          </section>
+        </nav>
+        {this.profileDropdown()}
+      </div>
     );
   }
 
