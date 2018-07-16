@@ -14,9 +14,16 @@ class Navbar extends React.Component {
     this.props.fetchUser(this.props.currentUser.id)
   }
 
+  toggleHiddenClassAside() {
+    const sidebar = document.getElementById('hamburger-aside')
+    const hambuger = document.getElementById('hambuger-menu-box')
+    hambuger.classList.toggle("hidden")
+    sidebar.classList.toggle("aside-hidden")
+  }
+
   hamburger() {
     return (
-      <div className="hambuger-menu-box">
+      <div onClick={this.toggleHiddenClassAside} id="hambuger-menu-box">
         <div className="hambuger-menu-icon"></div>
         <div className="hambuger-menu-icon"></div>
         <div className="hambuger-menu-icon"></div>
@@ -24,7 +31,7 @@ class Navbar extends React.Component {
     )
   };
 
-  toggleHiddenClass() {
+  toggleHiddenClassProfile() {
     const menu = document.getElementById('user-profile-info')
     menu.classList.toggle("hidden")
   }
@@ -43,7 +50,7 @@ class Navbar extends React.Component {
     return (
       <section className="avatar">
         <div className="link">{firstTeam.name}</div>
-        <div className="circle" onClick={this.toggleHiddenClass} >{initials}</div>
+        <div className="circle" onClick={this.toggleHiddenClassProfile} >{initials}</div>
       </section>
     )
   }
@@ -90,7 +97,7 @@ class Navbar extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="navbar">
         <nav className="logged_nav">
           {this.hamburger()}
           <section className="right-nav" >

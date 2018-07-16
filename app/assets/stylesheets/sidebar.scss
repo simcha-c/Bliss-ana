@@ -1,0 +1,60 @@
+// TODO: fix height issue!!!
+
+.aside-hidden {
+  display: none;
+  opacity: 0;
+}
+
+#hamburger-aside {
+  width: 300px;
+  height: 800px;
+  background-color: rgba(34, 43, 55, 1);
+  // opacity: 1;
+  // -webkit-transition: opacity 1s; /* Safari */
+  // transition: opacity 1s;
+}
+
+#hambuger-menu-box {transition-timing-function: ease;}
+
+.sidebar {
+  display: flex;
+  flex-direction: column;
+}
+
+.sidebar-header {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content: space-between;
+  padding: 0 10px;
+  box-sizing: border-box;
+  align-content: center;
+  margin-top: 7px;
+}
+
+.sidebar-header span {
+  color: white;
+}
+
+.sidebar-logo-img {
+  width: 30px;
+  height: 26px;
+  margin-right: 5px;
+}
+
+.sidebar-logo {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.close {
+  color: rgba(156, 166, 175, 1);
+  font-size: 24px;
+  margin-right: 5px;
+  margin-bottom: 4px;
+}
+
+.close:hover {
+  color: white;
+}

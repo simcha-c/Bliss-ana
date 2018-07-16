@@ -1,30 +1,35 @@
 import React from 'react';
 
-// const Navbar = (props) => {
-//
-// };
 
 class Sidebar extends React.Component {
 
-  
+  toggleHiddenClassAside() {
+    const sidebar = document.getElementById('hamburger-aside')
+    const hambuger = document.getElementById('hambuger-menu-box')
 
-  sidebarHeader(){
+    hambuger.classList.toggle("hidden")
+    sidebar.classList.toggle("aside-hidden")
+  }
+
+  sidebarHeader() {
     return (
       <header className="sidebar-header">
-        <header className="logo">
-          <img src={window.logo} />
+        <div className="sidebar-logo">
+          <img className="sidebar-logo-img" src={window.logo} />
           <span>bliss-ana</span>
-        </header>
-        <div className="close-x">×</div>
+        </div>
+        <div onClick={this.toggleHiddenClassAside} className="close">×</div>
       </header>
     );
   }
 
   render() {
     return (
-      <aside className="sidebar">
-        {sidebarHeader()}
-      </aside>
+      <div id="hamburger-aside" className="aside-hidden">
+        <aside className="sidebar">
+          {this.sidebarHeader()}
+        </aside>
+      </div>
     );
   }
 

@@ -1,3 +1,7 @@
+.navbar {
+  width: 100%;
+}
+
 .logged_nav {
   height: 40px;
   width: 100%;
@@ -5,7 +9,7 @@
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  position: absolute;
+  // position: absolute;
   border-bottom: 1px solid lightgrey;
   overflow: hidden;
 }
@@ -17,7 +21,7 @@
   align-items: center;
 }
 
-.hambuger-menu-box {
+#hambuger-menu-box {
   width: 43px;
   height: 40px;
   align-content: center;
@@ -28,9 +32,9 @@
   transition: background-color 0.5s;
 }
 
-.hambuger-menu-box {transition-timing-function: ease;}
+#hambuger-menu-box {transition-timing-function: ease;}
 
-.hambuger-menu-box:hover {
+#hambuger-menu-box:hover {
   background-color: rgba(237, 241, 242, 1);
 }
 
@@ -135,6 +139,7 @@
 .logout-button {
   margin: 0;
   font-size: 13px;
+  width: 100%;
 }
 
 .hidden {
