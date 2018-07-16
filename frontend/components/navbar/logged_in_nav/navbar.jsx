@@ -6,25 +6,63 @@ class Navbar extends React.Component {
 
   constructor(props) {
     super(props);
+    const randomTeam = this.props.teams[Object.keys(this.props.teams)[0]];
+    this.activeTeam = parseInt(this.props.team) || randomTeam;
+
     this.avatar = this.avatar.bind(this);
     this.profileDropdown = this.profileDropdown.bind(this);
-    
+    this.toggleHiddenClassAside = this.toggleHiddenClassAside.bind(this);
+    this.toggleHiddenClassProfile = this.toggleHiddenClassProfile.bind(this);
+    this.sidebarHeader = this.sidebarHeader.bind(this);
+
+    this.state = { popup: 'hidden', aside: 'aside-hidden', hambuger: '' }
   }
 
   componentDidMount() {
-    this.props.fetchUser(this.props.currentUser.id)
+    this.props.fetchUser(this.props.currentUser.id);
+    this.props.fetchTeam(this.props.team);
   }
 
+  componentDidUpdate(prevProps) {
+    if (this.props.team !== prevProps.team) {
+      this.props.fetchTeam(this.props.team);
+    }
+  }
+
+
   toggleHiddenClassAside() {
-    const sidebar = document.getElementById('hamburger-aside')
-    const hambuger = document.getElementById('hambuger-menu-box')
-    hambuger.classList.toggle("hidden")
-    sidebar.classList.toggle("aside-hidden")
+    if (this.state.aside === 'aside-hidden') {
+      this.setState({ hambuger: 'hidden', aside: '' });
+    } else {
+      this.setState({ hambuger: '', aside: 'aside-hidden' });
+    }
+  }
+
+  sidebarHeader() {
+    return (
+      <header className="sidebar-header">
+        <div className="sidebar-logo">
+          <img className="sidebar-logo-img" src={window.logo} />
+          <span>bliss-ana</span>
+        </div>
+        <div onClick={this.toggleHiddenClassAside} className="close">×</div>
+      </header>
+    );
+  }
+
+  sidebar() {
+    return (
+      <div id="hamburger-aside" className={this.state.aside}>
+        <aside className="sidebar">
+          {this.sidebarHeader()}
+        </aside>
+      </div>
+    );
   }
 
   hamburger() {
     return (
-      <div onClick={this.toggleHiddenClassAside} id="hambuger-menu-box">
+      <div onClick={this.toggleHiddenClassAside} className={this.state.hambuger} id="hambuger-menu-box">
         <div className="hambuger-menu-icon"></div>
         <div className="hambuger-menu-icon"></div>
         <div className="hambuger-menu-icon"></div>
@@ -33,8 +71,11 @@ class Navbar extends React.Component {
   };
 
   toggleHiddenClassProfile() {
-    const menu = document.getElementById('user-profile-info')
-    menu.classList.toggle("hidden")
+    if (this.state.popup === 'hidden') {
+      this.setState({ popup: '' });
+    } else {
+      this.setState({ popup: 'hidden' })
+    }
   }
 
   avatar(){
@@ -59,6 +100,7 @@ class Navbar extends React.Component {
   profileDropdown() {
     const randomTeam = this.props.teams[Object.keys(this.props.teams)[0]];
     const activeTeam = parseInt(this.props.team) || randomTeam;
+
     const allTeams = Object.values(this.props.teams).map((team) => {
       let active
       if (activeTeam === team.id) {
@@ -73,7 +115,7 @@ class Navbar extends React.Component {
     })
 
     return (
-      <div id="user-profile-info" className="hidden">
+      <div id="user-profile-info" className={this.state.popup}>
         <aside id="avatar-menu">
           <section className="avatar-section">
             <ul className="avatar-list">
@@ -109,15 +151,18 @@ class Navbar extends React.Component {
 
   render() {
     return (
-      <div className="navbar">
-        <nav className="logged_nav">
-          {this.hamburger()}
-          <section className="right-nav" >
-            {this.links()}
-            {this.avatar()}
-          </section>
-        </nav>
-        {this.profileDropdown()}
+      <div className="team-show">
+        {this.sidebar()}
+        <div className="navbar">
+          <nav className="logged_nav">
+            {this.hamburger()}
+            <section className="right-nav" >
+              {this.links()}
+              {this.avatar()}
+            </section>
+          </nav>
+          {this.profileDropdown()}
+        </div>
       </div>
     );
   }

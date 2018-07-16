@@ -13,9 +13,6 @@ const teamsReducer = (state = {}, action) => {
   case RECEIVE_USER:
     return merge({}, action.teams)
 
-  case RECEIVE_NEW_TEAM:
-    return merge({}, action.teams);
-
   case LOGOUT_CURRENT_USER:
     return {};
 
