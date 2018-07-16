@@ -1,6 +1,6 @@
 import React from 'react';
 import Modal from '../../modal/modal';
-
+import { Link } from 'react-router-dom';
 
 class Navbar extends React.Component {
 
@@ -33,6 +33,7 @@ class Navbar extends React.Component {
 
   toggleHiddenClassProfile() {
     const menu = document.getElementById('user-profile-info')
+
     menu.classList.toggle("hidden")
   }
 
@@ -44,20 +45,22 @@ class Navbar extends React.Component {
       firstTeam = {name: ''};
 
     } else {
-      firstTeam = this.props.teams[Object.keys(this.props.teams)[0]];
+      firstTeam = this.props.teams[this.props.team];
     }
 
     return (
-      <section className="avatar">
+      <section className="avatar" onClick={this.toggleHiddenClassProfile}>
         <div className="link">{firstTeam.name}</div>
-        <div className="circle" onClick={this.toggleHiddenClassProfile} >{initials}</div>
+        <div className="circle" >{initials}</div>
       </section>
     )
   }
 
   profileDropdown() {
     const allTeams = Object.values(this.props.teams).map((team, idx) => {
-      return <li key={idx} className="avatar-link"> {team.name}</li>
+      return <Link to={`/team/${team.id}`}>
+        <li key={idx} className="avatar-link" onClick={this.toggleHiddenClassProfile}> {team.name}</li>
+      </Link>
     })
 
     return (

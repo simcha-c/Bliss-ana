@@ -13,7 +13,7 @@ const App = () => (
     <Switch>
       <AuthRoute exact path='/login' component={LoginPage} />
       <RootPathRoute exact path="/" />
-      <ProtectedRoute path='/logged-in' component={TeamShow} />
+      <ProtectedRoute path='/team/:teamId' component={TeamShow} />
     </Switch>
 
   </div>
