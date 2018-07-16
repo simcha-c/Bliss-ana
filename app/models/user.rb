@@ -31,6 +31,10 @@ class User < ApplicationRecord
     through: :team_memberships,
     source: :team
 
+# A user has many projects (through the teams)
+  has_many :projects,
+    through: :teams,
+    source: :projects
 
 
   def self.generate_session_token

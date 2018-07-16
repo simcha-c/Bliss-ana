@@ -8,6 +8,7 @@ Rails.application.routes.draw do
     resource :session, only: [:create, :destroy]
     resources :teams, only: [:create, :update, :show]
     resources :team_memberships, only: [:create, :destroy, :update]
+    resources :projects, only: [:create, :update, :destroy]
   end
 
 end

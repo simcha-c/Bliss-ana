@@ -21,5 +21,9 @@ class Team < ApplicationRecord
     through: :memberships,
     source: :user
 
+# A team has many projects
+  has_many :projects,
+    foreign_key: :team_id,
+    class_name: :Project
 
 end
