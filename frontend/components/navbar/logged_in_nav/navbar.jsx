@@ -33,7 +33,6 @@ class Navbar extends React.Component {
 
   toggleHiddenClassProfile() {
     const menu = document.getElementById('user-profile-info')
-
     menu.classList.toggle("hidden")
   }
 
@@ -57,9 +56,18 @@ class Navbar extends React.Component {
   }
 
   profileDropdown() {
-    const allTeams = Object.values(this.props.teams).map((team, idx) => {
+    const randomTeam = this.props.teams[Object.keys(this.props.teams)[0]];
+    const activeTeam = parseInt(this.props.team) || randomTeam;
+    const allTeams = Object.values(this.props.teams).map((team) => {
+      let active
+      if (activeTeam === team.id) {
+        active = 'active';
+      } else {
+        active = "";
+      }
+
       return <Link to={`/team/${team.id}`}>
-        <li key={idx} className="avatar-link" onClick={this.toggleHiddenClassProfile}> {team.name}</li>
+        <li key={team.id} id={active} className="avatar-link" onClick={this.toggleHiddenClassProfile}>{team.name}</li>
       </Link>
     })
 
@@ -73,7 +81,7 @@ class Navbar extends React.Component {
           </section>
           <section className="avatar-section">
             <ul className="avatar-list">
-              <li className="avatar-link">My Profile Settings...</li>
+
               <li className="avatar-link">{this.logoutButton()}</li>
             </ul>
           </section>

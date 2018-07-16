@@ -12,8 +12,8 @@ const mapState = (state) => {
 };
 
 // TODO: add the addProjects, addPeople dispatches
-const mapDispatch = (dispatch) => {
+// const mapDispatch = (dispatch) => {
+//
+// };
 
-};
-
-export default connect(mapState, mapDispatch)(Sidebar);
+export default connect(mapState)(Sidebar);

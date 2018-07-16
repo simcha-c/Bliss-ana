@@ -30,11 +30,11 @@ const Protected = ({ component: Component, path, loggedIn, exact }) => (
   )}/>
 );
 
-const RootPath = ({ exact, path, loggedIn }) => {
+const RootPath = ({ exact, path, loggedIn, team }) => {
   return <Route path={path} exact={exact} render={(props) => {
     return (
      loggedIn ? (
-      <Redirect to="/logged-in" />
+      <Redirect to={`/team/${team.id}`} />
     ) : (
       <Redirect to="/login" />
     )
@@ -43,7 +43,11 @@ const RootPath = ({ exact, path, loggedIn }) => {
 
 // access the Redux state to check if the user is logged in
 const mapStateToProps = state => {
-  return { loggedIn: Boolean(state.session.id) };
+  const randomTeam = state.entities.teams[Object.keys(state.entities.teams)[0]]
+  return {
+    loggedIn: Boolean(state.session.id),
+    team: randomTeam
+  };
 }
 
 // connect Auth to the redux state
