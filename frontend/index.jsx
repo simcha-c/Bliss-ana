@@ -8,14 +8,17 @@ document.addEventListener('DOMContentLoaded', () => {
 
   let store;
   if (window.currentUser) {
+    debugger
     const preloadedState = {
       entities: {
-        users: { [window.currentUser.id]: window.currentUser }
+        users: { [window.currentUser.id]: window.currentUser },
+        teams: window.teams,
       },
-      session: { id: window.currentUser.id }
+      session: { id: window.currentUser.id },
     };
     store = configureStore(preloadedState);
     delete window.currentUser;
+    delete window.teams;
   } else {
     store = configureStore();
   }
