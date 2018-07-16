@@ -8,6 +8,7 @@ class Navbar extends React.Component {
     super(props);
     this.avatar = this.avatar.bind(this);
     this.profileDropdown = this.profileDropdown.bind(this);
+    
   }
 
   componentDidMount() {
