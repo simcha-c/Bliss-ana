@@ -34,7 +34,7 @@ const RootPath = ({ exact, path, loggedIn, team }) => {
   return <Route path={path} exact={exact} render={(props) => {
     return (
      loggedIn ? (
-      <Redirect to={`/team/${team.id}`} />
+      <Redirect to={`/teams/${team.id}`} />
     ) : (
       <Redirect to="/login" />
     )

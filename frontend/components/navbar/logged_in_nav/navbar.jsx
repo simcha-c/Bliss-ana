@@ -66,7 +66,7 @@ class Navbar extends React.Component {
         active = "";
       }
 
-      return <Link to={`/team/${team.id}`}>
+      return <Link to={`/teams/${team.id}`}>
         <li key={team.id} id={active} className="avatar-link" onClick={this.toggleHiddenClassProfile}>{team.name}</li>
       </Link>
     })
