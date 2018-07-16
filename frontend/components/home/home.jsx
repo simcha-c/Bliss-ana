@@ -33,12 +33,12 @@ class Homepage extends React.Component {
             Asana is the easiest way for teams to track their work—and get results.
           </span>
 
-            <form className="home-form">
+            <form className="home-form" onSubmit={() => dispatch(openModal('Sign Up', this.state))}>
               <input type="text" value={this.state.email} placeholder="name@company.com"
                 onChange={this.update('email')} className="login-input" >
               </input>
 
-              <button className="session-submit" onClick={() => dispatch(openModal('Sign Up', this.state))}>Get Started</button>
+              <input type="submit" className="session-submit-home" value="Get Started" />
             </form>
           <Modal />
 

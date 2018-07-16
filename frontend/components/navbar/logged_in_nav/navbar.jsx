@@ -12,10 +12,9 @@ class Navbar extends React.Component {
     this.avatar = this.avatar.bind(this);
     this.profileDropdown = this.profileDropdown.bind(this);
     this.toggleHiddenClassAside = this.toggleHiddenClassAside.bind(this);
-    this.toggleHiddenClassProfile = this.toggleHiddenClassProfile.bind(this);
     this.sidebarHeader = this.sidebarHeader.bind(this);
 
-    this.state = { popup: 'hidden', aside: 'aside-hidden', hambuger: '' }
+    this.state = { aside: 'aside-hidden', hambuger: '' }
   }
 
   componentDidMount() {
@@ -28,7 +27,6 @@ class Navbar extends React.Component {
       this.props.fetchTeam(this.props.team);
     }
   }
-
 
   toggleHiddenClassAside() {
     if (this.state.aside === 'aside-hidden') {
@@ -70,27 +68,18 @@ class Navbar extends React.Component {
     )
   };
 
-  toggleHiddenClassProfile() {
-    if (this.state.popup === 'hidden') {
-      this.setState({ popup: '' });
-    } else {
-      this.setState({ popup: 'hidden' })
-    }
-  }
-
   avatar(){
     const initials = `${this.props.currentUser.first[0].toUpperCase()}${this.props.currentUser.last[0].toUpperCase()}`
 
     let firstTeam;
     if (Object.keys(this.props.teams).length === 0){
       firstTeam = {name: ''};
-
     } else {
       firstTeam = this.props.teams[this.props.team];
     }
 
     return (
-      <section className="avatar" onClick={this.toggleHiddenClassProfile}>
+      <section className="avatar" onClick={this.props.openDropdown}>
         <div className="link">{firstTeam.name}</div>
         <div className="circle" >{initials}</div>
       </section>
@@ -109,13 +98,15 @@ class Navbar extends React.Component {
         active = "";
       }
 
-      return <Link to={`/teams/${team.id}`}>
-        <li key={team.id} id={active} className="avatar-link" onClick={this.toggleHiddenClassProfile}>{team.name}</li>
+      return <Link key={team.id} to={`/teams/${team.id}`}>
+        <li id={active} className="avatar-link" onClick={this.props.openDropdown}>{team.name}</li>
       </Link>
     })
 
+    const visible = this.props.dropdown ? '' : 'hidden';
+
     return (
-      <div id="user-profile-info" className={this.state.popup}>
+      <div id="user-profile-info" className={`${visible}`} >
         <aside id="avatar-menu">
           <section className="avatar-section">
             <ul className="avatar-list">
