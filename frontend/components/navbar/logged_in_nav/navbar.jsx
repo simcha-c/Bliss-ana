@@ -13,6 +13,7 @@ class Navbar extends React.Component {
     this.profileDropdown = this.profileDropdown.bind(this);
     this.toggleHiddenClassAside = this.toggleHiddenClassAside.bind(this);
     this.sidebarHeader = this.sidebarHeader.bind(this);
+    this.removeTeam = this.removeTeam.bind(this);
 
     this.state = { aside: 'aside-hidden', hambuger: '' };
   }
@@ -28,13 +29,6 @@ class Navbar extends React.Component {
       this.props.fetchTeam(this.props.team);
     }
   }
-
-  // componentWillReceiveProps(newProps) {
-  //   if (this.props.team !== newProps.team) {
-  //     this.props.fetchUser(this.props.currentUser.id);
-  //     this.props.fetchTeam(this.props.team);
-  //   }
-  // }
 
   toggleHiddenClassAside() {
     if (this.state.aside === 'aside-hidden') {
@@ -94,6 +88,10 @@ class Navbar extends React.Component {
     )
   }
 
+  removeTeam() {
+    this.props.deleteTeam(this.props.team).then(() => this.props.history.push('/'));
+  }
+
   profileDropdown() {
     const randomTeam = this.props.teams[Object.keys(this.props.teams)[0]];
     const activeTeam = parseInt(this.props.team) || randomTeam;
@@ -111,6 +109,7 @@ class Navbar extends React.Component {
       </Link>
     })
 
+    const teamInfo = this.props.teams[this.props.team]
     const visible = this.props.dropdown ? '' : 'hidden';
     return (
       <div id="user-profile-info" className={`${visible}`} >
@@ -124,8 +123,8 @@ class Navbar extends React.Component {
           <section className="avatar-section">
             <ul className="avatar-list">
               <button onClick={() => this.props.openModal('Create New Workspace')} className="avatar-link">Create New Workspace</button>
-              <button onClick={() => this.props.openModal('Workspace Settings')} className="avatar-link">Edit Workspace</button>
-              <button onClick={() => this.props.deleteTeam(this.props.team)} className="avatar-link">Remove me from this Workspace</button>
+              <button onClick={() => this.props.openModal('Workspace Settings', teamInfo)} className="avatar-link">Edit Workspace</button>
+              <button onClick={this.removeTeam} className="avatar-link">Remove me from this Workspace</button>
             </ul>
           </section>
 

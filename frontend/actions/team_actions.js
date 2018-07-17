@@ -44,4 +44,4 @@ export const deleteTeam = (id) => dispatch => {
     id => dispatch(removeTeam(id)),
     errors => dispatch(receiveErrors(errors.responseJSON))
   );
-}
+};

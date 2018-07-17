@@ -4,11 +4,12 @@ import { openModal } from '../../../actions/modal_actions';
 import { fetchUser } from '../../../actions/user_actions';
 import { fetchTeam, deleteTeam } from '../../../actions/team_actions';
 import { openDropdown } from '../../../actions/dropdown_actions';
+import { withRouter } from 'react-router-dom';
 import Navbar from './navbar';
 
 
 
-const mapStateToProps = (state) => {
+const mapStateToProps = (state, ownProps) => {
   return {
     currentUser: state.entities.users[state.session.id],
     teams: state.entities.teams,
@@ -19,7 +20,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = dispatch => {
   return {
     logout: () => dispatch(logout()),
-    openModal: modal => dispatch(openModal(modal)),
+    openModal: (modal, team) => dispatch(openModal(modal, team)),
     fetchUser: (id) => dispatch(fetchUser(id)),
     fetchTeam: (id) => dispatch(fetchTeam(id)),
     openDropdown: () => dispatch(openDropdown()),
@@ -27,4 +28,4 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Navbar);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Navbar));

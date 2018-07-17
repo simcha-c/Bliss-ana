@@ -4,7 +4,7 @@ import { merge } from 'lodash';
 
 const formReducer = (state = {}, action) => {
   switch (action.type) {
-    
+
     case OPEN_MODAL:
       return merge({}, action.state);
 

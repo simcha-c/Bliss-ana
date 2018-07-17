@@ -27,8 +27,9 @@ class Api::TeamsController < ApplicationController
 
   def destroy
     @team = Team.find(params[:id])
+    @user = current_user
     @team.destroy
-    render template: "/api/"
+    render "/api/users/show"
   end
 
   private

@@ -2,6 +2,7 @@ import { connect } from 'react-redux';
 import React from 'react';
 import { createNewTeam } from '../../actions/team_actions';
 import { openModal, closeModal } from '../../actions/modal_actions';
+import { withRouter } from 'react-router-dom';
 import TeamForm from './team_form';
 
 const mapStateToProps = (state) => {
@@ -12,11 +13,11 @@ const mapStateToProps = (state) => {
   };
 };
 
-const mapDispatchToProps = dispatch => {
+const mapDispatchToProps = (dispatch, ownProps) => {
   return {
-    processForm: (team) => dispatch(createNewTeam(team)),
+    processForm: (team) => dispatch(createNewTeam(team)).then((data) => ownProps.history.push(`/teams/${data.team.id}`)),
     closeModal: () => dispatch(closeModal()),
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(TeamForm);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(TeamForm));

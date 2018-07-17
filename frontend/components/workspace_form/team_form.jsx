@@ -7,7 +7,7 @@ class TeamForm extends React.Component {
     super(props);
 
     const ownProp = this.props.location.pathname;
-    const teamId = ownProp.substr(ownProp.lastIndexOf('/') + 1)
+    const teamId = ownProp.substr(ownProp.lastIndexOf('/') + 1);
     const formInputs = {
       name: '',
       id: `${teamId}`

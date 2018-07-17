@@ -21,9 +21,9 @@ const teamsReducer = (state = {}, action) => {
     return newState;
 
   case REMOVE_TEAM:
-    nextState = merge({}, state);
-    delete nextState[action.id];
-    return nextState;
+    newState = merge({}, state);
+    delete newState[action.id];
+    return newState;
 
   case LOGOUT_CURRENT_USER:
     return {};
