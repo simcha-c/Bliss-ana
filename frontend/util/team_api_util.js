@@ -20,7 +20,6 @@ export const updateTeam = (team) => {
       url: `/api/teams/${team.id}`,
       data: { team }
     })
-
   );
 };
 

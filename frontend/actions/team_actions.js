@@ -3,11 +3,12 @@ import * as TeamAPIUtil from '../util/team_api_util';
 export const RECEIVE_NEW_TEAM = "RECEIVE_NEW_TEAM";
 export const REMOVE_TEAM = "REMOVE_TEAM";
 
-export const receiveTeam = ({ members, team }) => {
+export const receiveTeam = ({ members, team, projects }) => {
   return {
     type: RECEIVE_NEW_TEAM,
     members,
-    team
+    team,
+    projects,
   };
 };
 
@@ -25,7 +26,7 @@ export const fetchTeam = (id) => dispatch => {
   );
 };
 
-export const createNewTeam = (team) => dispatch => {
+export const createTeam = (team) => dispatch => {
   return TeamAPIUtil.createTeam(team).then(
     members => dispatch(receiveTeam(members)),
     errors => dispatch(receiveErrors(errors.responseJSON))

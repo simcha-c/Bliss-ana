@@ -3,9 +3,9 @@
   end
 
   json.teams do
-    @user.teams.each do |team|
+    @user.teams.includes(:projects).each do |team|
       json.set! team.id do
-        json.extract! team, :id, :name
+        json.extract! team, :id, :name, :project_ids
       end
     end
   end

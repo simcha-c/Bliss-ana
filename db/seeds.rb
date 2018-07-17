@@ -38,3 +38,35 @@ tm10 = TeamMembership.create!(team_id: finance.id, user_id: demo_user.id, role: 
 tm11 = TeamMembership.create!(team_id: finance.id, user_id: me.id, role: 'Planner', department: 'Change' , about_me: 'change this soon')
 tm12 = TeamMembership.create!(team_id: finance.id, user_id: jess.id, role: 'Advisor', department: 'Change' , about_me: 'change this soon')
 tm13 = TeamMembership.create!(team_id: finance.id, user_id: just.id, role: 'CEO', department: 'Change' , about_me: 'change this soon')
+
+
+# Projects
+design_plan = Project.create!(name: 'Sprint Plan', team_id: design.id)
+brainstorm = Project.create!(name: 'Brainstorm', team_id: design.id)
+design_model = Project.create!(name: 'Design Model', team_id: design.id)
+review_model = Project.create!(name: 'Review Designed Model', team_id: design.id)
+redesign = Project.create!(name: 'Redesign', team_id: design.id)
+
+review = Project.create!(name: 'Review Designed Model', team_id: finance.id)
+raise_funds = Project.create!(name: 'Raise funds', team_id: finance.id)
+approve = Project.create!(name: 'Approve features', team_id: finance.id)
+
+sprint_plan = Project.create!(name: 'Sprint Plan', team_id: engineers.id)
+build = Project.create!(name: 'Build Model', team_id: engineers.id)
+testing = Project.create!(name: 'Test Model', team_id: engineers.id)
+
+training = Project.create!(name: 'Training for Model X', team_id: customer_service.id)
+daily = Project.create!(name: 'Day to Day', team_id: customer_service.id)
+
+
+
+
+
+
+
+
+
+
+
+
+#
