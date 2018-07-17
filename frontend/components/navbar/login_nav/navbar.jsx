@@ -16,28 +16,14 @@ const Navbar = ({ currentUser, logout, openModal }) => {
       <Modal />
     </div>
   );
-  const personalNavbar = () => (
-    <hgroup className="header-group">
-      <h2 className="header-name">Hi, {`${currentUser.first}`}!</h2>
-      <button className="box-button" onClick={logout}>Log Out</button>
-    </hgroup>
+
+  return (
+    <nav className="logging-nav">
+      {logo()}
+      {sessionLinks()}
+    </nav>
   );
 
-  if (currentUser) {
-    return (
-      <nav className="logging-nav">
-        {logo()}
-        {personalNavbar(currentUser, logout)}
-      </nav>
-    );
-  } else {
-    return (
-      <nav className="logging-nav">
-        {logo()}
-        {sessionLinks()}
-      </nav>
-    );
-  }
 };
 
 export default Navbar;

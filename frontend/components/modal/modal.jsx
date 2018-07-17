@@ -3,10 +3,12 @@ import { closeModal } from '../../actions/modal_actions';
 import { connect } from 'react-redux';
 import LoginFormContainer from '../session_form/login_form_container';
 import SignupFormContainer from '../session_form/sign_up_form_container';
+import CreateTeamFormContainer from '../workspace_form/create_team_form_container';
+import EditTeamFormContainer from '../workspace_form/edit_team_form_container';
 
 function Modal({modal, closeModal}) {
   if (!modal) {
-    return null;
+    return "";
   }
   let component;
   switch (modal) {
@@ -16,6 +18,12 @@ function Modal({modal, closeModal}) {
     case 'Sign Up':
       component = <SignupFormContainer />;
       break;
+    case 'Create New Workspace':
+      component = <CreateTeamFormContainer />;
+      break;
+    case 'Workspace Settings':
+      component = <EditTeamFormContainer />;
+      break;
     default:
       return null;
   }
@@ -23,7 +31,7 @@ function Modal({modal, closeModal}) {
     <div className="modal-background" onClick={closeModal}>
       <div className="modal-child" onClick={e => e.stopPropagation()}>
         { component }
-      </div>
+      </ div>
     </div>
   );
 }

@@ -14,7 +14,7 @@ class Navbar extends React.Component {
     this.toggleHiddenClassAside = this.toggleHiddenClassAside.bind(this);
     this.sidebarHeader = this.sidebarHeader.bind(this);
 
-    this.state = { aside: 'aside-hidden', hambuger: '' }
+    this.state = { aside: 'aside-hidden', hambuger: '' };
   }
 
   componentDidMount() {
@@ -24,9 +24,17 @@ class Navbar extends React.Component {
 
   componentDidUpdate(prevProps) {
     if (this.props.team !== prevProps.team) {
+      this.props.fetchUser(this.props.currentUser.id);
       this.props.fetchTeam(this.props.team);
     }
   }
+
+  // componentWillReceiveProps(newProps) {
+  //   if (this.props.team !== newProps.team) {
+  //     this.props.fetchUser(this.props.currentUser.id);
+  //     this.props.fetchTeam(this.props.team);
+  //   }
+  // }
 
   toggleHiddenClassAside() {
     if (this.state.aside === 'aside-hidden') {
@@ -104,7 +112,6 @@ class Navbar extends React.Component {
     })
 
     const visible = this.props.dropdown ? '' : 'hidden';
-
     return (
       <div id="user-profile-info" className={`${visible}`} >
         <aside id="avatar-menu">
@@ -113,12 +120,22 @@ class Navbar extends React.Component {
               {allTeams}
             </ul>
           </section>
+
+          <section className="avatar-section">
+            <ul className="avatar-list">
+              <button onClick={() => this.props.openModal('Create New Workspace')} className="avatar-link">Create New Workspace</button>
+              <button onClick={() => this.props.openModal('Workspace Settings')} className="avatar-link">Edit Workspace</button>
+              <button onClick={() => this.props.deleteTeam(this.props.team)} className="avatar-link">Remove me from this Workspace</button>
+            </ul>
+          </section>
+
           <section className="avatar-section">
             <ul className="avatar-list">
 
               <li className="avatar-link">{this.logoutButton()}</li>
             </ul>
           </section>
+
         </aside>
       </div>
     )

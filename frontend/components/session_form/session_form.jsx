@@ -32,7 +32,7 @@ class SessionForm extends React.Component {
     e.preventDefault();
     const user = Object.assign({}, this.state);
     this.props.processForm(user).then(() => {
-      this.props.closeModal()
+      this.props.closeModal();
     }, this.renderErrors);
   }
 
@@ -43,8 +43,9 @@ class SessionForm extends React.Component {
         <li key={`error-${i}`}>
           {error}
         </li>
-      )
-      ;});
+      );
+      });
+      
       return(
         <ul>
           {allErrors}
@@ -72,7 +73,7 @@ class SessionForm extends React.Component {
         );
       }
       return (
-        <div className="login-form-container">
+        <div className="form-container">
           <div className="x-title">
             <p id="modal-header"> {this.props.formType} </p>
             <div onClick={this.props.closeModal} className="close-x">×</div>

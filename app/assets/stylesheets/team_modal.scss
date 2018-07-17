@@ -1,0 +1,82 @@
+.form-container-team {
+  background-color: whitesmoke;
+  border-radius: 2px;
+  padding: 20px 0;
+  margin-left: 135px;
+  box-shadow: 0px 0px 32px 4px rgba(0, 0, 0, 0.47);
+  width: 600px;
+}
+
+.x-title-team {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 8px;
+  border-bottom: 1px solid rgba(213, 220, 224, 1);
+  margin-top: -10px;
+}
+
+.close-x-team {
+  color: rgba(183, 191, 198, 0.7);
+  font-size: 1.75em;
+  cursor: pointer;
+  margin-right: 20px;
+  margin-top: -3px;
+}
+
+#modal-header-team {
+  font-size: 1.2em;
+  margin-left: 15px;
+}
+
+.team-form {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  width: 100%;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.team-form label {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.team-text {
+  font-size: .75em;
+  color: rgba(132, 143, 153, 1);
+  padding-left: 20px;
+  padding-right: 20px;
+  text-align: right;
+}
+
+.team-input {
+  border: 1px solid rgba(213, 220, 224, 1);
+  border-radius: 2px;
+  width: 100%;
+  padding: 10px;
+  line-height: 20px;
+}
+
+.team-input::placeholder {
+  color: rgba(132, 143, 153, 1);
+}
+
+.team-input:focus {
+  border: 1px solid rgba(132, 143, 153, 1);
+}
+
+.team-submit {
+  background-color: #14aaf5;
+  border-radius: 2px;
+  line-height: 20px;
+  padding: 10px 15px;
+  color: white;
+  font-size: 0.8em;
+  width: 140px;
+  text-align: center;
+  margin-top: 20px;
+}

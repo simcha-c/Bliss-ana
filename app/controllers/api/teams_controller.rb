@@ -25,6 +25,12 @@ class Api::TeamsController < ApplicationController
     @team = Team.find(params[:id])
   end
 
+  def destroy
+    @team = Team.find(params[:id])
+    @team.destroy
+    render template: "/api/"
+  end
+
   private
 
   def team_params

@@ -14,7 +14,8 @@ class Team < ApplicationRecord
 # A team has many memberships
   has_many :memberships,
     foreign_key: :team_id,
-    class_name: :TeamMembership
+    class_name: :TeamMembership,
+    dependent: :destroy
 
 # Many users/members are part of a team
   has_many :members,

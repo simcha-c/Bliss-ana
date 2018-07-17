@@ -8,6 +8,7 @@ import LogInFormContainer from './session_form/login_form_container';
 import LoginPage from './home/home';
 import TeamShow from './team_show';
 import { closeDropdown } from '../actions/dropdown_actions';
+import Modal from './modal/modal';
 
 const App = (props) => {
   const clickHandler = props.dropdownOpen ? props.closeDropdown : null;
@@ -19,7 +20,7 @@ const App = (props) => {
         <RootPathRoute exact path="/" />
         <ProtectedRoute path='/teams/:teamId' component={TeamShow} />
       </Switch>
-
+      <Modal />
     </div>
   );
 };

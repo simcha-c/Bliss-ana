@@ -13,10 +13,20 @@ export const createTeam = (team) => (
   })
 );
 
-export const updateTeam = (team) => (
+export const updateTeam = (team) => {
+  return (
+    $.ajax({
+      method: "PATCH",
+      url: `/api/teams/${team.id}`,
+      data: { team }
+    })
+
+  );
+};
+
+export const deleteTeam = (id) => (
   $.ajax({
-    method: "PATCH",
-    url: `/api/teams/${team.id}`,
-    data: { team }  
+    method: "DELETE",
+    url: `/api/teams/${id}`
   })
 );
