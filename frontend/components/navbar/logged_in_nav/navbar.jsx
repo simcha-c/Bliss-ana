@@ -1,6 +1,7 @@
 import React from 'react';
 import Modal from '../../modal/modal';
 import { Link } from 'react-router-dom';
+import SidebarContainer from '../../sidebar/sidebar_container';
 
 class Navbar extends React.Component {
 
@@ -11,11 +12,8 @@ class Navbar extends React.Component {
 
     this.avatar = this.avatar.bind(this);
     this.profileDropdown = this.profileDropdown.bind(this);
-    this.toggleHiddenClassAside = this.toggleHiddenClassAside.bind(this);
-    this.sidebarHeader = this.sidebarHeader.bind(this);
     this.removeTeam = this.removeTeam.bind(this);
 
-    this.state = { aside: 'aside-hidden', hambuger: '' };
   }
 
   componentDidMount() {
@@ -30,39 +28,10 @@ class Navbar extends React.Component {
     }
   }
 
-  toggleHiddenClassAside() {
-    if (this.state.aside === 'aside-hidden') {
-      this.setState({ hambuger: 'hidden', aside: '' });
-    } else {
-      this.setState({ hambuger: '', aside: 'aside-hidden' });
-    }
-  }
-
-  sidebarHeader() {
-    return (
-      <header className="sidebar-header">
-        <div className="sidebar-logo">
-          <img className="sidebar-logo-img" src={window.logo} />
-          <span>bliss-ana</span>
-        </div>
-        <div onClick={this.toggleHiddenClassAside} className="close">×</div>
-      </header>
-    );
-  }
-
-  sidebar() {
-    return (
-      <div id="hamburger-aside" className={this.state.aside}>
-        <aside className="sidebar">
-          {this.sidebarHeader()}
-        </aside>
-      </div>
-    );
-  }
-
   hamburger() {
+    const visible = this.props.sidebar ? 'hidden' : '';
     return (
-      <div onClick={this.toggleHiddenClassAside} className={this.state.hambuger} id="hambuger-menu-box">
+      <div onClick={this.props.openSidebar} className={visible} id="hambuger-menu-box">
         <div className="hambuger-menu-icon"></div>
         <div className="hambuger-menu-icon"></div>
         <div className="hambuger-menu-icon"></div>
@@ -158,18 +127,15 @@ class Navbar extends React.Component {
 
   render() {
     return (
-      <div className="team-show">
-        {this.sidebar()}
-        <div className="navbar">
-          <nav className="logged_nav">
-            {this.hamburger()}
-            <section className="right-nav" >
-              {this.links()}
-              {this.avatar()}
-            </section>
-          </nav>
-          {this.profileDropdown()}
-        </div>
+      <div className="navbar">
+        <nav className="logged_nav">
+          {this.hamburger()}
+          <section className="right-nav" >
+            {this.links()}
+            {this.avatar()}
+          </section>
+        </nav>
+        {this.profileDropdown()}
       </div>
     );
   }
