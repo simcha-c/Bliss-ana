@@ -41,8 +41,8 @@ class Sidebar extends React.Component {
     );
   }
 
-  handleRemoveProject(e) {
-    this.props.deleteProject(e.currentTarget.id)
+  handleRemoveProject(projectId) {
+    this.props.deleteProject(projectId)
   }
 
   removeProject(projectId) {
@@ -51,13 +51,14 @@ class Sidebar extends React.Component {
 
     return (
       <div className={`options-popup ${visible}`}>
-        <div onClick={() => this.toggleOptionsPopout()} className="full-page-div"> </div>
-        <button id={projectId} className="remove-project" onClick={this.handleRemoveProject}>Delete Project</button>
+        <button id={projectId} className="remove-project" onClick={() => this.handleRemoveProject(projectId)}>Delete Project</button>
+        <div onClick={(e) => this.toggleOptionsPopout()} className="full-page-div"> </div>
       </div>
     )
   }
 
   toggleOptionsPopout(id){
+    event.stopPropagation();
     if (this.state > 0) {
       this.setState({ id: 0 });
     } else {
@@ -69,7 +70,6 @@ class Sidebar extends React.Component {
     const projectId = this.props.match.params.projectId;
     const projectsInfo = this.props.projects.map((project) => {
       const active = (project.id === parseInt(projectId)) ? "active-project" : "";
-      debugger
       return (
         <div className="with-popup">
           <div key={project.id} className={`project-info ${active}`}>
