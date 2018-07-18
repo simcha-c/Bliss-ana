@@ -8,13 +8,24 @@ import { closeSidebar } from '../../actions/sidebar_actions';
 import Sidebar from './sidebar';
 
 const mapState = (state, ownProps) => {
+  const team = state.entities.teams[ownProps.match.params.teamId] || { member_ids: [], project_ids: [ "" ] };
+  team.project_ids = team.project_ids || [""];
+
+  const users = team.member_ids.map((member_id, idx) => {
+    return state.entities.users[member_id] || { first: " ", last: " " };
+  });
+
+  const projects = team.project_ids.map(project_id => {
+    return state.entities.projects[project_id] || {id: "", name: ""};
+  });
+
   return {
     currentUser: state.entities.users[state.session.id],
-    users: state.entities.users,
-    team: state.entities.teams[ownProps.match.params.teamId],
-    teams: state.entities.teams,
-    projects: state.entities.projects,
+    users,
+    team,
+    projects, // projects as array
     sidebar: state.ui.sidebar.open,
+    // teams: Object.values(state.entities.teams), // teams as array // TODO: proptypes
   };
 };
 

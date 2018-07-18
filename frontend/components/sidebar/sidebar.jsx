@@ -8,6 +8,7 @@ class Sidebar extends React.Component {
 
     this.sidebarHeader = this.sidebarHeader.bind(this);
     this.projectsList = this.projectsList.bind(this);
+    this.memberList = this.memberList.bind(this);
   }
 
   componentDidMount() {
@@ -35,34 +36,47 @@ class Sidebar extends React.Component {
   }
 
   projectsList() {
-    if (this.props.team.project_ids === undefined || Object.keys(this.props.projects).length === 0) {
-      return null;
-    } else {
-      const projects = this.props.team.project_ids.map(id => {
-        return this.props.projects[id];
-      });
-      const projectsInfo = Object.values(this.props.projects).map((project) => {
-        return <li className="link" key={project.id}>{project.name}</li>
-      });
+    const projectsInfo = this.props.projects.map((project) => {
+      return <li className="sidebar-link" key={project.id}>{project.name}</li>
+    });
 
-      return (
-        <ul className="project-list">
-          {projectsInfo}
-        </ul>
-      );
-    }
+    return (
+      <ul className="project-list">
+        {projectsInfo}
+      </ul>
+    );
+  }
+
+  memberList() {
+    const membersInfo = this.props.users.map((user, idx) => {
+      let initials = "";
+      initials = `${user.first[0]}${user.last[0]}`;
+      return <div key={idx} className="circle" >{initials}</div>
+    });
+
+    return (
+      <ul className="member-list">
+        {membersInfo}
+      </ul>
+    );
   }
 
   render() {
     const visible = this.props.sidebar ? '' : 'aside-hidden';
-
     return (
       <div id="hamburger-aside" className={visible}>
         <aside className="sidebar">
           {this.sidebarHeader()}
           <div className="sidebar-content">
             <section className="sidebar-section">
-              <p className="content-header">Projects</p>
+              <p className="content-header">Members</p>
+              {this.memberList()}
+            </section>
+            <section className="sidebar-section">
+              <div className="section-title-add">
+                <p className="content-header">Projects</p>
+                <button className="add">+</button>
+              </div>
               {this.projectsList()}
             </section>
           </div>

@@ -14,8 +14,8 @@ TeamMembership.destroy_all
 demo_user = User.create!(email: 'demo@bliss-ana.com', password: 'demo-password', first: 'Demo', last: 'Guest')
 me = User.create!(email: 'simcha@bliss.com', password: 'password', first: 'Simcha', last: 'Cohen')
 josh = User.create!(email: 'josh@bliss.com', password: 'password', first: 'Josh', last: 'J')
-jess = User.create!(email: 'jess@bliss.com', password: 'password', first: 'Jess', last: 'J')
-just = User.create!(email: 'justin@bliss.com', password: 'password', first: 'Justin', last: 'J')
+tess = User.create!(email: 'tess@bliss.com', password: 'password', first: 'Tess', last: 'L')
+gus = User.create!(email: 'gus@bliss.com', password: 'password', first: 'Gus', last: 'P')
 
 
 # Teams
@@ -25,19 +25,19 @@ customer_service = Team.create!(name: 'Customer Service')
 finance = Team.create!(name: 'Finance')
 
 # Team Memberships
-tm1 = TeamMembership.create!(team_id: engineers.id, user_id: jess.id, role: 'Manager', department: 'Beers on me', about_me: 'Using mathematics, scientific, and engineering principles to design, repair, and improve air and spacecraft, component parts, facilities, materials, safety regulations, and manufacturing processes.' )
+tm1 = TeamMembership.create!(team_id: engineers.id, user_id: tess.id, role: 'Manager', department: 'Beers on me', about_me: 'Using mathematics, scientific, and engineering principles to design, repair, and improve air and spacecraft, component parts, facilities, materials, safety regulations, and manufacturing processes.' )
 tm2 = TeamMembership.create!(team_id: engineers.id, user_id: demo_user.id, role: 'Janitor', about_me: 'Make sure to do your part')
 tm3 = TeamMembership.create!(team_id: design.id, user_id: demo_user.id, role: 'UI Designer', department: 'Forms!')
 tm4 = TeamMembership.create!(team_id: design.id, user_id: me.id, role: 'Intern', department: 'Helping out', about_me: 'If anyone needs anything designed, let me know!')
 tm5 = TeamMembership.create!(team_id: customer_service.id, user_id: demo_user.id, department: '', about_me: 'Focused on helping the team build necessary skills and knowledge so they can better support customers. Striving for a supportive, communicative, and attentive environment.')
 tm6 = TeamMembership.create!(team_id: customer_service.id, user_id: me.id, role: 'Advisor', department: 'Change' , about_me: 'change this soon')
-tm7 = TeamMembership.create!(team_id: customer_service.id, user_id: jess.id, role: 'Technician', department: 'Change' , about_me: 'change this soon')
+tm7 = TeamMembership.create!(team_id: customer_service.id, user_id: tess.id, role: 'Technician', department: 'Change' , about_me: 'change this soon')
 tm8 = TeamMembership.create!(team_id: customer_service.id, user_id: josh.id, role: 'What up?', department: 'Change' , about_me: 'change this soon')
 tm9 = TeamMembership.create!(team_id: finance.id, user_id: josh.id, role: 'Basketball Rules!', department: 'Change' , about_me: 'change this soon')
 tm10 = TeamMembership.create!(team_id: finance.id, user_id: demo_user.id, role: 'Analyst', department: 'Change' , about_me: 'change this soon')
 tm11 = TeamMembership.create!(team_id: finance.id, user_id: me.id, role: 'Planner', department: 'Change' , about_me: 'change this soon')
-tm12 = TeamMembership.create!(team_id: finance.id, user_id: jess.id, role: 'Advisor', department: 'Change' , about_me: 'change this soon')
-tm13 = TeamMembership.create!(team_id: finance.id, user_id: just.id, role: 'CEO', department: 'Change' , about_me: 'change this soon')
+tm12 = TeamMembership.create!(team_id: finance.id, user_id: tess.id, role: 'Advisor', department: 'Change' , about_me: 'change this soon')
+tm13 = TeamMembership.create!(team_id: finance.id, user_id: gus.id, role: 'CEO', department: 'Change' , about_me: 'change this soon')
 
 
 # Projects

@@ -1,9 +1,10 @@
+members = @team.members.includes(:team_memberships).where(team_memberships: {team_id: @team.id})
+
 json.team do
-  json.extract! @team, :id, :name, :project_ids
+  json.extract! @team, :id, :name, :project_ids, :member_ids
 end
 
 json.members do
-  members = @team.members.includes(:team_memberships).where(team_memberships: {team_id: @team.id})
 
   members.each do |member|
     json.set! member.id do
