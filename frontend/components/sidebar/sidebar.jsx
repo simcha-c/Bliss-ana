@@ -71,8 +71,8 @@ class Sidebar extends React.Component {
     const projectsInfo = this.props.projects.map((project) => {
       const active = (project.id === parseInt(projectId)) ? "active-project" : "";
       return (
-        <div className="with-popup">
-          <div key={project.id} className={`project-info ${active}`}>
+        <div key={project.id} className="with-popup">
+          <div className={`project-info ${active}`}>
             <Link to={`/teams/${project.team_id}/projects/${project.id}`} className="sidebar-link" >
               {project.name}
             </Link>
@@ -96,7 +96,9 @@ class Sidebar extends React.Component {
     const membersInfo = this.props.users.map((user, idx) => {
       let initials = "";
       initials = `${user.first[0]}${user.last[0]}`;
-      return <div key={idx} className="circle" >{initials}</div>
+      return (
+        <div key={idx} className="circle" >{initials}</div>
+      )
     });
 
     return (
