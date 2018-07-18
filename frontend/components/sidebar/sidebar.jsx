@@ -1,12 +1,13 @@
 import React from 'react';
 import Modal from '../modal/modal';
+import { Link, withRouter } from 'react-router-dom';
 
 class Sidebar extends React.Component {
 
   constructor(props) {
     super(props);
 
-    this.state = { moreOptions: 'hidden' };
+    this.state = {id: 0};
 
     this.sidebarHeader = this.sidebarHeader.bind(this);
     this.projectsList = this.projectsList.bind(this);
@@ -45,32 +46,37 @@ class Sidebar extends React.Component {
   }
 
   removeProject(projectId) {
+    let visible;
+    visible = (this.state.id === projectId) ? "" : "hidden";
+
     return (
-      <div className={`options-popup ${this.state.moreOptions}`}>
+      <div className={`options-popup ${visible}`}>
         <div onClick={() => this.toggleOptionsPopout()} className="full-page-div"> </div>
         <button id={projectId} className="remove-project" onClick={this.handleRemoveProject}>Delete Project</button>
       </div>
     )
   }
 
-  toggleOptionsPopout(e){
-    debugger
-    if (this.state.moreOptions === 'hidden') {
-      this.setState({moreOptions: ""});
+  toggleOptionsPopout(id){
+    if (this.state > 0) {
+      this.setState({ id: 0 });
     } else {
-      this.setState({moreOptions: 'hidden'});
+      this.setState({ id: id });
     }
   }
 
   projectsList() {
+    const projectId = this.props.match.params.projectId;
     const projectsInfo = this.props.projects.map((project) => {
+      const active = (project.id === parseInt(projectId)) ? "active-project" : "";
+      debugger
       return (
         <div className="with-popup">
-          <div key={project.id} className="project-info">
-            <li className="sidebar-link" >
+          <div key={project.id} className={`project-info ${active}`}>
+            <Link to={`/teams/${project.team_id}/projects/${project.id}`} className="sidebar-link" >
               {project.name}
-            </li>
-            <span onClick={(e) => this.toggleOptionsPopout()} className="more-options">
+            </Link>
+            <span onClick={() => this.toggleOptionsPopout(project.id)} className="more-options">
               <div className="small-circle"></div><div className="small-circle"></div><div className="small-circle"></div>
             </span>
           </div>

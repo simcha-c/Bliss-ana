@@ -5,9 +5,12 @@ class ProjectInfo extends React.Component {
 
   render() {
     return (
-      <div>
-        {this.props.team.name}
-      </div>
+      <section className="project-section">
+
+        <div className="project-page">
+
+        </div>
+      </section>
     );
   }
 

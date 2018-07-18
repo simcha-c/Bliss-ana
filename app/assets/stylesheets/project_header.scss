@@ -1,0 +1,28 @@
+.project-section {
+  // display: flex;
+  // flex-direction: column;
+}
+
+.project-header {
+  background: white;
+  height: 65px;
+  box-shadow: 0 1px 3px 0 rgba(0,0,0,0.15);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.project-title {
+  font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Helvetica,Arial,sans-serif;
+  color: rgba(21, 27, 38, 1);
+  font-size: 24px;
+  font-weight: 500px;
+  text-align: center;
+}
+
+.project-page {
+  width: 100%;
+  min-height: calc(100vh - 106px);
+  background: rgba(246, 248, 249, 1);
+}

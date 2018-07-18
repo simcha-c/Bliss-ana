@@ -8,7 +8,7 @@ import { closeSidebar } from '../../actions/sidebar_actions';
 import Sidebar from './sidebar';
 
 const mapState = (state, ownProps) => {
-  const team = state.entities.teams[ownProps.match.params.teamId] || { member_ids: [], project_ids: [ "" ] };
+  const team = state.entities.teams[ownProps.match.params.teamId] || { member_ids: [], project_ids: [] };
   team.project_ids = team.project_ids || [];
 
   const users = team.member_ids.map((member_id, idx) => {

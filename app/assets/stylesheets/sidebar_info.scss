@@ -20,10 +20,14 @@
   letter-spacing: 0.5px;
   padding: 0 17px;
   margin: 5px 0;
-  line-height: 30px;
+  line-height: 25px;
   font-size: 0.85em;
   cursor: pointer;
   box-sizing: border-box;
+}
+
+.project-list {
+  margin-top: 5px;
 }
 
 .project-info:hover {
@@ -77,6 +81,7 @@
   flex-direction: row;
   width: auto;
   align-items: center;
+  box-sizing: border-box;
 }
 
 .project-info {
@@ -108,7 +113,9 @@
 .options-popup {
   position: absolute;
   margin-left: 220px;
-  background-color: whitesmoke;
+  background-color: #fff;
+  border: 1px solid rgba(213, 220, 224, 1);
+  box-shadow: 0 10px 15px 0 rgba(0,0,0,0.06);
   border-radius: 3px;
   bottom: 20px;
   width: 100%;
@@ -135,11 +142,17 @@
  bottom: 0;
  right: 0;
  left: 0;
- z-index: -2;
+ z-index: 10;
  background: transparent;
 }
 
+.active-project {
+  background: rgba(20, 170, 245, 1);
+}
 
+.active-project.project-info:hover {
+  background: rgba(20, 170, 245, 1);
+}
 
 
 

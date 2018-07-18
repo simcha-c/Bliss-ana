@@ -18,7 +18,8 @@ const App = (props) => {
       <Switch>
         <AuthRoute exact path='/login' component={LoginPage} />
         <RootPathRoute exact path="/" />
-        <ProtectedRoute path='/teams/:teamId' component={TeamShow} />
+        <ProtectedRoute path='/teams/:teamId/projects/:projectId' component={TeamShow} />
+        // <ProtectedRoute path='/teams/:teamId' component={TeamShow} />
       </Switch>
       <Modal />
     </div>
@@ -38,5 +39,3 @@ const mapDispatchToProps = dispatch => {
 };
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(App));
-
-// export default App;
