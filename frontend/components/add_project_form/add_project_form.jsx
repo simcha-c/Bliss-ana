@@ -20,7 +20,6 @@ class AddProjectForm extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    debugger
     this.props.createProject(this.state).then(() => {
       this.props.closeModal();
     }, this.renderErrors);
