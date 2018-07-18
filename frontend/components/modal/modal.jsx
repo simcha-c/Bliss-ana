@@ -5,6 +5,7 @@ import LoginFormContainer from '../session_form/login_form_container';
 import SignupFormContainer from '../session_form/sign_up_form_container';
 import CreateTeamFormContainer from '../workspace_form/create_team_form_container';
 import EditTeamFormContainer from '../workspace_form/edit_team_form_container';
+import AddProjectFormContainer from '../add_project_form/add_project_form_container';
 
 function Modal({modal, closeModal}) {
   if (!modal) {
@@ -24,9 +25,13 @@ function Modal({modal, closeModal}) {
     case 'Workspace Settings':
       component = <EditTeamFormContainer />;
       break;
+    case 'Add Project':
+      component = <AddProjectFormContainer />;
+      break;
     default:
       return null;
   }
+
   return (
     <div className="modal-background" onClick={closeModal}>
       <div className="modal-child" onClick={e => e.stopPropagation()}>

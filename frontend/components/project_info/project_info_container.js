@@ -5,7 +5,7 @@ import { fetchTeam } from '../../actions/team_actions';
 import { openModal } from '../../actions/modal_actions';
 import { withRouter } from 'react-router-dom';
 import { closeSidebar } from '../../actions/sidebar_actions';
-import Sidebar from './sidebar';
+import ProjectInfo from './project_info';
 
 const mapState = (state, ownProps) => {
   const team = state.entities.teams[ownProps.match.params.teamId] || { member_ids: [], project_ids: [ "" ] };
@@ -24,7 +24,6 @@ const mapState = (state, ownProps) => {
     users,
     team,
     projects, // projects as array
-    sidebar: state.ui.sidebar.open,
     // teams: Object.values(state.entities.teams), // teams as array // TODO: proptypes
   };
 };
@@ -38,8 +37,8 @@ const mapDispatch = (dispatch) => {
     deleteProject: (id) => dispatch(deleteProject(id)),
     fetchProject: (id) => dispatch(fetchProject(id)),
     closeSidebar: () => dispatch(closeSidebar()),
-    openModal: (formType) => dispatch(openModal(formType)),
+    // openModal: (formType) => dispatch(openModal(formType)),
   };
 };
 
-export default withRouter(connect(mapState, mapDispatch)(Sidebar));
+export default withRouter(connect(mapState, mapDispatch)(ProjectInfo));

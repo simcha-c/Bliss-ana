@@ -1,5 +1,5 @@
 import React from 'react';
-
+import Modal from '../modal/modal';
 
 class Sidebar extends React.Component {
 
@@ -16,14 +16,14 @@ class Sidebar extends React.Component {
     .then(this.props.fetchTeam(this.props.team.id));
   }
 
-  // componentDidUpdate(prevProps) {
-  //   if (this.props.team.project_ids.length !== prevProps.team.project_ids.length) {
-  //     this.props.fetchUser(this.props.currentUser.id)
-  //     .then(this.props.fetchTeam(this.props.team));
-  //   }
-  // }
+  componentDidUpdate(prevProps) {
+    if (this.props.team.length !== prevProps.team.length) {
+      this.props.fetchUser(this.props.currentUser.id);
+      this.props.fetchTeam(this.props.team.id);
+    }
+  }
 
-  sidebarHeader() {
+  sidebarHeader(){
     return (
       <header className="sidebar-header">
         <div className="sidebar-logo">
@@ -75,7 +75,7 @@ class Sidebar extends React.Component {
             <section className="sidebar-section">
               <div className="section-title-add">
                 <p className="content-header">Projects</p>
-                <button className="add">+</button>
+                <button onClick={() => this.props.openModal('Add Project')} className="add">+</button>
               </div>
               {this.projectsList()}
             </section>

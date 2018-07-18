@@ -2,7 +2,7 @@ class Api::ProjectsController < ApplicationController
 
   def create
     @project = Project.new(project_params)
-    @project.team_id = params[:team_id]
+    # @project.team_id = params[:team_id]
 
     if @project.save
       render :show
@@ -29,7 +29,7 @@ class Api::ProjectsController < ApplicationController
   end
 
   def project_params
-    params.require(:project).permit(:name)
+    params.require(:project).permit(:name, :team_id)
   end
 
 end
