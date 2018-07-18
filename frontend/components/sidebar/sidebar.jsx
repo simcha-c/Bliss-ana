@@ -6,9 +6,14 @@ class Sidebar extends React.Component {
   constructor(props) {
     super(props);
 
+    this.state = { moreOptions: 'hidden' };
+
     this.sidebarHeader = this.sidebarHeader.bind(this);
     this.projectsList = this.projectsList.bind(this);
     this.memberList = this.memberList.bind(this);
+    this.removeProject = this.removeProject.bind(this);
+    this.handleRemoveProject = this.handleRemoveProject.bind(this);
+    this.toggleOptionsPopout = this.toggleOptionsPopout.bind(this);
   }
 
   componentDidMount() {
@@ -16,12 +21,12 @@ class Sidebar extends React.Component {
     .then(this.props.fetchTeam(this.props.team.id));
   }
 
-  componentDidUpdate(prevProps) {
-    if (this.props.team.length !== prevProps.team.length) {
-      this.props.fetchUser(this.props.currentUser.id);
-      this.props.fetchTeam(this.props.team.id);
-    }
-  }
+  // componentWillUpdate(nextProps) {
+  //   if (this.props.projects.length !== nextProps.projects.length) {
+  //     this.props.fetchUser(this.props.currentUser.id);
+  //     this.props.fetchTeam(this.props.team.id);
+  //   }
+  // }
 
   sidebarHeader(){
     return (
@@ -35,9 +40,43 @@ class Sidebar extends React.Component {
     );
   }
 
+  handleRemoveProject(e) {
+    this.props.deleteProject(e.currentTarget.id)
+  }
+
+  removeProject(projectId) {
+    return (
+      <div className={`options-popup ${this.state.moreOptions}`}>
+        <div onClick={() => this.toggleOptionsPopout()} className="full-page-div"> </div>
+        <button id={projectId} className="remove-project" onClick={this.handleRemoveProject}>Delete Project</button>
+      </div>
+    )
+  }
+
+  toggleOptionsPopout(e){
+    debugger
+    if (this.state.moreOptions === 'hidden') {
+      this.setState({moreOptions: ""});
+    } else {
+      this.setState({moreOptions: 'hidden'});
+    }
+  }
+
   projectsList() {
     const projectsInfo = this.props.projects.map((project) => {
-      return <li className="sidebar-link" key={project.id}>{project.name}</li>
+      return (
+        <div className="with-popup">
+          <div key={project.id} className="project-info">
+            <li className="sidebar-link" >
+              {project.name}
+            </li>
+            <span onClick={(e) => this.toggleOptionsPopout()} className="more-options">
+              <div className="small-circle"></div><div className="small-circle"></div><div className="small-circle"></div>
+            </span>
+          </div>
+          {this.removeProject(project.id)}
+        </div>
+      )
     });
 
     return (

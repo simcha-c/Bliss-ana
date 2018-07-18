@@ -3,17 +3,17 @@ import * as ProjectAPIUtil from '../util/project_api_util';
 export const RECEIVE_NEW_PROJECT = "RECEIVE_NEW_PROJECT";
 export const REMOVE_PROJECT = "REMOVE_PROJECT";
 
-export const receiveProject = ({ project }) => {
+export const receiveProject = (project) => {
   return {
     type: RECEIVE_NEW_PROJECT,
     project
   };
 };
 
-export const removeProject = ({ id }) => {
+export const removeProject = (project) => {
   return {
     type: REMOVE_PROJECT,
-    id,
+    project,
   };
 };
 

@@ -5,7 +5,7 @@ import { openModal, closeModal } from '../../actions/modal_actions';
 import { withRouter } from 'react-router-dom';
 import AddProjectForm from './add_project_form';
 
-const mapStateToProps = (state) => {
+const mapStateToProps = (state, ownProps) => {
   return {
     errors: state.errors.session,
     formType: 'Add Project',

@@ -6,12 +6,13 @@ import { merge } from 'lodash';
 
 const projectsReducer = (state = {}, action) => {
   Object.freeze(state);
-  let newState;
+  let newState = merge({}, state);
 
   switch (action.type) {
 
   case RECEIVE_NEW_PROJECT:
-    return merge({}, state, action.project);
+    let project = {[action.project.id]: action.project};
+    return merge(newState, project);
 
   case RECEIVE_NEW_TEAM:
     newState = merge({}, state, action.projects);

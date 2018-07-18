@@ -26,7 +26,7 @@
   box-sizing: border-box;
 }
 
-.sidebar-link:hover {
+.project-info:hover {
   background-color: rgba(156, 166, 175, 0.25);
 }
 
@@ -56,7 +56,7 @@
   border-radius: 50%;
   font-size: 13px;
   line-height: 16px;
-  letter-spacing: 0.5px;
+  letter-spacing: -0.5px;
   text-align: center;
   border: 1px solid rgba(255, 255, 255, .5);
   box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.2);
@@ -71,7 +71,73 @@
   border: 1px solid rgba(255, 255, 255, 1);
 }
 
+.with-popup {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  width: auto;
+  align-items: center;
+}
 
+.project-info {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+}
+
+.more-options {
+  display: flex;
+  flex-direction: row;
+  width: auto;
+  margin-right: 20px;
+  align-items: center;
+}
+
+.small-circle {
+  background: rgba(255, 255, 255, .5);
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  margin: 1px;
+}
+
+.more-options:hover .small-circle {
+  background: rgba(255, 255, 255, 1);
+}
+
+.options-popup {
+  position: absolute;
+  margin-left: 220px;
+  background-color: whitesmoke;
+  border-radius: 3px;
+  bottom: 20px;
+  width: 100%;
+  padding: 7px 0;
+}
+
+.remove-project {
+  width: 100%;
+  font-size: 0.75em;
+  box-sizing: border-box;
+  padding: 5px;
+  padding-left: 10px;
+  z-index: 2;
+}
+
+.remove-project:hover {
+  background: rgba(20, 170, 245, 1);
+  color: white;
+}
+
+.full-page-div {
+ position: fixed;
+ top: 0;
+ bottom: 0;
+ right: 0;
+ left: 0;
+ z-index: -2;
+ background: transparent;
+}
 
 
 
