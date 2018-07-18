@@ -51,7 +51,7 @@ review = Project.create!(name: 'Review Designed Model', team_id: finance.id)
 raise_funds = Project.create!(name: 'Raise funds', team_id: finance.id)
 approve = Project.create!(name: 'Approve features', team_id: finance.id)
 
-sprint_plan = Project.create!(name: 'Sprint Plan', team_id: engineers.id)
+sprint_plan = Project.create!(name: 'Sprint Planning', team_id: engineers.id)
 build = Project.create!(name: 'Build Model', team_id: engineers.id)
 testing = Project.create!(name: 'Test Model', team_id: engineers.id)
 
