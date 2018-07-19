@@ -3,13 +3,17 @@
   flex-direction: row;
   width: auto;
   padding: 10px 10px 0 10px;
+  margin-right: 20px;
+  max-height: calc(100vh - 115px);
+  overflow: hidden;
 }
 
 .col-wrapper {
   display: flex;
   flex-direction: column;
-  width: 280px;
+  min-width: 280px;
   padding: 10px;
+  height: 100%;
 }
 
 .col-wrapper:hover {
@@ -98,13 +102,16 @@
 
 .cols-tasks {
   background: rgba(251, 252, 252, 1);
-  height: calc(100vh - 106px - 10px - 10px);
+  min-height: calc(100vh - 106px - 38px - 30px - 21px);
+  margin-bottom: 0;
+  overflow: hidden;
+  content: "";
 }
 
 .add-column {
   display: flex;
   flex-direction: column;
-  width: 280px;
+  min-width: 280px;
   padding: 10px;
 }
 

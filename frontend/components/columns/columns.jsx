@@ -67,7 +67,7 @@ class Columns extends React.Component {
             </section>
             <div className="add-task">+</div>
           </span>
-          <h2 className="cols-tasks">tasks</h2>
+          <h2 className="cols-tasks"></h2>
         </div>
       );
     });
