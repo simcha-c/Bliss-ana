@@ -10,30 +10,28 @@ export const receiveColumn = (column) => {
   };
 };
 
-export const removeColumn = (id) => {
+export const removeColumn = ({ project, column }) => {
   return {
     type: REMOVE_COLUMN,
-    id,
+    project,
+    column,
   };
 };
 
 export const createColumn = (column) => dispatch => {
   return ColumnAPIUtil.createColumn(column).then(
-    column => dispatch(receiveColumn(column)),
-    errors => dispatch(receiveErrors(errors.responseJSON))
+    column => dispatch(receiveColumn(column))
   );
 };
 
 export const updateColumn = (column) => dispatch => {
   return ColumnAPIUtil.updateColumn(column).then(
-    column => dispatch(receiveColumn(column)),
-    errors => dispatch(receiveErrors(errors.responseJSON))
+    column => dispatch(receiveColumn(column))
   );
 };
 
 export const deleteColumn = (id) => dispatch => {
   return ColumnAPIUtil.deleteColumn(id).then(
-    id => dispatch(removeColumn(id)),
-    errors => dispatch(receiveErrors(errors.responseJSON))
+    id => dispatch(removeColumn(id))
   );
 };

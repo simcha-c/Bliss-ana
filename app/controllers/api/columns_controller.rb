@@ -27,7 +27,7 @@ class Api::ColumnsController < ApplicationController
     @column.destroy
     @project = Project.find(@column.project_id)
 
-    render "/api/projects/show"
+    render :show
   end
 
   private

@@ -25,7 +25,7 @@ const projectsReducer = (state = {}, action) => {
     return merge(newState, project);
 
   case REMOVE_COLUMN:
-    newState[action.id.project.id] = action.id.project;
+    newState[action.project.id] = action.project;
     return newState;
 
   case REMOVE_PROJECT:
