@@ -15,7 +15,6 @@ const columnsReducer = (state = {}, action) => {
     return merge({}, action.column);
 
   case REMOVE_COLUMN:
-  debugger
     return merge({}, action.id.columns);
 
   case RECEIVE_NEW_PROJECT:

@@ -22,7 +22,6 @@ class Columns extends React.Component {
 
   componentWillUpdate(nextProps) {
     if (this.props.project.column_ids[0] !== nextProps.project.column_ids[0]) {
-      debugger
       this.props.fetchProject(this.props.project.id);
     }
   }
