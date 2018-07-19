@@ -19,11 +19,14 @@ const mapState = (state, ownProps) => {
     return state.entities.projects[project_id] || {};
   });
 
+  const project = state.entities.projects[ownProps.match.params.projectId] || {};
+
   return {
     currentUser: state.entities.users[state.session.id],
     users,
     team,
     projects, // projects as array
+    project,
     sidebar: state.ui.sidebar.open,
     // teams: Object.values(state.entities.teams), // teams as array // TODO: proptypes
   };

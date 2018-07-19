@@ -22,12 +22,11 @@ class Sidebar extends React.Component {
     .then(this.props.fetchTeam(this.props.team.id));
   }
 
-  // componentWillUpdate(nextProps) {
-  //   if (this.props.projects.length !== nextProps.projects.length) {
-  //     this.props.fetchUser(this.props.currentUser.id);
-  //     this.props.fetchTeam(this.props.team.id);
-  //   }
-  // }
+  componentWillUpdate(nextProps) {
+    if (this.props.project.id !== nextProps.project.id) {
+      this.props.fetchProject(nextProps.project.id);
+    }
+  }
 
   sidebarHeader(){
     return (

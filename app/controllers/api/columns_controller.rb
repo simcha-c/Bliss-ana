@@ -26,7 +26,7 @@ class Api::ColumnsController < ApplicationController
     @column = Column.find(params[:id])
     @column.destroy
     @project = Project.find(@column.project_id)
-    
+
     render "/api/projects/show"
   end
 

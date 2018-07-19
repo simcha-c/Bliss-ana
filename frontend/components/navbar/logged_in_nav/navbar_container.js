@@ -28,6 +28,7 @@ const mapDispatchToProps = dispatch => {
     openDropdown: () => dispatch(openDropdown()),
     openSidebar: () => dispatch(openSidebar()),
     deleteTeam: (id) => dispatch(deleteTeam(id)),
+
   };
 };
 

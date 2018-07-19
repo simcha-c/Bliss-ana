@@ -19,7 +19,7 @@ end
 json.projects do
   @team.projects.each do |project|
     json.set! project.id do
-      json.extract! project, :id, :name, :team_id
+      json.extract! project, :id, :name, :team_id, :column_ids
     end
   end
 end

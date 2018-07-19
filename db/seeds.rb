@@ -10,6 +10,7 @@ User.destroy_all
 Team.destroy_all
 TeamMembership.destroy_all
 Project.destroy_all
+Column.destroy_all
 
 # Users
 demo_user = User.create!(email: 'demo@bliss-ana.com', password: 'demo-password', first: 'Demo', last: 'Guest')
@@ -60,6 +61,39 @@ training = Project.create!(name: 'Training for Model X', team_id: customer_servi
 daily = Project.create!(name: 'Day to Day', team_id: customer_service.id)
 
 
+# Columns
+col1 = Column.create!(title: 'Col 1', project_id: design_plan.id)
+col1 = Column.create!(title: 'Col 2', project_id: design_plan.id)
+col1 = Column.create!(title: 'Col 3', project_id: design_plan.id)
+col1 = Column.create!(title: 'Col 4', project_id: brainstorm.id)
+col1 = Column.create!(title: 'Col 5', project_id: design_model.id)
+col1 = Column.create!(title: 'Col 6', project_id: design_model.id)
+col1 = Column.create!(title: 'Col 7', project_id: review_model.id)
+col1 = Column.create!(title: 'Col 8', project_id: review_model.id)
+col1 = Column.create!(title: 'Col 9', project_id: review_model.id)
+col1 = Column.create!(title: 'Col 10', project_id: review_model.id)
+col1 = Column.create!(title: 'Col 11', project_id: redesign.id)
+col1 = Column.create!(title: 'Col 12', project_id: review.id)
+col1 = Column.create!(title: 'Col 13', project_id: review.id)
+col1 = Column.create!(title: 'Col 14', project_id: review.id)
+col1 = Column.create!(title: 'Col 15', project_id: review.id)
+col1 = Column.create!(title: 'Col 16', project_id: review.id)
+col1 = Column.create!(title: 'Col 17', project_id: raise_funds.id)
+col1 = Column.create!(title: 'Col 18', project_id: raise_funds.id)
+col1 = Column.create!(title: 'Col 19', project_id: raise_funds.id)
+col1 = Column.create!(title: 'Col 20', project_id: approve.id)
+col1 = Column.create!(title: 'Col 21', project_id: sprint_plan.id)
+col1 = Column.create!(title: 'Col 22', project_id: sprint_plan.id)
+col1 = Column.create!(title: 'Col 23', project_id: sprint_plan.id)
+col1 = Column.create!(title: 'Col 24', project_id: sprint_plan.id)
+col1 = Column.create!(title: 'Col 25', project_id: build.id)
+col1 = Column.create!(title: 'Col 26', project_id: build.id)
+col1 = Column.create!(title: 'Col 27', project_id: build.id)
+col1 = Column.create!(title: 'Col 28', project_id: testing.id)
+col1 = Column.create!(title: 'Col 29', project_id: testing.id)
+col1 = Column.create!(title: 'Col 30', project_id: testing.id)
+col1 = Column.create!(title: 'Col 31', project_id: daily.id)
+col1 = Column.create!(title: 'Col 32', project_id: daily.id)
 
 
 

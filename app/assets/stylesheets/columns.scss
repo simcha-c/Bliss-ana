@@ -1,0 +1,102 @@
+.columns {
+  display: flex;
+  flex-direction: row;
+  width: auto;
+  padding: 10px 10px 0 10px;
+}
+
+.col-wrapper {
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+  padding: 10px;
+}
+
+.col-wrapper:hover {
+  border-radius: 6px;
+  box-shadow: 0 0 0 1px #e0e6e8;
+  transition: box-shadow 250ms
+}
+
+.cols-top {
+  display: flex;
+  flex-direction: column;
+}
+
+.title {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.cols-title {
+  font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 30px;
+}
+
+.edit-title i {
+  border: 1px solid rgba(132, 143, 153, 1);
+  border-width: 0 1px 1px 0;
+  display: inline-block;
+  padding: 3px;
+  transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
+  margin-left: 10px;
+  margin-bottom: 4px;
+  cursor: pointer;
+}
+
+.edit-title:hover i {
+  border: 1px solid rgba(20, 170, 245, 1);
+  border-width: 0 1px 1px 0;
+  display: inline-block;
+  padding: 3px;
+  transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
+}
+
+.edit-remove-col {
+  position: absolute;
+  background-color: #fff;
+  border: 1px solid #d5dce0;
+  box-shadow: 0 10px 15px 0 rgba(0, 0, 0, 0.06);
+  border-radius: 3px;
+  text-align: center;
+  padding: 5px 0;
+  margin-top: 10px;
+  margin-left: -12px;
+  box-sizing: border-box;
+}
+
+.edit-remove-col .remove-project {
+  padding: 5px 10px;
+  margin-right: 70px;
+  text-align: start;
+}
+
+.add-task {
+  box-sizing: border-box;
+  cursor: pointer;
+  background-color: white;
+  box-shadow: 0 1px 3px 0 rgba(0,0,0,0.15);
+  color: rgba(183, 191, 198, 1);
+  text-align: center;
+  height: 100%;
+  margin-bottom: 10px;
+  padding: 7px 8px 7px 7px;
+  font-size: 20px;
+  border-radius: 3px;
+}
+
+.add-task:hover {
+  border: 2px solid rgba(20, 170, 245, 1);
+  color: rgba(20, 170, 245, 1);
+  padding: 5px 6px 5px 5px;
+}
+
+.cols-tasks {
+  background: rgba(251, 252, 252, 1);
+  height: calc(100vh - 106px - 10px - 10px);
+}

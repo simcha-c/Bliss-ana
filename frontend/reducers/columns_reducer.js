@@ -12,10 +12,14 @@ const columnsReducer = (state = {}, action) => {
   switch (action.type) {
 
   case RECEIVE_NEW_COLUMN:
-    return merge(newState, action.column);
+    return merge({}, action.column);
+
+  case REMOVE_COLUMN:
+  debugger
+    return merge({}, action.id.columns);
 
   case RECEIVE_NEW_PROJECT:
-    newState = merge({}, state, action.columns);
+    newState = merge({}, action.columns);
     return newState;
 
   case REMOVE_PROJECT:

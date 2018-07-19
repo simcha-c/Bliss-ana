@@ -27,13 +27,17 @@ const teamsReducer = (state = {}, action) => {
 
   case RECEIVE_NEW_PROJECT:
     team = newState[action.project.team_id];
-    team.project_ids.push(action.project.id);
-    newState[team.id] = team;
+    if (team.project_ids.includes(action.project.id)) {
+
+    } else {
+      team.project_ids.push(action.project.id);
+      newState[team.id] = team;
+    }
     return newState;
 
   case REMOVE_PROJECT:
-    team = newState[action.project.team_id];
-    const idx = team.project_ids.indexOf(action.project.id);
+    team = newState[action.project.project.team_id];
+    const idx = team.project_ids.indexOf(action.project.project.id);
     const projectIds = team.project_ids;
     const projectArr = projectIds.slice(0,idx).concat(projectIds.slice(idx+1, projectIds.length+1));
     team.project_ids = projectArr;
