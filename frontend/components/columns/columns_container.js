@@ -17,7 +17,7 @@ const mapState = (state, ownProps) => {
   // });
 
   const projects = team.project_ids.map(project_id => {
-    return state.entities.projects[project_id] || {id: "", name: ""};
+    return state.entities.projects[project_id] || {};
   });
 
   const project = state.entities.projects[ownProps.match.params.projectId] || {column_ids: []};

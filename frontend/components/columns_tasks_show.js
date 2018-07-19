@@ -4,7 +4,7 @@ import SidebarContainer from './sidebar/sidebar_container';
 import ProjectInfoContainer from './project_info/project_info_container';
 import ProjectHeaderContainer from './project_info/project_header_container';
 
-const TeamShow = ({ match }) => {
+const ColumnTaskShow = ({ match }) => {
   return (
       <div className="team-show">
         <SidebarContainer />
@@ -13,11 +13,10 @@ const TeamShow = ({ match }) => {
             <NavbarContainer team={match.params.teamId} />
             <ProjectHeaderContainer />
           </div>
-          <div className="project-page">
-          </div>
+          <ProjectInfoContainer />
         </div>
       </div>
   )
 };
 
-export default TeamShow;
+export default ColumnTaskShow;
