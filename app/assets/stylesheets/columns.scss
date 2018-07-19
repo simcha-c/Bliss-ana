@@ -15,6 +15,7 @@
   min-width: 280px;
   padding: 10px;
   height: 100%;
+  margin-top: 20px;
 }
 
 .col-wrapper:hover {
@@ -39,6 +40,7 @@
   font-size: 16px;
   font-weight: 500;
   line-height: 30px;
+  padding-bottom: 6px;
 }
 
 .edit-title i {
@@ -49,7 +51,7 @@
   transform: rotate(45deg);
   -webkit-transform: rotate(45deg);
   margin-left: 10px;
-  margin-bottom: 4px;
+  margin-bottom: 8px;
   cursor: pointer;
 }
 
@@ -75,7 +77,7 @@
 }
 
 .edit-remove-col .remove-project {
-  padding: 5px 10px;
+  padding: 10px 10px;
   margin-right: 70px;
   text-align: start;
 }
@@ -113,6 +115,7 @@
   flex-direction: column;
   min-width: 280px;
   padding: 10px;
+  margin-top: 20px;
 }
 
 .add-column-title {

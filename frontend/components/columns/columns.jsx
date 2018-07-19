@@ -26,15 +26,15 @@ class Columns extends React.Component {
   }
 
   componentWillUpdate(nextProps) {
-    if (this.props.project.column_ids[0] !== nextProps.project.column_ids[0]) {
-      this.props.fetchProject(this.props.project.id);
+    if (this.props.columns[0].id !== nextProps.columns[0].id) {
+      this.props.fetchProject(this.props.projectId);
     }
   }
 
   deleteColumn(e) {
     e.stopPropagation();
     this.props.deleteColumn(parseInt(this.state.id));
-    this.setState({id: 0});
+    this.setState({ id: 0 });
   }
 
   editRemoveColPopup(){
@@ -56,6 +56,7 @@ class Columns extends React.Component {
 
   columns() {
     const cols = this.props.columns.map(column => {
+      if (!column.id) { return };
       const active = (column.id === this.state.id && column.id !== 0) ? 'active' : 'hidden';
       return (
         <div className="col-wrapper" key={column.id}>

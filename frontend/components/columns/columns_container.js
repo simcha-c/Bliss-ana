@@ -20,16 +20,20 @@ const mapState = (state, ownProps) => {
     return state.entities.projects[project_id] || {};
   });
 
-  const project = state.entities.projects[ownProps.match.params.projectId] || {column_ids: []};
+  const project = state.entities.projects[ownProps.match.params.projectId] || { column_ids: [] };
 
-  let columns = Object.values(state.entities.columns);
-  columns = (columns.length < 1) ? [] : columns;
+  let columns = project.column_ids.map(columnId => {
+    return state.entities.columns[columnId] || undefined ;
+  });
+
+  columns = (columns.includes(undefined) || columns.length < 1) ? [{ id: 0 }] : columns;
 
   return {
     currentUser: state.entities.users[state.session.id],
     project,
     projects, // projects as array
     columns,
+    projectId: parseInt(ownProps.match.params.projectId),
   };
 };
 
