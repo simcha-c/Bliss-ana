@@ -3,6 +3,7 @@ import { RECEIVE_NEW_TEAM, REMOVE_TEAM } from '../actions/team_actions';
 // import { RECEIVE_USER } from '../actions/user_actions';
 import { RECEIVE_NEW_PROJECT, REMOVE_PROJECT } from '../actions/project_actions';
 import { RECEIVE_NEW_COLUMN, REMOVE_COLUMN } from '../actions/column_actions';
+import { RECEIVE_NEW_TASK, REMOVE_TASK } from '../actions/task_actions';
 import { merge } from 'lodash';
 
 const projectsReducer = (state = {}, action) => {
@@ -12,15 +13,14 @@ const projectsReducer = (state = {}, action) => {
 
   switch (action.type) {
 
-  case RECEIVE_NEW_PROJECT:
-    newState[action.project.id] = action.project
-    return newState;
-
   case RECEIVE_NEW_TEAM:
     newState = merge({}, state, action.projects);
     return newState;
 
+  case RECEIVE_NEW_PROJECT:
   case RECEIVE_NEW_COLUMN:
+  case RECEIVE_NEW_TASK:
+    action.project.column_ids.sort();
     project = {[action.project.id]: action.project};
     return merge(newState, project);
 
@@ -39,7 +39,6 @@ const projectsReducer = (state = {}, action) => {
     default:
       return state;
   }
-  return state;
 };
 
 export default projectsReducer;
