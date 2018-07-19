@@ -3,10 +3,12 @@ import * as ColumnAPIUtil from '../util/column_api_util';
 export const RECEIVE_NEW_COLUMN = "RECEIVE_NEW_COLUMN";
 export const REMOVE_COLUMN = "REMOVE_COLUMN";
 
-export const receiveColumn = (column) => {
+export const receiveColumn = ({ project, columns }) => {
+  debugger
   return {
     type: RECEIVE_NEW_COLUMN,
-    column
+    columns,
+    project,
   };
 };
 

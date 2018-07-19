@@ -8,7 +8,7 @@
 .col-wrapper {
   display: flex;
   flex-direction: column;
-  width: 300px;
+  width: 280px;
   padding: 10px;
 }
 
@@ -99,4 +99,36 @@
 .cols-tasks {
   background: rgba(251, 252, 252, 1);
   height: calc(100vh - 106px - 10px - 10px);
+}
+
+.add-column {
+  display: flex;
+  flex-direction: column;
+  width: 280px;
+  padding: 10px;
+}
+
+.add-column-title {
+  color: rgba(183, 191, 198, 1);
+  cursor: pointer;
+}
+
+.add-column-title:hover {
+  color: rgba(20, 170, 245, 1);
+}
+
+.new-column-input {
+  border: 1px solid lightgrey;
+  width: 100%;
+  border-radius: 3px;
+  line-height: 36px;
+  background: white;
+  padding-left: 10px;
+  box-sizing: border-box;
+  font-size: 16px;
+}
+
+.new-column-input::placeholder {
+  font-size: 16px;
+  color: rgba(183, 191, 198, 1);
 }

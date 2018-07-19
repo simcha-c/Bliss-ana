@@ -23,7 +23,7 @@ const mapState = (state, ownProps) => {
   const project = state.entities.projects[ownProps.match.params.projectId] || {column_ids: []};
 
   let columns = Object.values(state.entities.columns);
-  columns = (columns.length < 1) ? [{ title: "", id: 0 }] : columns;
+  columns = (columns.length < 1) ? [] : columns;
 
   return {
     currentUser: state.entities.users[state.session.id],
@@ -38,7 +38,7 @@ const mapDispatch = (dispatch) => {
     fetchUser: (id) => dispatch(fetchUser(id)),
     fetchTeam: (id) => dispatch(fetchTeam(id)),
     fetchProject: (id) => dispatch(fetchProject(id)),
-    createColumn: (id) => dispatch(createColumn(id)),
+    createColumn: (column) => dispatch(createColumn(column)),
     updateColumn: (id) => dispatch(updateColumn(id)),
     deleteColumn: (id) => dispatch(deleteColumn(id)),
     closeSidebar: () => dispatch(closeSidebar()),

@@ -6,12 +6,17 @@ class Columns extends React.Component {
 
   constructor(props) {
     super(props);
-    this.state = { id: 0 };
+    this.state = { id: 0, add: false, title: "" };
 
     this.columns = this.columns.bind(this);
     this.editRemoveColPopup = this.editRemoveColPopup.bind(this);
     this.deleteColumn = this.deleteColumn.bind(this);
     this.togglePopup = this.togglePopup.bind(this);
+    this.addColumn = this.addColumn.bind(this);
+    this.clearState = this.clearState.bind(this);
+    this.update = this.update.bind(this);
+    this.showAddColumn = this.showAddColumn.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   componentDidMount() {
@@ -40,7 +45,8 @@ class Columns extends React.Component {
     )
   }
 
-  togglePopup(id) {
+  togglePopup(e, id) {
+    e.stopPropagation();
     if (this.state.id > 1) {
       this.setState({id: 0})
     } else {
@@ -56,7 +62,7 @@ class Columns extends React.Component {
           <span className="cols-top">
             <section className="title">
               <p className="cols-title">{column.title}</p>
-              <div onClick={() => this.togglePopup(column.id)} className="edit-title"><i></i></div>
+              <div onClick={(e) => this.togglePopup(e, column.id)} className="edit-title"><i></i></div>
               <div className={active}>{this.editRemoveColPopup()}</div>
             </section>
             <div className="add-task">+</div>
@@ -68,10 +74,59 @@ class Columns extends React.Component {
     return cols;
   }
 
+  update(e) {
+    this.setState({ title: e.currentTarget.value });
+  }
+
+  handleSubmit(e) {
+    e.preventDefault();
+    debugger
+    this.props.createColumn({ title: this.state.title, project_id: this.props.match.params.projectId })
+    .then(this.clearState());
+  }
+
+  showAddColumn(e) {
+    debugger
+    e.stopPropagation();
+    this.setState({ id: 0, add: true })
+  }
+
+  addColumn(){
+    if (this.state.add) {
+      return (
+        <div className="col-wrapper">
+          <span className="cols-top">
+            <form onClick={(e) => {e.stopPropagation();}} onSubmit={(e) => this.handleSubmit(e)}>
+              <input className="new-column-input" onChange={(e) => this.update(e)} type="text" placeholder="New Column" autoFocus />
+            </form>
+          </span>
+        </div>
+      )
+    } else {
+      return (
+        <div className="add-column">
+          <span onClick={(e) => this.showAddColumn(e)} className="add-column-top">
+            <p className="add-column-title cols-title">+ Add column</p>
+          </span>
+        </div>
+      )
+    }
+  }
+
+  clearState(e) {
+    event.stopPropagation();
+    debugger
+    this.setState({ id: 0, add: false, title: "" });
+  }
+
   render() {
+    debugger
     return (
-      <div className="columns">
-        {this.columns()}
+      <div onClick={(e) => this.clearState()} className="project-page">
+        <div className="columns">
+          {this.columns()}
+          {this.addColumn()}
+        </div>
       </div>
     )
   }

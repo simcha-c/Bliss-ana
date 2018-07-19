@@ -7,10 +7,7 @@ class ProjectInfo extends React.Component {
   render() {
     return (
       <section className="project-section">
-
-        <div className="project-page">
-          <ColumnsContainer />
-        </div>
+        <ColumnsContainer />
       </section>
     );
   }
