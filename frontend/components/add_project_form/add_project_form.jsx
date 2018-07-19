@@ -6,7 +6,7 @@ class AddProjectForm extends React.Component {
   constructor(props) {
     super(props);
     const ownProp = this.props.location.pathname;
-    const teamId = ownProp.substr(ownProp.lastIndexOf('/') + 1);
+    const teamId = /(\d+)/gm.exec(ownProp)[0];
     this.state = { name: "", team_id: `${teamId}` };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.renderErrors = this.renderErrors.bind(this);
