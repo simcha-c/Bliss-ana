@@ -24,7 +24,7 @@
 .project-page {
   overflow-x: scroll;
   width: 100%;
-  min-height: calc(100vh - 106px);
+  max-height: calc(100vh - 106px);
   background: rgba(246, 248, 249, 1);
   overflow: hidden;
 }

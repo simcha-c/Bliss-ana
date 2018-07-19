@@ -4,8 +4,9 @@
   width: auto;
   padding: 10px 10px 0 10px;
   margin-right: 20px;
-  max-height: calc(100vh - 115px);
-  overflow: hidden;
+  min-height: calc(100vh - 115px);
+  // overflow-y: hidden;
+  overflow-x: scroll;
 }
 
 .col-wrapper {
@@ -62,14 +63,13 @@
 }
 
 .edit-remove-col {
-  position: absolute;
+  position: relative;
   background-color: #fff;
   border: 1px solid #d5dce0;
   box-shadow: 0 10px 15px 0 rgba(0, 0, 0, 0.06);
   border-radius: 3px;
   text-align: center;
-  padding: 5px 0;
-  margin-top: 10px;
+  top: 30px;
   margin-left: -12px;
   box-sizing: border-box;
 }
