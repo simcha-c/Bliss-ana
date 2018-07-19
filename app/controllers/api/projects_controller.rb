@@ -2,12 +2,13 @@ class Api::ProjectsController < ApplicationController
 
   def show
     @project = Project.find(params[:id])
+    @columns = @project.columns.includes(:tasks)
     render :show
   end
 
   def create
     @project = Project.new(project_params)
-    # @project.team_id = params[:team_id]
+    @columns = @project.columns.includes(:tasks)
 
     if @project.save
       render :show
@@ -18,6 +19,7 @@ class Api::ProjectsController < ApplicationController
 
   def update
     @project = Project.find(params[:id])
+    @columns = @project.columns.includes(:tasks)
 
     if @project.update(project_params)
       render :show
@@ -28,6 +30,7 @@ class Api::ProjectsController < ApplicationController
 
   def destroy
     @project = Project.find(params[:id])
+    @columns = @project.columns.includes(:tasks)
     @project.destroy
     render :show
   end

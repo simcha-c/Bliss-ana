@@ -10,7 +10,6 @@
 
 class Project < ApplicationRecord
   validates :name, :team_id, presence: true
-  validates :name, uniqueness: { scope: :team_id }
 
   belongs_to :team,
     foreign_key: :team_id,
@@ -20,5 +19,9 @@ class Project < ApplicationRecord
     foreign_key: :project_id,
     class_name: :Column,
     dependent: :destroy
+
+  has_many :tasks,
+    through: :columns,
+    source: :tasks
 
 end

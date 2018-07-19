@@ -1,24 +1,26 @@
 class Api::ColumnsController < ApplicationController
 
   def create
-    @column = Column.new(column_params)
+    column = Column.new(column_params)
     @project = Project.find(column_params[:project_id])
+    @columns = @project.columns.includes(:tasks)
 
-    if @column.save
+    if column.save
       render "/api/projects/show"
     else
-      render json: @column.errors.full_messages, status: 401
+      render json: column.errors.full_messages, status: 401
     end
   end
 
   def update
-    @column = Column.find(params[:id])
+    column = Column.find(params[:id])
     @project = Project.find(column_params[:project_id])
+    @columns = @project.columns.includes(:tasks)
 
-    if @column.update(column_params)
+    if column.update(column_params)
       render "/api/projects/show"
     else
-      render json: @column.errors.full_messages, status: 401
+      render json: column.errors.full_messages, status: 401
     end
   end
 

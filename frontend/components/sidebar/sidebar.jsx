@@ -68,7 +68,6 @@ class Sidebar extends React.Component {
   projectsList() {
     const projectId = this.props.match.params.projectId;
     const projectsInfo = this.props.projects.map((project) => {
-      debugger
       const active = (project.id === parseInt(projectId)) ? "active-project" : "";
       return (
         <div key={project.id} className="with-popup">

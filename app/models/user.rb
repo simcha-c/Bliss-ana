@@ -36,6 +36,20 @@ class User < ApplicationRecord
     through: :teams,
     source: :projects
 
+  has_many :assigned_tasks,
+    foreign_key: :assignee_id,
+    class_name: :Task
+
+  has_many :completed_tasks,
+    foreign_key: :completer_id,
+    class_name: :Task
+
+  has_many :created_tasks,
+    foreign_key: :creator_id,
+    class_name: :Task
+
+
+
 
   def self.generate_session_token
     SecureRandom::urlsafe_base64(16)

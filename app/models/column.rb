@@ -15,4 +15,9 @@ class Column < ApplicationRecord
     foreign_key: :project_id,
     class_name: :Project
 
+  has_many :tasks,
+    foreign_key: :column_id,
+    class_name: :Task,
+    dependent: :destroy
+
 end
