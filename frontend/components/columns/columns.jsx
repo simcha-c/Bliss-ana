@@ -21,7 +21,7 @@ class Columns extends React.Component {
 
   componentDidMount() {
     // if (this.props.project.id) {
-      this.props.fetchProject(this.props.project.id);
+      this.props.fetchProject(this.props.projectId);
     // }
   }
 

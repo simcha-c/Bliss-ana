@@ -56,7 +56,7 @@ class Sidebar extends React.Component {
     )
   }
 
-  toggleOptionsPopout(id){
+  toggleOptionsPopout(id) {
     event.stopPropagation();
     if (this.state > 0) {
       this.setState({ id: 0 });
@@ -68,6 +68,7 @@ class Sidebar extends React.Component {
   projectsList() {
     const projectId = this.props.match.params.projectId;
     const projectsInfo = this.props.projects.map((project) => {
+      debugger
       const active = (project.id === parseInt(projectId)) ? "active-project" : "";
       return (
         <div key={project.id} className="with-popup">
@@ -92,14 +93,12 @@ class Sidebar extends React.Component {
   }
 
   memberList() {
-    const membersInfo = this.props.users.map((user, idx) => {
-      let initials = "";
-      initials = `${user.first[0]}${user.last[0]}`;
+    const membersInfo = this.props.users.map((user) => {
+      const initials = `${user.first[0]}${user.last[0]}`;
       return (
-        <div key={idx} className="circle" >{initials}</div>
-      )
+        <div key={user.id} className="circle" >{initials}</div>
+      );
     });
-
     return (
       <ul className="member-list">
         {membersInfo}

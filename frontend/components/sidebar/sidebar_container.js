@@ -11,12 +11,14 @@ const mapState = (state, ownProps) => {
   const team = state.entities.teams[ownProps.match.params.teamId] || { member_ids: [], project_ids: [] };
   team.project_ids = team.project_ids || [];
 
-  const users = team.member_ids.map((member_id, idx) => {
-    return state.entities.users[member_id] || { first: " ", last: " " };
+  let users = team.member_ids.map((member_id) => {
+    return state.entities.users[member_id] || { id: member_id, first: " ", last: " " };
   });
 
+  // users = (users.includes(undefined) || users.length < 1 ) ? [] : users;
+
   const projects = team.project_ids.map(project_id => {
-    return state.entities.projects[project_id] || {};
+    return state.entities.projects[project_id] || { id: project_id };
   });
 
   const project = state.entities.projects[ownProps.match.params.projectId] || {};
