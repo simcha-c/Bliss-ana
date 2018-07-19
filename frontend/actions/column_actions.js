@@ -4,7 +4,6 @@ export const RECEIVE_NEW_COLUMN = "RECEIVE_NEW_COLUMN";
 export const REMOVE_COLUMN = "REMOVE_COLUMN";
 
 export const receiveColumn = ({ project, columns }) => {
-  debugger
   return {
     type: RECEIVE_NEW_COLUMN,
     columns,

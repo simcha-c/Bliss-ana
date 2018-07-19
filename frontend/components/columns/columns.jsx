@@ -80,13 +80,11 @@ class Columns extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    debugger
     this.props.createColumn({ title: this.state.title, project_id: this.props.match.params.projectId })
     .then(this.clearState());
   }
 
   showAddColumn(e) {
-    debugger
     e.stopPropagation();
     this.setState({ id: 0, add: true })
   }
@@ -115,12 +113,10 @@ class Columns extends React.Component {
 
   clearState(e) {
     event.stopPropagation();
-    debugger
     this.setState({ id: 0, add: false, title: "" });
   }
 
   render() {
-    debugger
     return (
       <div onClick={(e) => this.clearState()} className="project-page">
         <div className="columns">
