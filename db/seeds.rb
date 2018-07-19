@@ -9,6 +9,7 @@
 User.destroy_all
 Team.destroy_all
 TeamMembership.destroy_all
+Project.destroy_all
 
 # Users
 demo_user = User.create!(email: 'demo@bliss-ana.com', password: 'demo-password', first: 'Demo', last: 'Guest')

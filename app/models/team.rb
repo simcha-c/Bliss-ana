@@ -25,6 +25,7 @@ class Team < ApplicationRecord
 # A team has many projects
   has_many :projects,
     foreign_key: :team_id,
-    class_name: :Project
+    class_name: :Project,
+    dependent: :destroy
 
 end

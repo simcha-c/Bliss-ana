@@ -1,5 +1,10 @@
 class Api::ProjectsController < ApplicationController
 
+  def show
+    @project = Project.find(params[:id])
+    render :show
+  end
+
   def create
     @project = Project.new(project_params)
     # @project.team_id = params[:team_id]

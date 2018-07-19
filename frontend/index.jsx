@@ -1,7 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 // import {signup, login, logout} from "./actions/session_actions";
-import {fetchProject, createProject, updateProject, deleteProject} from "./actions/project_actions";
+import { createColumn, updateColumn, deleteColumn } from "./actions/column_actions";
+import { fetchProject, createProject } from "./actions/project_actions";
 import configureStore from "./store/store";
 import Root from './components/root';
 
@@ -29,9 +30,9 @@ document.addEventListener('DOMContentLoaded', () => {
   window.getState = store.getState;
   window.dispatch = store.dispatch;
 
-  window.createProject = createProject;
-  window.updateProject = updateProject;
-  window.fetchProject = fetchProject;
-  window.deleteProject = deleteProject;
+  window.fetchProject = fetchProject
+  window.createColumn = createColumn;
+  window.updateColumn = updateColumn;
+  window.deleteColumn = deleteColumn;
   ReactDOM.render(<Root store={store} />, root);
 });
