@@ -25,7 +25,7 @@ class SessionForm extends React.Component {
 
   loginDemo(){
     this.setState({email: 'demo@bliss-ana.com', password: 'demo-password', first: 'Demo', last: 'Guest'});
-    setTimeout(() => this.props.loginDemo(this.state).then(this.props.closeModal), 1000);
+    setTimeout(() => this.props.loginDemo(this.state).then(this.props.closeModal), 500);
   }
 
   handleSubmit(e) {
@@ -45,7 +45,7 @@ class SessionForm extends React.Component {
         </li>
       );
       });
-      
+
       return(
         <ul>
           {allErrors}

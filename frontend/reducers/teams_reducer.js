@@ -12,7 +12,6 @@ const teamsReducer = (state = {}, action) => {
   switch (action.type) {
 
   case RECEIVE_CURRENT_USER:
-    action.team.project_ids.sort();
     return merge({}, action.teams);
 
   case RECEIVE_USER:
