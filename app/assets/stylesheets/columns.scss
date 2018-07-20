@@ -102,11 +102,19 @@
   padding: 5px 6px 5px 5px;
 }
 
-.cols-tasks {
+.cols-tasks-no-tasks {
   background: rgba(251, 252, 252, 1);
   min-height: calc(100vh - 106px - 38px - 30px - 21px);
   margin-bottom: 0;
   overflow: hidden;
+  content: "";
+}
+
+.cols-task {
+  // background: rgba(251, 252, 252, 1);
+  min-height: calc(100vh - 106px - 38px - 30px - 21px);
+  margin-bottom: 0;
+  overflow: scroll;
   content: "";
 }
 

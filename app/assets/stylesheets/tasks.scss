@@ -1,0 +1,166 @@
+.task-card {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 79px;
+  background: white;
+  margin-bottom: 10px;
+  padding: 15px;
+  box-sizing: border-box;
+  box-shadow: 0 1px 3px 0 rgba(0,0,0,0.15);
+  transition: box-shadow 100ms,transform 100ms;
+  cursor: pointer;
+}
+
+.task-card:hover {
+  box-shadow: 0 10px 15px 0 rgba(0,0,0,0.06);
+  transform: translateY(-2px);
+}
+
+.title-info {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-content: center;
+}
+
+.complete-and-name {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.completed-icon {
+  color: rgba(176, 255, 252, 0.3);
+  text-align: center;
+  margin-top: -3px;
+  margin-bottom: 8px;
+  margin-right: 5px;
+}
+
+.task-card:hover .completed-icon {
+  color: rgba(176, 255, 252, 0.8)
+}
+
+.task-name {
+  line-height: 10px;
+  display: block;
+  font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-size: 13px;
+  line-height: 20px;
+  box-sizing: border-box;
+  display: inline-block;
+  width: 100%;
+  word-wrap: break-word;
+  color: #151b26;
+  margin-top: -5px;
+  margin-bottom: 10px;
+}
+
+.task-info {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.task-info .circle {
+  margin: 0 3px;
+  width: 24px;
+  height: 24px;
+  line-height: 24px;
+  font-size: 10px;
+  letter-spacing: 0px;
+  margin-left: 2px;
+}
+
+.icon-stroke {
+  border: 1px dashed rgba(183, 191, 198, 0);
+  width: 24px;
+  height: 24px;
+  line-height: 23px;
+  border-radius: 50%;
+  margin: 0 3px;
+  transition: border .5s;
+}
+
+.task-icon {
+  text-align: center;
+  color: rgba(183, 191, 198, 0);
+  font-size: 14px;
+  transition: color .5s;
+}
+
+.task-card:hover .icon-stroke, .icon-stroke#hover-state {
+  border: 1px dashed rgba(183, 191, 198, 0.3);
+}
+
+.task-card:hover .task-icon, .task-icon#hover-state {
+  color: rgba(183, 191, 198, 0.3);
+}
+
+.task-card:hover .icon-stroke:hover {
+  border: 1px solid rgba(183, 191, 198, 1);
+  // background:
+}
+
+.task-card:hover .task-icon:hover {
+  color: rgba(183, 191, 198, 1);
+}
+
+.task-due-date {
+  color: rgba(100, 111, 121, 1);
+  font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-size: 11px;
+  margin-left: 5px;
+}
+
+.icon-hidden {
+  height: 0px;
+  display: none;
+}
+
+.add-task-text {
+  line-height: 30px;
+  font-size: 1em;
+  word-wrap: break-word;
+  width: 100%;
+  height: auto;
+  margin-bottom: 40px;
+}
+
+.adding {
+  background: white;
+  margin-bottom: 10px;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.15);
+  padding: 5px 14px;
+  min-height: 79px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.add-task-text::placeholder {
+  font-size: 12px;
+}
+
+.task-late {
+  color: rgba(237, 71, 88, 1);
+}
+
+.task-soon {
+  color: rgba(0, 191, 156, 1);
+}
+
+.cal-form {
+  border: 1px solid rgba(100, 111, 121, 0.4);
+  border-radius: 3px;
+  padding-bottom: 3px;
+  padding-left: 7px;
+  margin-left: 5px;
+  text-align: center;
+  bottom: 4px;
+  color: rgba(100, 111, 121, .4);
+}
+
+.cal-input {
+  padding-left: 5px;
+}

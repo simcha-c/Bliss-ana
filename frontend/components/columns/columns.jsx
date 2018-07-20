@@ -1,12 +1,13 @@
 import React from 'react';
 // import Modal from '../modal/modal';
 // import { Link, withRouter } from 'react-router-dom';
+import TasksContainer from '../tasks/tasks_container';
 
 class Columns extends React.Component {
 
   constructor(props) {
     super(props);
-    this.state = { id: 0, add: false, title: "" };
+    this.state = { id: 0, addCol: false, title: "", addTaskId: 0, addTask: false, name: "" };
 
     this.columns = this.columns.bind(this);
     this.editRemoveColPopup = this.editRemoveColPopup.bind(this);
@@ -14,9 +15,12 @@ class Columns extends React.Component {
     this.togglePopup = this.togglePopup.bind(this);
     this.addColumn = this.addColumn.bind(this);
     this.clearState = this.clearState.bind(this);
-    this.update = this.update.bind(this);
+    this.updateTitle = this.updateTitle.bind(this);
     this.showAddColumn = this.showAddColumn.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.tasks = this.tasks.bind(this);
+    this.toggleAddTask = this.toggleAddTask.bind(this);
+    this.addTask = this.addTask.bind(this);
   }
 
   componentDidMount() {
@@ -25,11 +29,11 @@ class Columns extends React.Component {
     // }
   }
 
-  componentWillUpdate(nextProps) {
-    if (this.props.columns[0].id !== nextProps.columns[0].id) {
-      this.props.fetchProject(this.props.projectId);
-    }
-  }
+  // componentWillUpdate(nextProps) {
+  //   if (this.props.columns[0].id !== nextProps.columns[0].id) {
+  //     this.props.fetchProject(this.props.projectId);
+  //   }
+  // }
 
   deleteColumn(e) {
     e.stopPropagation();
@@ -48,16 +52,43 @@ class Columns extends React.Component {
   togglePopup(e, id) {
     e.stopPropagation();
     if (this.state.id > 1) {
-      this.setState({id: 0})
+      this.setState({id: 0});
     } else {
-      this.setState({id: id})
+      this.setState({id: id});
     }
   }
 
+  tasks(task_ids){
+    const props = this.props;
+    const tasks = this.props.tasks;
+    return task_ids.map(task_id => {
+      return <TasksContainer key={task_id} props={props} task={tasks[task_id]} />
+    })
+  }
+
+  toggleAddTask(e, column_id) {
+    e.stopPropagation();
+    if (this.state.addTask > 0) {
+      this.setState({ addTaskId: 0, addTask: false })
+    } else {
+      this.setState({ addTaskId: column_id, addTask: true })
+    }
+  }
+
+  addTask(e, column_id) {
+    e.preventDefault();
+    this.props.createTask({ name: this.state.name, column_id: column_id })
+    .then(this.clearState());
+  }
+
+
   columns() {
     const cols = this.props.columns.map(column => {
-      if (!column.id) { return };
+
+      if (!column.id || !column.task_ids) { return };
+      const taskIncluded = (column.task_ids.length === 0) ? 'cols-tasks-no-tasks' : 'cols-task';
       const active = (column.id === this.state.id && column.id !== 0) ? 'active' : 'hidden';
+      const adding = (this.state.addTaskId === column.id) ? 'adding' : 'hidden';
       return (
         <div className="col-wrapper" key={column.id}>
           <span className="cols-top">
@@ -66,17 +97,26 @@ class Columns extends React.Component {
               <div onClick={(e) => this.togglePopup(e, column.id)} className="edit-title"><i></i></div>
               <div className={active}>{this.editRemoveColPopup()}</div>
             </section>
-            <div className="add-task">+</div>
+            <div onClick={(e) => this.toggleAddTask(e, column.id)} className="add-task">+</div>
           </span>
-          <h2 className="cols-tasks"></h2>
+          <section className={taskIncluded}>
+            <form onClick={(e) => { e.stopPropagation() }} id={column.id} className={adding} onSubmit={(e) => this.addTask(e, column.id)}>
+              <input onChange={(e) => this.updateTaskName(e)} className="add-task-text" type="text" placeholder="New Task Name" value={this.state.name} autoFocus />
+            </form>
+            {this.tasks(column.task_ids)}
+          </section>
         </div>
       );
     });
     return cols;
   }
 
-  update(e) {
+  updateTitle(e) {
     this.setState({ title: e.currentTarget.value });
+  }
+
+  updateTaskName(e) {
+    this.setState({ name: e.currentTarget.value });
   }
 
   handleSubmit(e) {
@@ -87,16 +127,16 @@ class Columns extends React.Component {
 
   showAddColumn(e) {
     e.stopPropagation();
-    this.setState({ id: 0, add: true })
+    this.setState({ id: 0, addCol: true })
   }
 
   addColumn(){
-    if (this.state.add) {
+    if (this.state.addCol) {
       return (
         <div className="col-wrapper">
           <span className="cols-top">
             <form onClick={(e) => {e.stopPropagation();}} onSubmit={(e) => this.handleSubmit(e)}>
-              <input className="new-column-input" onChange={(e) => this.update(e)} type="text" placeholder="New Column" autoFocus />
+              <input className="new-column-input" onChange={(e) => this.updateTitle(e)} value={this.state.title} placeholder="New Column" autoFocus></input>
             </form>
           </span>
         </div>
@@ -114,7 +154,7 @@ class Columns extends React.Component {
 
   clearState(e) {
     event.stopPropagation();
-    this.setState({ id: 0, add: false, title: "" });
+    this.setState({ id: 0, addCol: false, title: "", addTaskId: 0, addTask: false, name: "" });
   }
 
   render() {

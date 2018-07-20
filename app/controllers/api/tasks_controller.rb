@@ -15,15 +15,13 @@ class Api::TasksController < ApplicationController
   end
 
   def update
-    task = Task.find(params[:id])
-    column = Column.find(task.column_id)
-    @project = column.project
-    @columns = @project.columns.includes(:tasks)
+    @task = Task.find(params[:id])
+    @column = Column.find(@task.column_id)
 
-    if task.update(task_params)
-      render "/api/projects/show"
+    if @task.update(task_params)
+      render :show
     else
-      render json: task.errors.full_messages, status: 401
+      render json: @task.errors.full_messages, status: 401
     end
   end
 

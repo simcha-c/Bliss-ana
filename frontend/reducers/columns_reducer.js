@@ -1,22 +1,27 @@
 import { RECEIVE_CURRENT_USER, LOGOUT_CURRENT_USER } from '../actions/session_actions';
 import { RECEIVE_NEW_TEAM, REMOVE_TEAM } from '../actions/team_actions';
-// import { RECEIVE_USER } from '../actions/user_actions';
 import { RECEIVE_NEW_PROJECT, REMOVE_PROJECT } from '../actions/project_actions';
 import { RECEIVE_NEW_COLUMN, REMOVE_COLUMN } from '../actions/column_actions';
-import { RECEIVE_NEW_TASK, REMOVE_TASK } from '../actions/task_actions';
+import { RECEIVE_NEW_TASK, RECEIVE_UPDATED_TASK, REMOVE_TASK } from '../actions/task_actions';
 
 import { merge } from 'lodash';
 
 const columnsReducer = (state = {}, action) => {
   Object.freeze(state);
   let newState = merge({}, state);
+  let newCol;
 
   switch (action.type) {
 
   case RECEIVE_NEW_PROJECT:
+    return merge(newState, action.columns);
+
   case RECEIVE_NEW_COLUMN:
   case RECEIVE_NEW_TASK:
-    return merge({}, state, action.columns);
+    Object.values(action.columns).forEach(column => {
+      column.task_ids.sort((a, b) => {return b-a;});
+    });
+    return merge(newState, action.columns);
 
   case REMOVE_COLUMN:
     delete newState[action.column.id];
