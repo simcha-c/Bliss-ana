@@ -41,7 +41,7 @@ class Sidebar extends React.Component {
   }
 
   handleRemoveProject(projectId) {
-    this.props.deleteProject(projectId)
+    this.props.deleteProject(projectId).then(() => this.props.history.push(`/teams/${this.props.team.id}`));
   }
 
   removeProject(projectId) {

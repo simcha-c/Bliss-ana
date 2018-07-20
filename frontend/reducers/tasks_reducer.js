@@ -16,11 +16,6 @@ const tasksReducer = (state = {}, action) => {
   case RECEIVE_NEW_COLUMN:
     return merge({}, newState, action.tasks);
 
-  case REMOVE_PROJECT:
-  case REMOVE_COLUMN:
-    delete newState[action.tasks.id];
-    return newState;
-
   case LOGOUT_CURRENT_USER:
     return {};
 

@@ -23,6 +23,7 @@ class Api::TeamsController < ApplicationController
 
   def show
     @team = Team.find(params[:id])
+    render :show
   end
 
   def destroy

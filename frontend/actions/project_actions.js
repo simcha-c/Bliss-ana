@@ -12,7 +12,7 @@ export const receiveProject = ({ project, columns, tasks }) => {
   };
 };
 
-export const removeProject = (project) => {
+export const removeProject = ({ project }) => {
   return {
     type: REMOVE_PROJECT,
     project,

@@ -12,12 +12,14 @@ const teamsReducer = (state = {}, action) => {
   switch (action.type) {
 
   case RECEIVE_CURRENT_USER:
+    action.team.project_ids.sort();
     return merge({}, action.teams);
 
   case RECEIVE_USER:
     return merge({}, action.teams);
 
   case RECEIVE_NEW_TEAM:
+    action.team.project_ids.sort();
     newState[action.team.id] = action.team;
     return newState;
 
@@ -27,17 +29,19 @@ const teamsReducer = (state = {}, action) => {
 
   case RECEIVE_NEW_PROJECT:
     team = newState[action.project.team_id];
+    team.project_ids.sort();
     if (team.project_ids.includes(action.project.id)) {
 
     } else {
       team.project_ids.push(action.project.id);
+      team.project_ids.sort()
       newState[team.id] = team;
     }
     return newState;
 
   case REMOVE_PROJECT:
-    team = newState[action.project.project.team_id];
-    const idx = team.project_ids.indexOf(action.project.project.id);
+    team = newState[action.project.team_id];
+    const idx = team.project_ids.indexOf(action.project.id);
     const projectIds = team.project_ids;
     const projectArr = projectIds.slice(0,idx).concat(projectIds.slice(idx+1, projectIds.length+1));
     team.project_ids = projectArr;

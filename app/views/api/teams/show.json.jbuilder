@@ -5,7 +5,6 @@ json.team do
 end
 
 json.members do
-
   members.each do |member|
     json.set! member.id do
       membership = member.team_memberships.first
@@ -13,7 +12,6 @@ json.members do
       json.extract! membership, :role, :department, :about_me
     end
   end
-
 end
 
 json.projects do
