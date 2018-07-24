@@ -30,8 +30,8 @@ class Columns extends React.Component {
   }
 
   // componentWillUpdate(nextProps) {
-  //   if (this.props.columns[0].id !== nextProps.columns[0].id) {
-  //     this.props.fetchProject(this.props.projectId);
+  //   if (this.props.columns[0].id !== nextProps.columns[0].id) {  
+  // this.props.fetchProject(this.props.projectId);
   //   }
   // }
 
