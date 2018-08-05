@@ -61,6 +61,7 @@
   display: flex;
   flex-direction: row;
   align-items: center;
+  margin-left: -3px;
 }
 
 .task-info .circle {
@@ -75,11 +76,11 @@
 
 .icon-stroke {
   border: 1px dashed rgba(183, 191, 198, 0);
-  width: 24px;
-  height: 24px;
-  line-height: 23px;
+  width: 26px;
+  height: 26px;
+  line-height: 24px;
   border-radius: 50%;
-  margin: 0 3px;
+  margin: 0 6px;
   transition: border .5s;
 }
 
@@ -91,20 +92,20 @@
 }
 
 .task-card:hover .icon-stroke, .icon-stroke#hover-state {
-  border: 1px dashed rgba(183, 191, 198, 0.3);
+  border: 1px dashed rgba(183, 191, 198, 1);
 }
 
 .task-card:hover .task-icon, .task-icon#hover-state {
-  color: rgba(183, 191, 198, 0.3);
+  color: rgba(183, 191, 198, 1);
 }
 
 .task-card:hover .icon-stroke:hover {
-  border: 1px solid rgba(183, 191, 198, 1);
-  // background:
+  border: 1px solid #666;
+  background: rgba(183, 191, 198, 0.2);
 }
 
 .task-card:hover .task-icon:hover {
-  color: rgba(183, 191, 198, 1);
+  color: #666;
 }
 
 .task-due-date {

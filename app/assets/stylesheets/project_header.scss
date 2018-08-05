@@ -1,6 +1,8 @@
 .project-section {
   // display: flex;
   // flex-direction: column;
+  max-height: calc(100vh - 106px);
+  min-height: calc(100vh - 106px);
 }
 
 .project-header {
@@ -27,5 +29,5 @@
   max-height: calc(100vh - 106px);
   min-height: calc(100vh - 106px);
   background: rgba(246, 248, 249, 1);
-  overflow-y: scroll;
+  overflow-y: hidden;
 }
