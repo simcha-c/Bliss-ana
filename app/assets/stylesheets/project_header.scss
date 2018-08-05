@@ -27,5 +27,5 @@
   max-height: calc(100vh - 106px);
   min-height: calc(100vh - 106px);
   background: rgba(246, 248, 249, 1);
-  overflow: hidden;
+  overflow-y: scroll;
 }
