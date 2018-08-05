@@ -15,7 +15,7 @@ json.members do
 end
 
 json.projects do
-  @team.projects.each do |project|
+  @team.projects.includes(:columns).each do |project|
     json.set! project.id do
       json.extract! project, :id, :name, :team_id, :column_ids
     end

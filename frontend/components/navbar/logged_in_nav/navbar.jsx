@@ -22,7 +22,7 @@ class Navbar extends React.Component {
 // need this since the projects need to be updated for each team.
   componentDidUpdate(prevProps) {
     if (this.props.teamId !== prevProps.teamId) {
-      this.props.fetchUser(this.props.currentUser.id);
+      // this.props.fetchUser(this.props.currentUser.id);
       this.props.fetchTeam(this.props.teamId);
     }
   }
