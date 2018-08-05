@@ -11,9 +11,22 @@ import Navbar from './navbar';
 
 
 const mapStateToProps = (state, ownProps) => {
+  let currentTeamId;
+
+  if (state.entities.teams[parseInt(ownProps.match.params.teamId)]){
+    currentTeamId = parseInt(ownProps.match.params.teamId);
+    ownProps.match.params.teamId = parseInt(ownProps.match.params.teamId);
+  } else {
+    currentTeamId = state.entities.teams[Object.keys(state.entities.teams)[0]].id;
+    if (parseInt(ownProps.match.params.teamId) != currentTeamId) {
+      ownProps.history.push(`/teams/${currentTeamId}`);
+    }
+  }
+
   return {
     currentUser: state.entities.users[state.session.id],
     teams: state.entities.teams,
+    teamId: currentTeamId,
     dropdown: state.ui.dropdown.open,
     sidebar: state.ui.sidebar.open,
   };

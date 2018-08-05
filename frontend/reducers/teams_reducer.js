@@ -33,7 +33,7 @@ const teamsReducer = (state = {}, action) => {
 
     } else {
       team.project_ids.push(action.project.id);
-      team.project_ids.sort()
+      team.project_ids.sort();
       newState[team.id] = team;
     }
     return newState;

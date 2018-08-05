@@ -20,15 +20,15 @@ const Auth = ({ component: Component, path, loggedIn, exact }) => {
 
 
 // renders component if logged in, otherwise redirects to the login page
-const Protected = ({ component: Component, path, loggedIn, exact }) => (
-  <Route path={path} exact={exact} render={(props) => (
+const Protected = ({ component: Component, path, loggedIn, exact }) => {
+  return <Route path={path} exact={exact} render={(props) => (
      loggedIn ? (
       <Component {...props} />
     ) : (
       <Redirect to="/login" />
     )
   )}/>
-);
+};
 
 const RootPath = ({ exact, path, loggedIn, team }) => {
   return <Route path={path} exact={exact} render={(props) => {
@@ -56,4 +56,5 @@ export const AuthRoute = withRouter(connect(mapStateToProps)(Auth));
 // connect Protected to the redux state
 export const ProtectedRoute = withRouter(connect(mapStateToProps)(Protected));
 
+// connect Root to the redux state
 export const RootPathRoute = withRouter(connect(mapStateToProps)(RootPath));

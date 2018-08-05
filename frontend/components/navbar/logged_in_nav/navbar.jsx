@@ -7,9 +7,6 @@ class Navbar extends React.Component {
 
   constructor(props) {
     super(props);
-    const randomTeam = this.props.teams[Object.keys(this.props.teams)[0]];
-    this.activeTeam = parseInt(this.props.team) || randomTeam;
-
     this.avatar = this.avatar.bind(this);
     this.profileDropdown = this.profileDropdown.bind(this);
     this.removeTeam = this.removeTeam.bind(this);
@@ -19,14 +16,14 @@ class Navbar extends React.Component {
 // with fetchUser -> 26 queries. without - 21. dont need.
   componentDidMount() {
     // this.props.fetchUser(this.props.currentUser.id);
-    this.props.fetchTeam(this.props.team);
+    this.props.fetchTeam(this.props.teamId);
   }
 
 // need this since the projects need to be updated for each team.
   componentDidUpdate(prevProps) {
-    if (this.props.team !== prevProps.team) {
-      // this.props.fetchUser(this.props.currentUser.id);
-      this.props.fetchTeam(this.props.team);
+    if (this.props.teamId !== prevProps.teamId) {
+      this.props.fetchUser(this.props.currentUser.id);
+      this.props.fetchTeam(this.props.teamId);
     }
   }
 
@@ -48,9 +45,8 @@ class Navbar extends React.Component {
     if (Object.keys(this.props.teams).length === 0){
       firstTeam = {name: ''};
     } else {
-      firstTeam = this.props.teams[this.props.team];
+      firstTeam = this.props.teams[this.props.teamId];
     }
-
     return (
       <section className="avatar" onClick={this.props.openDropdown}>
         <div className="link">{firstTeam.name}</div>
@@ -60,12 +56,12 @@ class Navbar extends React.Component {
   }
 
   removeTeam() {
-    this.props.deleteTeam(this.props.team).then(() => this.props.history.push('/'));
+    this.props.deleteTeam(this.props.teamId).then(this.props.history.push('/'));
   }
 
   profileDropdown() {
-    const randomTeam = this.props.teams[Object.keys(this.props.teams)[0]];
-    const activeTeam = parseInt(this.props.team) || randomTeam;
+    // const randomTeam = this.props.teams[Object.keys(this.props.teams)[0]];
+    const activeTeam = this.props.teamId;
 
     const allTeams = Object.values(this.props.teams).map((team) => {
       let active
@@ -80,7 +76,7 @@ class Navbar extends React.Component {
       </Link>
     })
 
-    const teamInfo = this.props.teams[this.props.team]
+    const teamInfo = this.props.teams[this.props.teamId]
     const visible = this.props.dropdown ? '' : 'hidden';
     return (
       <div id="user-profile-info" className={`${visible}`} >
