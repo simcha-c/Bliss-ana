@@ -12,7 +12,7 @@ export const receiveTeam = ({ members, team, projects }) => {
   };
 };
 
-export const removeTeam = ({ id }) => {
+export const removeTeam = (id) => {
   return {
     type: REMOVE_TEAM,
     id,
@@ -42,7 +42,7 @@ export const updateTeam = (team) => dispatch => {
 
 export const deleteTeam = (id) => dispatch => {
   return TeamAPIUtil.deleteTeam(id).then(
-    id => dispatch(removeTeam(id)),
+    () => dispatch(removeTeam(id)),
     errors => dispatch(receiveErrors(errors.responseJSON))
   );
 };
