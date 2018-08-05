@@ -20,10 +20,11 @@
   overflow: hidden;
 }
 
+// make justify-content space-between once add links to My Tasks etc.
 .right-nav {
   width: 100%;
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-end;
   align-items: center;
 }
 

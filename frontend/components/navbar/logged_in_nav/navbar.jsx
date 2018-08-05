@@ -108,13 +108,13 @@ class Navbar extends React.Component {
   }
 
   links() {
-    return (
-      <section className="links">
-        <a className="link" href="" >My Tasks</a>
-        <a className="link" href="" >Inbox</a>
-        <a className="link" href="" >Dashboard</a>
-      </section>
-    )
+    // return (
+    //   <section className="links">
+    //     <a className="link" href="" >My Tasks</a>
+    //     <a className="link" href="" >Inbox</a>
+    //     <a className="link" href="" >Dashboard</a>
+    //   </section>
+    // )
   }
 
   logoutButton() {
