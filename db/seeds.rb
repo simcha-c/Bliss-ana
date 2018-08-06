@@ -98,8 +98,8 @@ col32 = Column.create!(title: 'Col 32', project_id: daily.id)
 
 
 # Tasks
-task1 = Task.create(name: 'task1', description: 'this is the description to the task',
-  column_id: col1.id, creator_id: demo_user.id, assignee_id: demo_user.id)
+# task1 = Task.create(name: 'task1', description: 'this is the description to the task',
+#   column_id: col1.id, creator_id: demo_user.id, assignee_id: demo_user.id)
 
 
 
