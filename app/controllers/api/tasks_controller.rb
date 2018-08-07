@@ -49,6 +49,7 @@ class Api::TasksController < ApplicationController
 
   def destroy
     @task = Task.find(params[:id])
+    debugger
     @task.destroy
     @column = Column.find(@task.column_id)
 

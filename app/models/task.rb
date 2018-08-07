@@ -36,4 +36,20 @@ class Task < ApplicationRecord
     class_name: :User,
     optional: :true
 
+  has_one :next,
+    foreign_key: :next_id,
+    class_name: :Task
+
+  has_one :prev,
+    foreign_key: :prev_id,
+    class_name: :Task
+
+  has_one :head,
+    through: :column,
+    source: :head
+
+  has_one :tail,
+    through: :column,
+    source: :head
+
 end
