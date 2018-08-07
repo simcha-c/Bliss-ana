@@ -25,6 +25,10 @@ const tasksReducer = (state = {}, action) => {
     newState[task.id] = task;
     return newState;
 
+  case REMOVE_TASK:
+    delete newState[action.task.id];
+    return newState;
+
   case LOGOUT_CURRENT_USER:
     return {};
 

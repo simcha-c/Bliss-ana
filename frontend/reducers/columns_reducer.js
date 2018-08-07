@@ -23,6 +23,10 @@ const columnsReducer = (state = {}, action) => {
     });
     return merge(newState, action.columns);
 
+  case REMOVE_TASK:
+    newState[Object.keys(action.column)[0]] = Object.values(action.column)[0];
+    return newState;
+
   case REMOVE_COLUMN:
     delete newState[action.column.id];
     return newState;

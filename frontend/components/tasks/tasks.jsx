@@ -8,9 +8,7 @@ class Task extends React.Component {
 
   constructor(props) {
     super(props);
-
-    // this.props.task = this.props.task;
-    this.state = ({ cal: false });
+    this.state = ({ cal: false, delete: 'hidden' });
 
     this.date = this.date.bind(this);
     this.assignee = this.assignee.bind(this);
@@ -47,11 +45,14 @@ class Task extends React.Component {
   }
 
   showCalInput() {
-    if (this.state.cal) {
-
-      this.setState({cal: false});
+    if (this.state.delete === '') {
+      this.setState({delete: 'hidden'})
     } else {
-      this.setState({cal: true});
+      if (this.state.cal) {
+        this.setState({cal: false});
+      } else {
+        this.setState({cal: true});
+      }
     }
   }
 
@@ -104,21 +105,28 @@ class Task extends React.Component {
     }
   }
 
-  deleteColumn(e) {
+  deleteTask(e) {
     e.stopPropagation();
-    this.props.deleteColumn(parseInt(this.state.id));
-    this.setState({ id: 0 });
+    debugger
+    this.props.deleteTask(this.props.task.id);
   }
 
-  editRemoveColPopup(){
+  RemoveTaskPopup(e){
     return (
-      <div className="edit-remove-col">
-        <button className="remove-project" onClick={(e) => this.deleteColumn(e)}>Delete Column</button>
+      <div className="edit-remove-task">
+        <button className="remove-project" onClick={(e) => this.deleteTask(e)}>Delete Task</button>
       </div>
     )
   }
 
-
+  togglePopup(e) {
+    e.stopPropagation();
+    if (this.state.delete === '') {
+      this.setState({delete: 'hidden'})
+    } else {
+      this.setState({delete: ''})
+    }
+  }
 
   render() {
     const completed = (this.props.task.completer_id) ? '' : 'hidden';
@@ -129,7 +137,8 @@ class Task extends React.Component {
             <div className={`completed-icon ${completed}`}><i className="fas fa-check-circle"></i></div>
             <p className="task-name">{this.props.task.name}</p>
           </div>
-          <div className="down-arrow edit-title"><i></i></div>
+          <div className={this.state.delete}>{this.RemoveTaskPopup()}</div>
+          <div onClick={(e) => this.togglePopup(e)} className="down-arrow edit-title"><i></i></div>
         </section>
         <section className="task-info">
           {this.assignee()}
