@@ -172,5 +172,15 @@
   border: solid 1px lightgrey;
   border-radius: 3px;
   text-align: center;
-  padding-right: 5px;
+  padding: 2px 0;
+  padding-right: 25px;
+  padding-left: 20px;
+  margin-top: -5px;
+  margin-right: -50px;
+  background: white;
+  box-shadow: 0 10px 15px 0 rgba(0, 0, 0, 0.06)
+}
+
+.edit-remove-task:hover {
+  background: rgba(20, 170, 245, 1);
 }

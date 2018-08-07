@@ -122,14 +122,15 @@ class Task extends React.Component {
   togglePopup(e) {
     e.stopPropagation();
     if (this.state.delete === '') {
-      this.setState({delete: 'hidden'})
+      this.setState({delete: 'hidden', cal: false})
     } else {
-      this.setState({delete: ''})
+      this.setState({delete: '', cal: false})
     }
   }
 
   render() {
     const completed = (this.props.task.completer_id) ? '' : 'hidden';
+    const arrowState = (this.state.delete === '') ? 'hidden' : '';
     return (
       <div key={this.props.task.id} className="task-card" onClick={() => this.showCalInput()}>
         <section className="title-info">
@@ -138,7 +139,7 @@ class Task extends React.Component {
             <p className="task-name">{this.props.task.name}</p>
           </div>
           <div className={this.state.delete}>{this.RemoveTaskPopup()}</div>
-          <div onClick={(e) => this.togglePopup(e)} className="down-arrow edit-title"><i></i></div>
+          <div onClick={(e) => this.togglePopup(e)} className={`down-arrow edit-title`}><i></i></div>
         </section>
         <section className="task-info">
           {this.assignee()}
