@@ -18,7 +18,7 @@ class Task extends React.Component {
   }
 
   componentDidMount(){
-    this.props.props.fetchProject(this.props.props.projectId);
+    // this.props.props.fetchProject(this.props.props.projectId);
   }
 
   parseDate(date) {

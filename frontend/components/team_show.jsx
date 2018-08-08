@@ -5,6 +5,9 @@ import ProjectInfoContainer from './project_info/project_info_container';
 import ProjectHeaderContainer from './project_info/project_header_container';
 
 const TeamShow = ({ match }) => {
+
+  const projects = (match.params.projectId) ? <ProjectInfoContainer /> : <div className="project-page" />;
+
   return (
       <div className="team-show">
         <SidebarContainer />
@@ -13,8 +16,7 @@ const TeamShow = ({ match }) => {
             <NavbarContainer team={match.params.teamId} />
             <ProjectHeaderContainer />
           </div>
-          <div className="project-page">
-          </div>
+            {projects}
         </div>
       </div>
   )

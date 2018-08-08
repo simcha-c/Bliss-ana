@@ -17,20 +17,22 @@ class Sidebar extends React.Component {
     this.toggleOptionsPopout = this.toggleOptionsPopout.bind(this);
   }
 
-// with the fetchUser - 21 queries. Without - 16. Dont need.
-  componentDidMount() {
+// with the fetchUser - 21 queries. Without - 16.
+  // componentDidMount() {
     // this.props.fetchUser(this.props.currentUser.id)
     // .then
-    (this.props.fetchTeam(this.props.team.id));
-  }
+    // (this.props.fetchTeam(this.props.team.id));
+  // }
 
 // with this - 21 queries. without 15. However, do need it.
 // otherwise, dont get the column info when click on project.
-  componentWillUpdate(nextProps) {
-    if (this.props.project.id !== nextProps.project.id) {
-      this.props.fetchProject(nextProps.project.id);
-    }
-  }
+  // componentWillUpdate(nextProps) {
+  //
+  //   if (this.props.project.id !== nextProps.project.id) {
+  //
+  //     this.props.fetchProject(nextProps.project.id);
+  //   }
+  // }
 
   sidebarHeader(){
     return (

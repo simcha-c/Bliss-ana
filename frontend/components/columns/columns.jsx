@@ -21,19 +21,20 @@ class Columns extends React.Component {
     this.tasks = this.tasks.bind(this);
     this.toggleAddTask = this.toggleAddTask.bind(this);
     this.addTask = this.addTask.bind(this);
+    debugger
   }
 
   componentDidMount() {
     // if (this.props.project.id) {
-      // this.props.fetchProject(this.props.projectId);
+      this.props.fetchProject(this.props.projectId);
     // }
   }
 
-  // componentWillUpdate(nextProps) {
-  //   if (this.props.columns[0].id !== nextProps.columns[0].id) {
-  // this.props.fetchProject(this.props.projectId);
-  //   }
-  // }
+  componentDidUpdate(prevProps) {
+    if (this.props.project.id !== prevProps.project.id) {
+      this.props.fetchProject(this.props.projectId);
+    }
+  }
 
   deleteColumn(e) {
     e.stopPropagation();
@@ -71,7 +72,7 @@ class Columns extends React.Component {
     if (this.state.addTask > 0) {
       this.setState({ addTaskId: 0, addTask: false })
     } else {
-      this.setState({ addTaskId: column_id, addTask: true })
+      this.setState({ addTaskId: column_id, addTask: true, addCol: false })
     }
   }
 
@@ -84,7 +85,7 @@ class Columns extends React.Component {
       task_obj = { name: this.state.name, column_id: column.id, next_id: column.task_ids[0] }
     }
     this.props.createTask(task_obj)
-    .then(this.clearState());
+    .then(this.clearSomeState());
   }
 
 
@@ -106,7 +107,7 @@ class Columns extends React.Component {
           </span>
           <section className={taskIncluded}>
             <form onClick={(e) => { e.stopPropagation() }} id={column.id} className={adding} onSubmit={(e) => this.addTask(e, column)}>
-              <input onChange={(e) => this.updateTaskName(e)} className="add-task-text" type="text" placeholder="New Task Name" value={this.state.name} autoFocus />
+              <input className="add-task-text" type="text" onChange={(e) => this.updateTaskName(e)} value={this.state.name} placeholder="New Task Name" autoFocus></input>
             </form>
             {this.tasks(column.task_ids)}
           </section>
@@ -130,9 +131,16 @@ class Columns extends React.Component {
     .then(this.clearState());
   }
 
+  handleKeyPress(e) {
+    e.preventDefault
+    if (e.key === "Escape") {
+      this.clearState();
+    }
+  }
+
   showAddColumn(e) {
     e.stopPropagation();
-    this.setState({ id: 0, addCol: true })
+    this.setState({ id: 0, addCol: true, addTaskId: 0, addTask: false })
   }
 
   addColumn(){
@@ -141,7 +149,7 @@ class Columns extends React.Component {
         <div className="col-wrapper">
           <span className="cols-top">
             <form onClick={(e) => {e.stopPropagation();}} onSubmit={(e) => this.handleSubmit(e)}>
-              <input className="new-column-input" onChange={(e) => this.updateTitle(e)} value={this.state.title} placeholder="New Column" autoFocus></input>
+              <input className="new-column-input" type="text" onChange={(e) => this.updateTitle(e)} value={this.state.title} placeholder="New Column" autoFocus></input>
             </form>
           </span>
         </div>
@@ -162,9 +170,13 @@ class Columns extends React.Component {
     this.setState({ id: 0, addCol: false, title: "", addTaskId: 0, addTask: false, name: "" });
   }
 
+  clearSomeState() {
+    this.setState({ id: 0, addCol: false, title: "", name: "" });
+  }
+
   render() {
     return (
-      <div onClick={(e) => this.clearState()} className="project-page">
+      <div onClick={(e) => this.clearState()} onKeyDown={(e) => this.handleKeyPress(e)} className="project-page">
         <div className="columns">
           {this.columns()}
           {this.addColumn()}

@@ -7,7 +7,6 @@ import SignUpFormContainer from './session_form/sign_up_form_container';
 import LogInFormContainer from './session_form/login_form_container';
 import LoginPage from './home/home';
 import TeamShow from './team_show';
-import ColumnTaskShow from './columns_tasks_show';
 import { closeDropdown } from '../actions/dropdown_actions';
 import Modal from './modal/modal';
 
@@ -19,8 +18,8 @@ const App = (props) => {
       <Switch>
         <AuthRoute exact path='/login' component={LoginPage} />
         <RootPathRoute exact path="/" />
-        <ProtectedRoute path='/teams/:teamId/projects/:projectId' component={ColumnTaskShow} />
-        <ProtectedRoute exect path='/teams/:teamId' component={TeamShow} />
+        <ProtectedRoute path='/teams/:teamId/projects/:projectId' component={TeamShow} />
+        <ProtectedRoute path='/teams/:teamId' component={TeamShow} />
       </Switch>
       <Modal />
     </div>
