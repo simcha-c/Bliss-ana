@@ -1,6 +1,8 @@
 json.column do
+  ord = column_ord(@column)
   json.set! @column.id do
-    json.extract! @column, :id, :title, :project_id, :task_ids
+    json.extract! @column, :id, :title, :project_id
+    json.task_ids ord
   end
 end
 

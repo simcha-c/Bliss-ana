@@ -8,9 +8,10 @@ json.columns do
     end
   end
 end
-
+column_ids = @project.column_ids.sort
 json.project do
-  json.extract! @project, :id, :name, :team_id, :column_ids
+  json.extract! @project, :id, :name, :team_id
+  json.column_ids column_ids
 end
 
 json.tasks do

@@ -18,7 +18,6 @@ const projectsReducer = (state = {}, action) => {
     return newState;
 
   case RECEIVE_NEW_PROJECT:
-  action.project.column_ids.sort();
   project = {[action.project.id]: action.project};
   return merge(newState, project);
 
@@ -27,12 +26,10 @@ const projectsReducer = (state = {}, action) => {
     return merge(newState, project);
 
   case RECEIVE_NEW_COLUMN:
-    action.project.column_ids.sort();
     newState[action.project.id] = action.project;
     return merge(newState);
 
   case REMOVE_COLUMN:
-    action.project.column_ids.sort();
     newState[action.project.id] = action.project;
     return newState;
 
