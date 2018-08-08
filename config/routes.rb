@@ -10,7 +10,11 @@ Rails.application.routes.draw do
     resources :team_memberships, only: [:create, :destroy, :update]
     resources :projects, only: [:create, :update, :destroy, :show]
     resources :columns, only: [:create, :update, :destroy]
-    resources :tasks, only: [:create, :update, :destroy, :show]
+    resources :tasks, only: [:create, :update, :destroy, :show] do
+      member do
+        patch 'update_order'
+      end
+    end
   end
 
 end
