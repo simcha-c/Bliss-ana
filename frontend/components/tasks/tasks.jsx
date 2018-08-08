@@ -8,7 +8,7 @@ class Task extends React.Component {
 
   constructor(props) {
     super(props);
-    this.state = ({ cal: false, delete: 'hidden' });
+    this.state = ({ cal: false, delete: 'hidden', dragging: 0 });
 
     this.date = this.date.bind(this);
     this.assignee = this.assignee.bind(this);
@@ -44,16 +44,16 @@ class Task extends React.Component {
     }
   }
 
-  showCalInput() {
+  showCalInput(e) {
+    e.stopPropagation();
     if (this.state.delete === '') {
-      this.setState({delete: 'hidden'})
-    } else {
-      if (this.state.cal) {
-        this.setState({cal: false});
-      } else {
-        this.setState({cal: true});
-      }
+      this.setState({ delete: 'hidden' })
     }
+    this.setState({ cal: true });
+  }
+
+  clearState() {
+    this.setState({ delete: 'hidden', cal: false, dragging: 0 })
   }
 
   handleDateInput(e) {
@@ -69,7 +69,7 @@ class Task extends React.Component {
     if (this.props.task.due_date) {
       return (
         <div>
-          <div onClick={() => this.showCalInput()} className={`task-due-date ${icon}`}>{this.parseDate(this.props.task.due_date)}</div>
+          <div onClick={(e) => this.showCalInput(e)} className={`task-due-date ${icon}`}>{this.parseDate(this.props.task.due_date)}</div>
           <form onClick={(e) => {e.stopPropagation()}} className={`${cal} cal-form`} onChange={(e) => this.handleDateInput(e)}>
             <input className="cal-input" type="date" />
           </form>
@@ -77,8 +77,8 @@ class Task extends React.Component {
       )
     } else {
       return (
-        <div className="calendar">
-          <div onClick={() => this.showCalInput()} className={`icon-stroke ${icon}`}>
+        <div className="calendar" onClick={(e) => this.showCalInput(e)} >
+          <div onClick={(e) => this.showCalInput(e)} className={`icon-stroke ${icon}`}>
             <p className="task-icon"><i className="far fa-calendar"></i></p>
           </div>
           <form onClick={(e) => {e.stopPropagation()}} className={`${cal} cal-form`} onChange={(e) => this.handleDateInput(e)}>
@@ -127,11 +127,30 @@ class Task extends React.Component {
     }
   }
 
+  // startDrag(e, taskId) {
+  //   this.setState({dragging: taskId })
+  //   // e.preventDefault();
+  //   e.dataTransfer.dropEffect = "move";
+  //   e.dataTransfer.setData('text/plain',null)
+  //   console.log(`x:${e.screenX}, y: ${e.screenY}`);
+  // }
+  //
+  // dragOver(e, taskId) {
+  //   e.preventDefault();
+  //   if (parseInt(e.target.id) !== this.state.dragging && this.state.dragging !== 0) {
+  //     debugger
+  //   }
+  // }
+  // onDragStart={(e) => {this.startDrag(e, this.props.task.id)}}
+  // onDrag={(e) => this.dragOver(e, this.props.task.id)}
+  // onDragOver={(e) => {this.dragOver(e, this.props.task.id)}}
+
   render() {
     const completed = (this.props.task.completer_id) ? '' : 'hidden';
     const arrowState = (this.state.delete === '') ? 'hidden' : '';
     return (
-      <div key={this.props.task.id} className="task-card" onClick={() => this.showCalInput()}>
+      <div id={this.props.task.id} className="task-card"
+          onClick={() => this.clearState()}>
         <section className="title-info">
           <div className="complete-and-name">
             <div className={`completed-icon ${completed}`}><i className="fas fa-check-circle"></i></div>
