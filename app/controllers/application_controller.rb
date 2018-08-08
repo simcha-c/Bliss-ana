@@ -25,24 +25,30 @@ class ApplicationController < ActionController::Base
   end
 
   def column_ord(column) #technically input can be a task or a column.
-    if column.head == nil
-      ord = []
-    else
-      task = column.head
-      ord = [task.id]
-      task_hash = {}
-      task_hash[task.id] = task
-      tail_id = column.tail.id
+    all_tasks = column.tasks
 
-      until ord[-1] == tail_id
-        last = task_hash[ord[-1]]
-        next_task = column.tasks.find(last.next_id)
-        if next_task != nil
-          task_hash[next_task.id] = next_task
-          ord << last.next_id
-        end
+    task_hash = {}
+    head = nil
+    tail = nil
+    all_tasks.length.times do |idx|
+      current_task = all_tasks[idx]
+      task_hash[current_task.id] = current_task
+      head = current_task if current_task.prev_id == nil
+      tail = current_task if current_task.next_id == nil
+    end
+    return [] if head == nil
+
+    ord = [head.id]
+
+    until ord[-1] == tail.id
+      last = task_hash[ord[-1]]
+      next_task = task_hash[last.next_id]
+      if next_task != nil
+        task_hash[next_task.id] = next_task
+        ord << next_task.id
       end
     end
+
     ord
   end
 

@@ -25,7 +25,7 @@ class Columns extends React.Component {
 
   componentDidMount() {
     // if (this.props.project.id) {
-      this.props.fetchProject(this.props.projectId);
+      // this.props.fetchProject(this.props.projectId);
     // }
   }
 
@@ -90,7 +90,6 @@ class Columns extends React.Component {
 
   columns() {
     const cols = this.props.columns.map(column => {
-
       if (!column.id || !column.task_ids) { return };
       const taskIncluded = (column.task_ids.length === 0) ? 'cols-tasks-no-tasks' : 'cols-task';
       const active = (column.id === this.state.id && column.id !== 0) ? 'active' : 'hidden';

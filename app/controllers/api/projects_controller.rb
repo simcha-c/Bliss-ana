@@ -8,7 +8,7 @@ class Api::ProjectsController < ApplicationController
 
   def create
     @project = Project.new(project_params)
-    @columns = @project.columns.includes(:tasks)
+    @columns = @project.columns
 
     if @project.save
       render :show
