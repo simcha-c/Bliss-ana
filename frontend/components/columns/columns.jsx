@@ -21,7 +21,6 @@ class Columns extends React.Component {
     this.tasks = this.tasks.bind(this);
     this.toggleAddTask = this.toggleAddTask.bind(this);
     this.addTask = this.addTask.bind(this);
-    debugger
   }
 
   componentDidMount() {

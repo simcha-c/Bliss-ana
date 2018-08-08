@@ -16,14 +16,12 @@ class Navbar extends React.Component {
 // with fetchUser -> 26 queries. without - 21. dont need.
   componentDidMount() {
     // this.props.fetchUser(this.props.currentUser.id);
-    debugger
     this.props.fetchTeam(this.props.teamId);
   }
 
 // need this since the projects need to be updated for each team.
   componentDidUpdate(prevProps) {
     if (this.props.teamId !== prevProps.teamId) {
-      debugger
       // this.props.fetchUser(this.props.currentUser.id);
       this.props.fetchTeam(this.props.teamId);
     }
