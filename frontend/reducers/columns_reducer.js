@@ -18,9 +18,6 @@ const columnsReducer = (state = {}, action) => {
 
   case RECEIVE_NEW_COLUMN:
   case RECEIVE_NEW_TASK:
-    Object.values(action.columns).forEach(column => {
-      column.task_ids.sort((a, b) => {return b-a;});
-    });
     return merge(newState, action.columns);
 
   case REMOVE_TASK:

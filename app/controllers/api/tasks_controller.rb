@@ -1,5 +1,8 @@
 class Api::TasksController < ApplicationController
 
+  # after_commit :render_show, on: [:create, :update_order]
+  # after_rollback :render_errors, on: [:create, :update_order]
+
   def create
     task = Task.new(task_params)
     column = Column.find(task_params[:column_id])
@@ -25,35 +28,47 @@ class Api::TasksController < ApplicationController
     end
   end
 
-  # def update_order
-  #   @task = Task.find(params[:id])
-  #   @column = Column.find(@task.column_id)
-  #   @all_tasks = @column.tasks
-  #   column_ends
-  #
-  #   if task_params.prev_id == nil
-  #     first = @head
-  #     @head = @task
-  #     @task.next_id = first.id
-  #     first.prev_id = @task.id
-  #   end
-  #
-  #   column_ord
-  #   if @task.update(task_params)
-  #     first.save
-  #     render :show
-  #   else
-  #     render json: @task.errors.full_messages, status: 401
-  #   end
-  # end
+  def update_order
+    @task = Task.find(params[:id])
+    @prev_task = @task.prev
+    @next_task = @task.next
+    @future_prev = Tasks.find(task_params[:prev_id])
+    @next_prev = Tasks.find(task_params[:next_id])
+
+    update_related_tasks
+
+    begin
+      Task.transaction do
+        @task.save!
+        @prev_task.save!
+        @next_task.save!
+        @future_prev.save!
+        @next_prev.save!
+      end
+      render :show
+    rescue ActiveRecord::RecordInvalid
+      render json: @task.errors.full_messages, status: 401
+    end
+  end
 
   def destroy
     @task = Task.find(params[:id])
-    debugger
-    @task.destroy
-    @column = Column.find(@task.column_id)
+    @prev_task = @task.prev
+    @next_task = @task.next
 
-    render :show
+    @prev_task.next_id = @next_task.id
+    @next_task.prev_id = @prev_task.id
+    begin
+      Task.transaction do
+        @task.destroy
+        @prev_task.save!
+        @next_task.save!
+      end
+      @column = Column.find(@task.column_id)
+      render :show
+    rescue ActiveRecord::RecordInvalid
+      render json: @task.errors.full_messages, status: 401
+    end
   end
 
   def show
@@ -65,22 +80,17 @@ class Api::TasksController < ApplicationController
   private
 
   def task_params
-    params.require(:task).permit(:name, :creator_id, :column_id, :description, :due_date, :completed_date)
+    params.require(:task)
+    .permit(:name, :creator_id, :column_id, :description, :due_date, :completed_date, :prev_id, :next_id)
   end
 
-  # def column_ends
-  #   @head = @all_tasks.where(prev_id: nil)[0]
-  #   @tail = @all_tasks.where(next_id: nil)[0]
-  # end
-  #
-  # def column_ord
-  #   @ord = [@head.id]
-  #   until @all_tasks.where(id: @ord[-1])[0].next_id == nil
-  #     last = @all_tasks.where(id: @ord[-1])[0]
-  #     @ord << last.next_id
-  #   end
-  #   @ord
-  #
-  # end
+  def update_related_tasks
+    @prev_task.next_id = @next_task.id
+    @next_task.prev_id = @prev_task.id
+    @future_prev.next_id = @task.id
+    @next_prev.prev_id = @task.id
+    @task.next_id = task_params[:next_id]
+    @task.next_id = task_params[:prev_id]
+  end
 
 end
