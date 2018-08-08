@@ -13,6 +13,8 @@
 #  completer_id   :integer
 #  created_at     :datetime         not null
 #  updated_at     :datetime         not null
+#  next_id        :integer
+#  prev_id        :integer
 #
 
 class Task < ApplicationRecord
@@ -37,11 +39,13 @@ class Task < ApplicationRecord
     optional: :true
 
   has_one :next,
-    foreign_key: :next_id,
+    foreign_key: :id,
+    primary_key: :prev_id,
     class_name: :Task
 
   has_one :prev,
-    foreign_key: :prev_id,
+    foreign_key: :id,
+    primary_key: :prev_id,
     class_name: :Task
 
   has_one :head,

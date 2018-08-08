@@ -107,7 +107,6 @@ class Task extends React.Component {
 
   deleteTask(e) {
     e.stopPropagation();
-    debugger
     this.props.deleteTask(this.props.task.id);
   }
 

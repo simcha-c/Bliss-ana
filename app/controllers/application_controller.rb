@@ -29,14 +29,14 @@ class ApplicationController < ActionController::Base
       ord = []
     else
       task = column.head
-      ord = [task.head.id]
+      ord = [task.id]
       task_hash = {}
-      task_hash[task.head.id] = task.head
-      tail_id = task.tail.id
+      task_hash[task.id] = task
+      tail_id = column.tail.id
 
       until ord[-1] == tail_id
         last = task_hash[ord[-1]]
-        next_task = last.next
+        next_task = column.tasks.find(last.next_id)
         if next_task != nil
           task_hash[next_task.id] = next_task
           ord << last.next_id

@@ -75,9 +75,15 @@ class Columns extends React.Component {
     }
   }
 
-  addTask(e, column_id) {
+  addTask(e, column) {
     e.preventDefault();
-    this.props.createTask({ name: this.state.name, column_id: column_id })
+    let task_obj;
+    if (column.task_ids.length === 0) {
+      task_obj = { name: this.state.name, column_id: column.id }
+    } else {
+      task_obj = { name: this.state.name, column_id: column.id, next_id: column.task_ids[0] }
+    }
+    this.props.createTask(task_obj)
     .then(this.clearState());
   }
 
@@ -100,7 +106,7 @@ class Columns extends React.Component {
             <div onClick={(e) => this.toggleAddTask(e, column.id)} className="add-task">+</div>
           </span>
           <section className={taskIncluded}>
-            <form onClick={(e) => { e.stopPropagation() }} id={column.id} className={adding} onSubmit={(e) => this.addTask(e, column.id)}>
+            <form onClick={(e) => { e.stopPropagation() }} id={column.id} className={adding} onSubmit={(e) => this.addTask(e, column)}>
               <input onChange={(e) => this.updateTaskName(e)} className="add-task-text" type="text" placeholder="New Task Name" value={this.state.name} autoFocus />
             </form>
             {this.tasks(column.task_ids)}
