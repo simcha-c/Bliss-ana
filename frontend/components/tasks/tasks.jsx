@@ -16,6 +16,7 @@ class Task extends React.Component {
     this.handleDateInput = this.handleDateInput.bind(this);
     this.showCalInput = this.showCalInput.bind(this);
     this.clearState = this.clearState.bind(this);
+    this.openModal = this.openModal.bind(this);
   }
 
   componentDidMount(){
@@ -128,6 +129,12 @@ class Task extends React.Component {
     }
   }
 
+  openModal(){
+    event.preventDefault();
+    this.setState({ delete: 'hidden', cal: false, dragging: 0 },
+    () => this.props.openModal('Task', this.props.task))
+  }
+
   // startDrag(e, taskId) {
   //   this.setState({dragging: taskId })
   //   // e.preventDefault();
@@ -152,7 +159,7 @@ class Task extends React.Component {
     const arrowState = (this.state.delete === '') ? 'hidden' : '';
     return (
       <div id={this.props.task.id} className="task-card"
-          onClick={() => this.props.openModal('Task', this.props.task)}>
+          onClick={this.openModal}>
         <section className="title-info">
           <div className="complete-and-name">
             <div className={`completed-icon ${completed}`}><i className="fas fa-check-circle"></i></div>
