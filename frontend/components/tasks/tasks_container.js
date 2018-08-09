@@ -28,6 +28,7 @@ const mapDispatch = (dispatch) => {
     updateTask: (task) => dispatch(updateTask(task)),
     fetchProject: (task) => dispatch(fetchProject(task)),
     deleteTask: (id) => dispatch(deleteTask(id)),
+    openModal: (formType, state) => dispatch(openModal(formType, state)),
   };
 };
 

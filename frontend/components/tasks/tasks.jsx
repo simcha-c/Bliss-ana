@@ -15,6 +15,7 @@ class Task extends React.Component {
     this.parseDate = this.parseDate.bind(this);
     this.handleDateInput = this.handleDateInput.bind(this);
     this.showCalInput = this.showCalInput.bind(this);
+    this.clearState = this.clearState.bind(this);
   }
 
   componentDidMount(){
@@ -150,7 +151,7 @@ class Task extends React.Component {
     const arrowState = (this.state.delete === '') ? 'hidden' : '';
     return (
       <div id={this.props.task.id} className="task-card"
-          onClick={() => this.clearState()}>
+          onClick={() => this.props.openModal('Task', this.props.task)}>
         <section className="title-info">
           <div className="complete-and-name">
             <div className={`completed-icon ${completed}`}><i className="fas fa-check-circle"></i></div>

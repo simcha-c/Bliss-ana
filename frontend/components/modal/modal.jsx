@@ -6,6 +6,7 @@ import SignupFormContainer from '../session_form/sign_up_form_container';
 import CreateTeamFormContainer from '../workspace_form/create_team_form_container';
 import EditTeamFormContainer from '../workspace_form/edit_team_form_container';
 import AddProjectFormContainer from '../add_project_form/add_project_form_container';
+import EditShowTaskContainer from '../tasks/edit_show_task_container';
 
 function Modal({modal, closeModal}) {
   if (!modal) {
@@ -27,6 +28,9 @@ function Modal({modal, closeModal}) {
       break;
     case 'Add Project':
       component = <AddProjectFormContainer />;
+      break;
+    case 'Task':
+      component = <EditShowTaskContainer />;
       break;
     default:
       return null;
