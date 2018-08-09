@@ -5,14 +5,17 @@ import { merge } from 'lodash';
 class EditShowTask extends React.Component {
   constructor(props) {
     super(props);
-
     let taskForm = { name: "",  assignee_id: "", completed_date: "",
-      completer_id: "", description: "", due_date: "", updated_at: "" };
+      completer_id: "", description: "", due_date: "", updated_at: "", cal: false };
     this.state = merge(taskForm, props.task);
+    this.changingDate = false;
+    // if (this.state.completed_date === nil) { this.state.completed_date = ""; }
     this.handleSubmit = this.handleSubmit.bind(this);
     this.parseDate = this.parseDate.bind(this);
     this.toggleComplete = this.toggleComplete.bind(this);
   }
+
+
 
   update(field) {
     return e => this.setState({
@@ -55,25 +58,43 @@ class EditShowTask extends React.Component {
     } else {
       const dateNow = new Date();
       this.setState({
-        completer_id:  this.props.currentUser, completed_date: dateNow
+        completer_id: this.props.currentUser, completed_date: dateNow
       }, (e) => this.handleSubmit(e));
     }
   }
 
+  toggleCal(e) {
+    e.stopPropagation();
+    this.setState({ cal: true });
+  }
+
+// date form
   // <form onSubmit={this.handleSubmit}>
-  //   <label>
-  //     <input type="date" value={this.state.date} placeholder=""
-  //       onChange={this.update('date')} className="task-input" />
-  //   </label>
+  //   <input type="date" value={this.state.date} placeholder=""
+  //     onChange={this.update('date')} className="task-input" />
   // </form>
 
+// date icon
+  // <div className="date-task">
+  //   <div onClick={(e) => this.showCalInput(e)} className={`icon-stroke-task ${icon}`}>
+  //     <p className="task-show-icon"><i className="far fa-calendar"></i></p>
+  //   </div>
+  //   <p className="task-date-text">Due Date</p>
+  // </div>
+
     render() {
-      const icon = (!this.state.due_date) ? 'icon' : 'icon-hidden';
+      const icon = (!this.state.due_date) ? 'icon' : 'hidden';
       const creator = this.props.users[this.state.creator_id];
-      const creator_name = `${creator.first} ${creator.last}`;
-      const created_at = this.parseDate(this.state.created_at);
+      const creatorName = `${creator.first} ${creator.last}`;
+      const createdAt = this.parseDate(this.state.created_at);
       const completeClass = this.state.completed_date ? 'completed' : 'mark-complete';
       const completeText = this.state.completed_date ? 'Completed' : 'Mark Complete';
+      const completer = this.props.users[this.state.completer_id] || {first: '', last: ''};
+      const completerName = `${completer.first} ${completer.last}`;
+      const completedAt = this.parseDate(this.state.completed_date);
+      const complete = this.state.completer_id ? '' : 'hidden';
+      // const showIcon = this.state.due_date || this.state.cal ? 'hidden' : '';
+      // const showDate = this.state.due_date || !this.state.cal ? '' : 'hidden';
 
       return (
         <div className="form-container-task modal-child">
@@ -91,12 +112,6 @@ class EditShowTask extends React.Component {
                 <input required type="text" value={this.state.name} placeholder=""
                   onChange={this.update('name')} className="task-name-input" />
               </form>
-              <div className="date-task">
-                <div onClick={(e) => this.showCalInput(e)} className={`icon-stroke-task ${icon}`}>
-                  <p className="task-show-icon"><i className="far fa-calendar"></i></p>
-                </div>
-                <p className="task-date-text">Due Date</p>
-              </div>
             </div>
 
             <div className="description-task">
@@ -111,9 +126,19 @@ class EditShowTask extends React.Component {
 
           </div>
 
-          <div className="created-info">
-            <p className="creator-info"><strong>{creator_name}</strong> created task.</p>
-            <p className="created-date">{created_at}</p>
+          <div className="bottom-task-info">
+            <div className="created-info">
+              <p className="creator-info"><strong>{creatorName}</strong> created task.</p>
+              <p className="created-date">{createdAt}</p>
+            </div>
+
+            <div className={`completed-info-with-icon ${complete}`}>
+              <div className="completed-icon-task"><i className="fas fa-check"></i></div>
+              <div className="completed-text">
+                <p className="user-completed">{completerName} completed this task.</p>
+                <p className="completed-date">{completedAt}</p>
+              </div>
+            </div>
           </div>
 
 

@@ -64,7 +64,7 @@ class Api::TasksController < ApplicationController
     if @task.prev_id
       @prev_task = Task.find(@task.prev_id)
     end
-    
+
     if @task.next_id
       @next_task = Task.find(@task.next_id)
     end
@@ -99,7 +99,7 @@ class Api::TasksController < ApplicationController
 
   def task_params
     params.require(:task)
-    .permit(:name, :creator_id, :column_id, :description, :due_date, :completed_date, :prev_id, :next_id)
+    .permit(:name, :creator_id, :column_id, :description, :due_date, :completed_date, :completer_id, :assignee_id, :prev_id, :next_id)
   end
 
   def update_related_tasks
