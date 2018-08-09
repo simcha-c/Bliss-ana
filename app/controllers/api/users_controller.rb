@@ -4,6 +4,8 @@ class Api::UsersController < ApplicationController
     @user = User.new(user_params)
 
     if @user.save
+      team = Team.create(name: 'First Team')
+      TeamMembership.create(user_id: @user.id, team_id: team.id)
       log_in(@user)
       render :show
     else
