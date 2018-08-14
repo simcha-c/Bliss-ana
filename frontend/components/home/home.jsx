@@ -30,7 +30,7 @@ class Homepage extends React.Component {
             Move work forward
           </span>
           <span className="home-copy" >
-            Asana is the easiest way for teams to track their work—and get results.
+            Blissana is the easiest way for teams to track their work—and get results.
           </span>
 
             <form className="home-form" onSubmit={() => dispatch(openModal('Sign Up', this.state))}>
