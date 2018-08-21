@@ -17,11 +17,16 @@ Blissana is a single-page app, inspired by Asana designed to help teams organize
 * Webpack
 
 ### Features:
-
 * User Authentication
 * Team CRUD
 * Project CRUD
 * Column CRUD
 * Task CRUD
 
-  
+### Upcoming Features:
+* Add and remove members in teams
+* Be able to Drag & Drop tasks in a column or to other columns
+* Add comments to tasks
+* Be able to like a task
+* Add attachments to a task as a comment.
+* Add tags to tasks
