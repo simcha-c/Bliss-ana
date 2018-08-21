@@ -1,6 +1,6 @@
 # BLISSANA
 
-Blissana is a single-page app, inspired by Asana designed to help teams organize, track and manage their projects through completion of smaller tasks. 
+Blissana is a single-page app, inspired by Asana designed to help teams organize, track and manage their projects through the completion of smaller tasks. 
 
 [Live](https://bliss-ana.herokuapp.com/)
 
