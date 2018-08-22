@@ -42,7 +42,7 @@ module.exports = {
       }
     ]
   },
-  devtool: 'eval',
+  devtool: 'sourcemap',
   resolve: {
     extensions: [".js", ".jsx", "*"]
   }

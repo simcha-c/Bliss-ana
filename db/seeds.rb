@@ -52,8 +52,6 @@ review = Project.create!(name: 'Review Designed Model', team_id: finance.id)
 raise_funds = Project.create!(name: 'Raise funds', team_id: finance.id)
 approve = Project.create!(name: 'Approve features', team_id: finance.id)
 
-build = Project.create!(name: 'Build Model', team_id: dev.id)
-testing = Project.create!(name: 'Test Model', team_id: dev.id)
 
 training = Project.create!(name: 'Training for Model X', team_id: customer_service.id)
 daily = Project.create!(name: 'Day to Day', team_id: customer_service.id)
