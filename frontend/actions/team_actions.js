@@ -21,19 +21,19 @@ export const removeTeam = (id) => {
 
 export const fetchTeam = (id) => dispatch => {
   return TeamAPIUtil.fetchTeam(id).then(
-    members => dispatch(receiveTeam(members))
+    data => dispatch(receiveTeam(data))
   );
 };
 
 export const createTeam = (team) => dispatch => {
   return TeamAPIUtil.createTeam(team).then(
-    members => dispatch(receiveTeam(members))
+    data => dispatch(receiveTeam(data))
   );
 };
 
 export const updateTeam = (team) => dispatch => {
   return TeamAPIUtil.updateTeam(team).then(
-    members => dispatch(receiveTeam(members))
+    data => dispatch(receiveTeam(data))
   );
 };
 

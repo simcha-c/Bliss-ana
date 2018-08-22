@@ -2,7 +2,7 @@ import { connect } from 'react-redux';
 import { login, logout, signup } from '../../../actions/session_actions';
 import { openModal } from '../../../actions/modal_actions';
 import { fetchUser } from '../../../actions/user_actions';
-import { fetchTeam, deleteTeam } from '../../../actions/team_actions';
+import { fetchTeam, deleteTeam, createTeam } from '../../../actions/team_actions';
 import { openDropdown } from '../../../actions/dropdown_actions';
 import { openSidebar } from '../../../actions/sidebar_actions';
 import { withRouter } from 'react-router-dom';
@@ -38,6 +38,7 @@ const mapDispatchToProps = dispatch => {
     openModal: (modal, team) => dispatch(openModal(modal, team)),
     fetchUser: (id) => dispatch(fetchUser(id)),
     fetchTeam: (id) => dispatch(fetchTeam(id)),
+    createTeam: (team) => dispatch(createTeam(team)),
     openDropdown: () => dispatch(openDropdown()),
     openSidebar: () => dispatch(openSidebar()),
     deleteTeam: (id) => dispatch(deleteTeam(id)),

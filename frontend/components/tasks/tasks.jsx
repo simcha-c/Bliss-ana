@@ -146,7 +146,6 @@ class Task extends React.Component {
   // dragOver(e, taskId) {
   //   e.preventDefault();
   //   if (parseInt(e.target.id) !== this.state.dragging && this.state.dragging !== 0) {
-  //     debugger
   //   }
   // }
   // onDragStart={(e) => {this.startDrag(e, this.props.task.id)}}

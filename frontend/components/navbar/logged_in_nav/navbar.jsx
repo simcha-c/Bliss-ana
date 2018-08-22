@@ -56,7 +56,12 @@ class Navbar extends React.Component {
   }
 
   removeTeam() {
-    this.props.deleteTeam(this.props.teamId).then(this.props.history.push('/'));
+    if (Object.keys(this.props.teams).length === 1) {
+      this.props.createTeam({name: 'New Team'})
+      .then(this.props.deleteTeam(this.props.teamId).then(this.props.history.push('/')))
+    } else {
+      this.props.deleteTeam(this.props.teamId).then(this.props.history.push('/'));
+    }
   }
 
   profileDropdown() {

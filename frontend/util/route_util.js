@@ -44,6 +44,17 @@ const RootPath = ({ exact, path, loggedIn, team }) => {
 // access the Redux state to check if the user is logged in
 const mapStateToProps = state => {
   const randomTeam = state.entities.teams[Object.keys(state.entities.teams)[0]]
+
+  // ##################################
+  // if the user has no team, the user will be redirected to /dashboard. Right now
+  // there is no path to /dashboard, so it's just giving time for the state to update.
+  // Then redirecting to the automatically generated team.
+
+  if (!randomTeam) {
+    return (
+      <Redirect to="/dashboard" />
+    )
+  }
   return {
     loggedIn: Boolean(state.session.id),
     team: randomTeam
