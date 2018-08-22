@@ -16,7 +16,6 @@
     "react-redux": "^5.0.7",
     "react-router-dom": "^4.3.1",
     "redux": "^4.0.0",
-    "redux-logger": "^3.0.6",
     "redux-thunk": "^2.3.0",
     "webpack": "^4.15.1"
   },
@@ -33,7 +32,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "webpack": "webpack --watch --mode=development",
-    "postinstall": "webpack --mode=development"
+    "postinstall": "webpack"
   },
   "repository": {
     "type": "git",
@@ -47,6 +46,7 @@
   },
   "homepage": "https://github.com/simcha-c/Bliss-ana#readme",
   "devDependencies": {
-    "webpack-cli": "^3.0.8"
+    "webpack-cli": "^3.0.8",
+    "redux-logger": "^3.0.6"
   }
 }
