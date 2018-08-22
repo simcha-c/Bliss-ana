@@ -22,14 +22,12 @@ gus = User.create!(email: 'gus@bliss.com', password: 'password', first: 'Gus', l
 
 
 # Teams
-engineers = Team.create!(name: 'Engineering 101')
+dev = Team.create!(name: 'Dev Team')
 design = Team.create!(name: 'Design')
 customer_service = Team.create!(name: 'Customer Service')
 finance = Team.create!(name: 'Finance')
 
 # Team Memberships
-tm1 = TeamMembership.create!(team_id: engineers.id, user_id: tess.id, role: 'Manager', department: 'Beers on me', about_me: 'Using mathematics, scientific, and engineering principles to design, repair, and improve air and spacecraft, component parts, facilities, materials, safety regulations, and manufacturing processes.' )
-tm2 = TeamMembership.create!(team_id: engineers.id, user_id: demo_user.id, role: 'Janitor', about_me: 'Make sure to do your part')
 tm3 = TeamMembership.create!(team_id: design.id, user_id: demo_user.id, role: 'UI Designer', department: 'Forms!')
 tm4 = TeamMembership.create!(team_id: design.id, user_id: me.id, role: 'Intern', department: 'Helping out', about_me: 'If anyone needs anything designed, let me know!')
 tm5 = TeamMembership.create!(team_id: customer_service.id, user_id: demo_user.id, department: '', about_me: 'Focused on helping the team build necessary skills and knowledge so they can better support customers. Striving for a supportive, communicative, and attentive environment.')
@@ -54,9 +52,8 @@ review = Project.create!(name: 'Review Designed Model', team_id: finance.id)
 raise_funds = Project.create!(name: 'Raise funds', team_id: finance.id)
 approve = Project.create!(name: 'Approve features', team_id: finance.id)
 
-sprint_plan = Project.create!(name: 'Sprint Planning', team_id: engineers.id)
-build = Project.create!(name: 'Build Model', team_id: engineers.id)
-testing = Project.create!(name: 'Test Model', team_id: engineers.id)
+build = Project.create!(name: 'Build Model', team_id: dev.id)
+testing = Project.create!(name: 'Test Model', team_id: dev.id)
 
 training = Project.create!(name: 'Training for Model X', team_id: customer_service.id)
 daily = Project.create!(name: 'Day to Day', team_id: customer_service.id)
@@ -83,10 +80,6 @@ col17 = Column.create!(title: 'Col 17', project_id: raise_funds.id)
 col18 = Column.create!(title: 'Col 18', project_id: raise_funds.id)
 col19 = Column.create!(title: 'Col 19', project_id: raise_funds.id)
 col20 = Column.create!(title: 'Col 20', project_id: approve.id)
-col21 = Column.create!(title: 'Col 21', project_id: sprint_plan.id)
-col22 = Column.create!(title: 'Col 22', project_id: sprint_plan.id)
-col23 = Column.create!(title: 'Col 23', project_id: sprint_plan.id)
-col24 = Column.create!(title: 'Col 24', project_id: sprint_plan.id)
 col25 = Column.create!(title: 'Col 25', project_id: build.id)
 col26 = Column.create!(title: 'Col 26', project_id: build.id)
 col27 = Column.create!(title: 'Col 27', project_id: build.id)
@@ -96,10 +89,38 @@ col30 = Column.create!(title: 'Col 30', project_id: testing.id)
 col31 = Column.create!(title: 'Col 31', project_id: daily.id)
 col32 = Column.create!(title: 'Col 32', project_id: daily.id)
 
+# ppl
+tm1 = TeamMembership.create!(team_id: dev.id, user_id: tess.id, role: 'Manager', department: 'Beers on me', about_me: 'Using mathematics, scientific, and engineering principles to design, repair, and improve air and spacecraft, component parts, facilities, materials, safety regulations, and manufacturing processes.' )
+tm14 = TeamMembership.create!(team_id: dev.id, user_id: gus.id, role: 'Web Developer', department: 'Software Engineer', about_me: 'I thrive on complicated algorithms.' )
+tm2 = TeamMembership.create!(team_id: dev.id, user_id: demo_user.id, role: 'Janitor', about_me: 'Cleaning all your code')
+
+# project
+web_launch = Project.create!(name: 'Website Launch', team_id: dev.id)
+
+# columns
+backlog = Column.create!(title: 'Backlog', project_id: web_launch.id)
+ready = Column.create!(title: 'Ready to do', project_id: web_launch.id)
+progress = Column.create!(title: 'In progress', project_id: web_launch.id)
+done = Column.create!(title: 'Done', project_id: web_launch.id)
+
 
 # Tasks
-# task1 = Task.create(name: 'task1', description: 'this is the description to the task',
-#   column_id: col1.id, creator_id: demo_user.id, assignee_id: demo_user.id)
+task1 = Task.create(name: 'Final QA', description: '', due_date: 'Mon, 17 Sep 2018',
+  column_id: backlog.id, creator_id: demo_user.id, assignee_id: demo_user.id, completer_id: '',
+  next_id: task2.id, prev_id: nil)
+
+task2 = Task.create(name: 'Final QA', description: '', due_date: 'Mon, 17 Sep 2018',
+  column_id: backlog.id, creator_id: demo_user.id, assignee_id: demo_user.id, completer_id: '',
+  next_id: nil, prev_id: task1.id)
+
+
+
+
+
+
+
+
+
 
 
 
