@@ -103,132 +103,132 @@ done = Column.create!(title: 'Done', project_id: web_launch.id)
 
 
 # Tasks
-task1 = Task.create(name: 'Final QA', description: '', due_date: 'Mon, 17 Sep 2018',
-  column_id: backlog.id, creator_id: demo_user.id, assignee_id: demo_user.id, completer_id: '',
+task1 = Task.create(name: 'Final QA', description: '', due_date: 'Thurs, 20 Sep 2018',
+  column_id: backlog.id, creator_id: tess.id, assignee_id: demo_user.id, completer_id: demo_user.id,
   next_id: nil, prev_id: nil)
 
-task2 = Task.create(name: 'Forms submit data properly', description: '', due_date: 'Mon, 17 Sep 2018',
-  column_id: backlog.id, creator_id: demo_user.id, assignee_id: demo_user.id, completer_id: '',
+task2 = Task.create(name: 'Forms submit data properly', description: '', due_date: 'Mon, 10 Sep 2018',
+  column_id: backlog.id, creator_id: demo_user.id, assignee_id: tess.id, completer_id: '',
   next_id: nil, prev_id: task1.id)
 
 task1.update!(next_id: task2.id)
 
-task3 = Task.create(name: 'Videos have updated branding', description: '', due_date: 'Mon, 17 Sep 2018',
-  column_id: backlog.id, creator_id: demo_user.id, assignee_id: demo_user.id, completer_id: '',
+task3 = Task.create(name: 'Videos have updated branding', description: '', due_date: 'Mon, 24 Sep 2018',
+  column_id: backlog.id, creator_id: gus.id, completer_id: '',
   next_id: nil, prev_id: task2.id)
 
 task2.update!(next_id: task3.id)
 
-task4 = Task.create(name: 'Internal links across pages', description: '', due_date: 'Mon, 17 Sep 2018',
-  column_id: backlog.id, creator_id: demo_user.id, assignee_id: demo_user.id, completer_id: '',
+task4 = Task.create(name: 'Internal links across pages', description: '', due_date: 'Tues, 4 Sep 2018',
+  column_id: backlog.id, creator_id: tess.id, completer_id: '',
   next_id: nil, prev_id: task3.id)
 
 task3.update!(next_id: task4.id)
 
-task5 = Task.create(name: 'External links across pages', description: '', due_date: 'Mon, 17 Sep 2018',
+task5 = Task.create(name: 'External links across pages', description: '', due_date: 'Wed, 12 Sep 2018',
   column_id: backlog.id, creator_id: demo_user.id, assignee_id: demo_user.id, completer_id: '',
   next_id: nil, prev_id: task4.id)
 
 task4.update!(next_id: task5.id)
 
-task6 = Task.create(name: 'CSS/HTML Validated', description: '', due_date: 'Mon, 17 Sep 2018',
+task6 = Task.create(name: 'CSS/HTML Validated', description: '', due_date: 'Wed, 19 Sep 2018',
   column_id: ready.id, creator_id: demo_user.id, assignee_id: demo_user.id, completer_id: '',
   next_id: nil, prev_id: nil)
 
-task7 = Task.create(name: 'Tracking codes inserted', description: '', due_date: 'Mon, 17 Sep 2018',
-  column_id: ready.id, creator_id: demo_user.id, assignee_id: demo_user.id, completer_id: '',
+task7 = Task.create(name: 'Tracking codes inserted', description: '', due_date: 'Tues, 18 Sep 2018',
+  column_id: ready.id, creator_id: gus.id, completer_id: tess.id,
   next_id: nil, prev_id: task6.id)
 
 task6.update!(next_id: task7.id)
 
-task8 = Task.create(name: 'Format web copy into code', description: '', due_date: 'Mon, 17 Sep 2018',
-  column_id: ready.id, creator_id: demo_user.id, assignee_id: demo_user.id, completer_id: '',
+task8 = Task.create(name: 'Format web copy into code', description: '', due_date: 'Fri, 14 Sep 2018',
+  column_id: ready.id, creator_id: tess.id, assignee_id: demo_user.id, completer_id: '',
   next_id: nil, prev_id: task7.id)
 
 task7.update!(next_id: task8.id)
 
-task9 = Task.create(name: 'Format web copy into code', description: '', due_date: 'Mon, 17 Sep 2018',
-  column_id: ready.id, creator_id: demo_user.id, assignee_id: demo_user.id, completer_id: '',
+task9 = Task.create(name: 'Format web copy into code', description: '',
+  column_id: ready.id, creator_id: demo_user.id, completer_id: '',
   next_id: nil, prev_id: task8.id)
 
 task8.update!(next_id: task9.id)
 
-task10 = Task.create(name: 'Cross-browser testing', description: '', due_date: 'Mon, 17 Sep 2018',
-  column_id: ready.id, creator_id: demo_user.id, assignee_id: demo_user.id, completer_id: '',
+task10 = Task.create(name: 'Cross-browser testing', description: '', due_date: 'Thurs, 27 Sep 2018',
+  column_id: ready.id, creator_id: gus.id, assignee_id: demo_user.id, completer_id: demo_user.id,
   next_id: nil, prev_id: task9.id)
 
 task9.update!(next_id: task10.id)
 
-task11 = Task.create(name: 'Mobile friendly site parallels', description: '', due_date: 'Mon, 17 Sep 2018',
-  column_id: ready.id, creator_id: demo_user.id, assignee_id: demo_user.id, completer_id: '',
+task11 = Task.create(name: 'Mobile friendly site parallels', description: '', due_date: 'Tues, 25 Sep 2018',
+  column_id: ready.id, creator_id: demo_user.id, completer_id: '',
   next_id: nil, prev_id: task10.id)
 
 task10.update!(next_id: task11.id)
 
-task12 = Task.create(name: 'CSS is optimized', description: '', due_date: 'Mon, 17 Sep 2018',
-  column_id: progress.id, creator_id: demo_user.id, assignee_id: demo_user.id, completer_id: '',
+task12 = Task.create(name: 'Backend is optimized', description: '', due_date: 'Mon, 17 Sep 2018',
+  column_id: progress.id, creator_id: tess.id, assignee_id: demo_user.id, completer_id: '',
   next_id: nil, prev_id: nil)
 
-task13 = Task.create(name: 'CSS is optimized', description: '', due_date: 'Mon, 17 Sep 2018',
-  column_id: progress.id, creator_id: demo_user.id, assignee_id: demo_user.id, completer_id: '',
+task13 = Task.create(name: 'CSS is optimized', description: '',
+  column_id: progress.id, creator_id: demo_user.id, completer_id: tess.id,
   next_id: nil, prev_id: task12.id)
 
 task12.update!(next_id: task13.id)
 
-task14 = Task.create(name: 'Sync with Google Analytics', description: '', due_date: 'Mon, 17 Sep 2018',
+task14 = Task.create(name: 'Sync with Google Analytics', description: '', due_date: 'Mon, 1 Oct 2018',
   column_id: progress.id, creator_id: demo_user.id, assignee_id: demo_user.id, completer_id: '',
   next_id: nil, prev_id: task13.id)
 
 task13.update!(next_id: task14.id)
 
-task15 = Task.create(name: 'SEO keywords optimizations', description: '', due_date: 'Mon, 17 Sep 2018',
-  column_id: progress.id, creator_id: demo_user.id, assignee_id: demo_user.id, completer_id: '',
+task15 = Task.create(name: 'SEO keywords optimizations', description: '', due_date: 'Mon, 10 Sep 2018',
+  column_id: progress.id, creator_id: demo_user.id, completer_id: '',
   next_id: nil, prev_id: task14.id)
 
 task14.update!(next_id: task15.id)
 
-task16 = Task.create(name: 'Cookies notice', description: '', due_date: 'Mon, 17 Sep 2018',
-  column_id: progress.id, creator_id: demo_user.id, assignee_id: demo_user.id, completer_id: '',
+task16 = Task.create(name: 'Cookies notice', description: '', due_date: 'Thurs, 6 Sep 2018',
+  column_id: progress.id, creator_id: tess.id, assignee_id: gus.id, completer_id: demo_user.id,
   next_id: nil, prev_id: task15.id)
 
 task15.update!(next_id: task16.id)
 
-task17 = Task.create(name: 'Favicon renders properly', description: '', due_date: 'Mon, 17 Sep 2018',
+task17 = Task.create(name: 'Favicon renders properly', description: '', due_date: 'Tues, 4 Sep 2018',
   column_id: progress.id, creator_id: demo_user.id, assignee_id: demo_user.id, completer_id: '',
   next_id: nil, prev_id: task16.id)
 
 task16.update!(next_id: task17.id)
 
-task18 = Task.create(name: 'Web copy reviewed', description: '', due_date: 'Mon, 17 Sep 2018',
-  column_id: progress.id, creator_id: demo_user.id, assignee_id: demo_user.id, completer_id: '',
+task18 = Task.create(name: 'Web copy reviewed', description: '', due_date: 'Fri, 7 Sep 2018',
+  column_id: progress.id, creator_id: demo_user.id, completer_id: '',
   next_id: nil, prev_id: task17.id)
 
 task17.update!(next_id: task18.id)
 
-task19 = Task.create(name: 'Web copy drafted', description: '', due_date: 'Mon, 17 Sep 2018',
-  column_id: done.id, creator_id: demo_user.id, assignee_id: demo_user.id, completer_id: '',
+task19 = Task.create(name: 'Web copy drafted', description: '', due_date: 'Thurs, 13 Sep 2018',
+  column_id: done.id, creator_id: demo_user.id, assignee_id: gus.id, completer_id: '',
   next_id: nil, prev_id: nil)
 
-task20 = Task.create(name: 'Sharing icons updated and working', description: '', due_date: 'Mon, 17 Sep 2018',
+task20 = Task.create(name: 'Sharing icons updated and working', description: '', due_date: 'Wed, 12 Sep 2018',
   column_id: done.id, creator_id: demo_user.id, assignee_id: demo_user.id, completer_id: '',
   next_id: nil, prev_id: task19.id)
 
 task19.update!(next_id: task20.id)
 
-task21 = Task.create(name: 'Scripts and images are optimized', description: '', due_date: 'Mon, 17 Sep 2018',
-  column_id: done.id, creator_id: demo_user.id, assignee_id: demo_user.id, completer_id: '',
+task21 = Task.create(name: 'Scripts and images are optimized', description: '',
+  column_id: done.id, creator_id: demo_user.id, completer_id: '',
   next_id: nil, prev_id: task20.id)
 
 task20.update!(next_id: task21.id)
 
-task22 = Task.create(name: 'Font and image licensing', description: '', due_date: 'Mon, 17 Sep 2018',
-  column_id: done.id, creator_id: demo_user.id, assignee_id: demo_user.id, completer_id: '',
+task22 = Task.create(name: 'Font and image licensing', description: '', due_date: 'Tues, 18 Sep 2018',
+  column_id: done.id, creator_id: demo_user.id, completer_id: '',
   next_id: nil, prev_id: task21.id)
 
 task21.update!(next_id: task22.id)
 
-task23 = Task.create(name: 'Web page accessibility considerations WAI-ARIA', description: '', due_date: 'Mon, 17 Sep 2018',
-  column_id: done.id, creator_id: demo_user.id, assignee_id: demo_user.id, completer_id: '',
+task23 = Task.create(name: 'Web page accessibility considerations WAI-ARIA', description: '', due_date: 'Wed, 26 Sep 2018',
+  column_id: done.id, creator_id: tess.id, assignee_id: gus.id, completer_id: '',
   next_id: nil, prev_id: task22.id)
 
 task22.update!(next_id: task23.id)
