@@ -105,7 +105,7 @@ done = Column.create!(title: 'Done', project_id: web_launch.id)
 # Tasks
 task1 = Task.create(name: 'Final QA', description: '', due_date: 'Thurs, 20 Sep 2018',
   column_id: backlog.id, creator_id: tess.id, assignee_id: demo_user.id, completer_id: demo_user.id,
-  next_id: nil, prev_id: nil)
+  completed_date: 'Mon, 13 Aug 2018', next_id: nil, prev_id: nil)
 
 task2 = Task.create(name: 'Forms submit data properly', description: '', due_date: 'Mon, 10 Sep 2018',
   column_id: backlog.id, creator_id: demo_user.id, assignee_id: tess.id, completer_id: '',
@@ -137,7 +137,7 @@ task6 = Task.create(name: 'CSS/HTML Validated', description: '', due_date: 'Wed,
 
 task7 = Task.create(name: 'Tracking codes inserted', description: '', due_date: 'Tues, 18 Sep 2018',
   column_id: ready.id, creator_id: gus.id, completer_id: tess.id,
-  next_id: nil, prev_id: task6.id)
+  completed_date: 'Tues, 21 Aug 2018', next_id: nil, prev_id: task6.id)
 
 task6.update!(next_id: task7.id)
 
@@ -155,7 +155,7 @@ task8.update!(next_id: task9.id)
 
 task10 = Task.create(name: 'Cross-browser testing', description: '', due_date: 'Thurs, 27 Sep 2018',
   column_id: ready.id, creator_id: gus.id, assignee_id: demo_user.id, completer_id: demo_user.id,
-  next_id: nil, prev_id: task9.id)
+  completed_date: 'Thurs, 16 Aug 2018', next_id: nil, prev_id: task9.id)
 
 task9.update!(next_id: task10.id)
 
@@ -189,7 +189,7 @@ task14.update!(next_id: task15.id)
 
 task16 = Task.create(name: 'Cookies notice', description: '', due_date: 'Thurs, 6 Sep 2018',
   column_id: progress.id, creator_id: tess.id, assignee_id: gus.id, completer_id: demo_user.id,
-  next_id: nil, prev_id: task15.id)
+  completed_date: 'Mon, 27 Aug 2018', next_id: nil, prev_id: task15.id)
 
 task15.update!(next_id: task16.id)
 
