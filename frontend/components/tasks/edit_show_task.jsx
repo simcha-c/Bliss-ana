@@ -65,11 +65,11 @@ class EditShowTask extends React.Component {
 
   toggleCal(e) {
     e.stopPropagation();
-    this.setState({ cal: true });
+    this.setState({ cal: !this.state.cal });
   }
 
 // date form
-  // <form onSubmit={this.handleSubmit} className={`${date} ${updateDate}`}>
+  // <form onSubmit={this.handleSubmit} className={`${updateDate}`}>
   //   <input type="date" value={this.state.due_date} placeholder=""
   //     onChange={this.update('due_date')} className="task-input" />
   // </form>
@@ -84,7 +84,7 @@ class EditShowTask extends React.Component {
   // </div>
 
     render() {
-      const date = (!this.state.due_date) ? 'icon' : 'hidden';
+      const date = (this.state.due_date && !this.state.cal) ? '' : 'hidden';
       const creator = this.props.users[this.state.creator_id];
       const creatorName = `${creator.first} ${creator.last}`;
       const createdAt = this.parseDate(this.state.created_at);
@@ -94,7 +94,7 @@ class EditShowTask extends React.Component {
       const completerName = `${completer.first} ${completer.last}`;
       const completedAt = this.parseDate(this.state.completed_date);
       const complete = this.state.completer_id ? '' : 'hidden';
-      const updateDate = this.state.updateDate ? '' : 'hidden'
+      const updateDate = this.state.cal ? '' : 'hidden'
       // const showIcon = this.state.due_date || this.state.cal ? 'hidden' : '';
 
       return (
@@ -113,6 +113,19 @@ class EditShowTask extends React.Component {
                 <input required type="text" value={this.state.name} placeholder=""
                   onChange={this.update('name')} className="task-name-input" />
               </form>
+
+              <div onClick={(e) => this.toggleCal(e)} className="date-task">
+                <div className={`icon-stroke-task`}>
+                  <p className="task-show-icon"><i className="far fa-calendar"></i></p>
+                </div>
+                <p className="task-date-text">Due Date</p>
+                <p className={`${date}`}>{this.parseDate(this.state.due_date)}</p>
+                <form onSubmit={this.handleSubmit} className={`${updateDate}`}>
+                  <input type="date" value={this.state.due_date} placeholder=""
+                    onChange={this.update('due_date')} className="task-input" />
+                </form>
+              </div>
+
             </div>
 
             <div className="description-task">
