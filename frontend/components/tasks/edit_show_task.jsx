@@ -6,7 +6,7 @@ class EditShowTask extends React.Component {
   constructor(props) {
     super(props);
     let taskForm = { name: "",  assignee_id: "", completed_date: "",
-      completer_id: "", description: "", due_date: "", updated_at: "", cal: false };
+      completer_id: "", description: "", due_date: "", updated_at: "", cal: false, updateDate: false };
     this.state = merge(taskForm, props.task);
     this.changingDate = false;
     // if (this.state.completed_date === nil) { this.state.completed_date = ""; }
@@ -69,21 +69,22 @@ class EditShowTask extends React.Component {
   }
 
 // date form
-  // <form onSubmit={this.handleSubmit}>
-  //   <input type="date" value={this.state.date} placeholder=""
-  //     onChange={this.update('date')} className="task-input" />
+  // <form onSubmit={this.handleSubmit} className={`${date} ${updateDate}`}>
+  //   <input type="date" value={this.state.due_date} placeholder=""
+  //     onChange={this.update('due_date')} className="task-input" />
   // </form>
 
 // date icon
-  // <div className="date-task">
-  //   <div onClick={(e) => this.showCalInput(e)} className={`icon-stroke-task ${icon}`}>
+  // <div onClick={(e) => this.toggleCal(e)} className="date-task">
+  //   <div className={`icon-stroke-task`}>
   //     <p className="task-show-icon"><i className="far fa-calendar"></i></p>
   //   </div>
   //   <p className="task-date-text">Due Date</p>
+  //   <p className={`${date}`}>this.state.due_date</p>
   // </div>
 
     render() {
-      const icon = (!this.state.due_date) ? 'icon' : 'hidden';
+      const date = (!this.state.due_date) ? 'icon' : 'hidden';
       const creator = this.props.users[this.state.creator_id];
       const creatorName = `${creator.first} ${creator.last}`;
       const createdAt = this.parseDate(this.state.created_at);
@@ -93,8 +94,8 @@ class EditShowTask extends React.Component {
       const completerName = `${completer.first} ${completer.last}`;
       const completedAt = this.parseDate(this.state.completed_date);
       const complete = this.state.completer_id ? '' : 'hidden';
+      const updateDate = this.state.updateDate ? '' : 'hidden'
       // const showIcon = this.state.due_date || this.state.cal ? 'hidden' : '';
-      // const showDate = this.state.due_date || !this.state.cal ? '' : 'hidden';
 
       return (
         <div className="form-container-task modal-child">
