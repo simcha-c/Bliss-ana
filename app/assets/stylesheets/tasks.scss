@@ -22,6 +22,10 @@
   transform: translateY(-2px);
 }
 
+.task-card:hover .task-completed {
+  opacity: 0.75;
+}
+
 .title-info {
   display: flex;
   flex-direction: row;
@@ -36,7 +40,7 @@
 }
 
 .completed-icon {
-  color: rgba(176, 255, 252, 0.3);
+  color: rgba(176, 255, 252, 0.8);
   text-align: center;
   margin-top: -3px;
   margin-bottom: 8px;
@@ -44,7 +48,7 @@
 }
 
 .task-card:hover .completed-icon {
-  color: rgba(176, 255, 252, 0.8)
+  color: rgba(176, 255, 252, 1)
 }
 
 .task-name {

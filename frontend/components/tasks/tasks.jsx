@@ -157,17 +157,17 @@ class Task extends React.Component {
     const lowerOpacity = (this.props.task.completer_id) ? 'task-completed' : '';
     const arrowState = (this.state.delete === '') ? 'hidden' : '';
     return (
-      <div id={this.props.task.id} className="task-card"
+      <div id={this.props.task.id} className={`task-card`}
           onClick={this.openModal}>
-        <section className="title-info">
+        <section className={`title-info ${lowerOpacity}`}>
           <div className="complete-and-name">
             <div className={`completed-icon ${completed}`}><i className="fas fa-check-circle"></i></div>
-            <p className={`task-name ${lowerOpacity}`}>{this.props.task.name}</p>
+            <p className={`task-name`}>{this.props.task.name}</p>
           </div>
           <div className={this.state.delete}>{this.RemoveTaskPopup()}</div>
           <div onClick={(e) => this.togglePopup(e)} className={`down-arrow edit-title`}><i></i></div>
         </section>
-        <section className="task-info">
+        <section className={`task-info ${lowerOpacity}`}>
           {this.assignee()}
           {this.date()}
         </section>
