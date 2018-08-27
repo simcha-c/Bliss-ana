@@ -11,11 +11,11 @@ class EditShowTask extends React.Component {
     this.changingDate = false;
     // if (this.state.completed_date === nil) { this.state.completed_date = ""; }
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.toggleCal = this.toggleCal.bind(this);
     this.parseDate = this.parseDate.bind(this);
+    this.handleDateSubmit = this.handleDateSubmit.bind(this);
     this.toggleComplete = this.toggleComplete.bind(this);
   }
-
-
 
   update(field) {
     return e => this.setState({
@@ -65,7 +65,12 @@ class EditShowTask extends React.Component {
 
   toggleCal(e) {
     e.stopPropagation();
-    this.setState({ cal: !this.state.cal });
+    this.setState({ cal: true });
+  }
+
+  handleDateSubmit(e) {
+    e.stopPropagation();
+    this.setState({ cal: false, due_date: e.target.value }, this.handleSubmit(e));
   }
 
 // date form
@@ -120,7 +125,7 @@ class EditShowTask extends React.Component {
                 </div>
                 <p className="task-date-text">Due Date</p>
                 <p className={`${date}`}>{this.parseDate(this.state.due_date)}</p>
-                <form onSubmit={this.handleSubmit} className={`${updateDate}`}>
+                <form onSubmit={this.handleDateSubmit} onBlur={this.handleDateSubmit} className={`${updateDate}`}>
                   <input type="date" value={this.state.due_date} placeholder=""
                     onChange={this.update('due_date')} className="task-input" />
                 </form>
@@ -154,7 +159,6 @@ class EditShowTask extends React.Component {
               </div>
             </div>
           </div>
-
 
         </div>
       )
