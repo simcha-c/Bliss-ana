@@ -64,29 +64,15 @@ class EditShowTask extends React.Component {
   }
 
   toggleCal(e) {
-    e.stopPropagation();
+    event.stopPropagation();
     this.setState({ cal: true });
   }
 
   handleDateSubmit(e) {
     e.stopPropagation();
-    this.setState({ cal: false, due_date: e.target.value }, this.handleSubmit(e));
+    e.preventDefault();
+    this.setState({ cal: false, due_date: e.target.value }, (e) => this.handleSubmit(e));
   }
-
-// date form
-  // <form onSubmit={this.handleSubmit} className={`${updateDate}`}>
-  //   <input type="date" value={this.state.due_date} placeholder=""
-  //     onChange={this.update('due_date')} className="task-input" />
-  // </form>
-
-// date icon
-  // <div onClick={(e) => this.toggleCal(e)} className="date-task">
-  //   <div className={`icon-stroke-task`}>
-  //     <p className="task-show-icon"><i className="far fa-calendar"></i></p>
-  //   </div>
-  //   <p className="task-date-text">Due Date</p>
-  //   <p className={`${date}`}>this.state.due_date</p>
-  // </div>
 
     render() {
       const date = (this.state.due_date && !this.state.cal) ? '' : 'hidden';
@@ -123,12 +109,14 @@ class EditShowTask extends React.Component {
                 <div className={`icon-stroke-task`}>
                   <p className="task-show-icon"><i className="far fa-calendar"></i></p>
                 </div>
-                <p className="task-date-text">Due Date</p>
-                <p className={`${date}`}>{this.parseDate(this.state.due_date)}</p>
-                <form onSubmit={this.handleDateSubmit} onBlur={this.handleDateSubmit} className={`${updateDate}`}>
-                  <input type="date" value={this.state.due_date} placeholder=""
-                    onChange={this.update('due_date')} className="task-input" />
-                </form>
+                <section className="date-info">
+                  <p className="task-date-text">Due Date</p>
+                  <p className={`${date} date-text`}>{this.parseDate(this.state.due_date)}</p>
+                  <form onSubmit={this.handleDateSubmit} onBlur={this.handleDateSubmit} className={`${updateDate}`}>
+                    <input type="date" value={this.state.due_date} placeholder=""
+                      onChange={this.update('due_date')} className="task-input" />
+                  </form>
+                </section>
               </div>
 
             </div>
