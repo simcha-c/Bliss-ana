@@ -45,7 +45,7 @@ class EditShowTask extends React.Component {
       case (time < 7):
         return dueDate.toLocaleDateString("en-US", { weekday: 'long' });
       default:
-        return dueDate.toLocaleDateString("en-US", { month: 'long', day: 'numeric' });
+        return dueDate.toLocaleDateString("en-US", { month: 'short', day: 'numeric' });
     }
   }
 
@@ -76,6 +76,7 @@ class EditShowTask extends React.Component {
 
     render() {
       const date = (this.state.due_date && !this.state.cal) ? '' : 'hidden';
+      const isDate = (this.state.due_date) ? 'is-date' : '';
       const creator = this.props.users[this.state.creator_id];
       const creatorName = `${creator.first} ${creator.last}`;
       const createdAt = this.parseDate(this.state.created_at);
@@ -105,19 +106,21 @@ class EditShowTask extends React.Component {
                   onChange={this.update('name')} className="task-name-input" />
               </form>
 
-              <div onClick={(e) => this.toggleCal(e)} className="date-task">
-                <div className={`icon-stroke-task`}>
-                  <p className="task-show-icon"><i className="far fa-calendar"></i></p>
+              <div onClick={(e) => this.toggleCal(e)} className="date-assignee">
+                <div className="date-task">
+                  <div className={`icon-stroke-task ${isDate}`}>
+                    <p className="task-show-icon"><i className="far fa-calendar"></i></p>
+                  </div>
+                  <section className="date-info">
+                    <p className="task-date-text">Due Date</p>
+                    <p className={`${date} date-text`}>{this.parseDate(this.state.due_date)}</p>
+                    <form onSubmit={this.handleDateSubmit} onBlur={this.handleDateSubmit} className={`${updateDate}`}>
+                      <input type="date" value={this.state.due_date} placeholder=""
+                        onChange={this.update('due_date')} className="task-input" />
+                    </form>
+                  </section>
                 </div>
-                <section className="date-info">
-                  <p className="task-date-text">Due Date</p>
-                  <p className={`${date} date-text`}>{this.parseDate(this.state.due_date)}</p>
-                  <form onSubmit={this.handleDateSubmit} onBlur={this.handleDateSubmit} className={`${updateDate}`}>
-                    <input type="date" value={this.state.due_date} placeholder=""
-                      onChange={this.update('due_date')} className="task-input" />
-                  </form>
-                </section>
-              </div>
+                </div>
 
             </div>
 

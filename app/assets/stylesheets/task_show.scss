@@ -14,27 +14,33 @@
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  border-bottom: 1px solid lightgrey;
+  border-bottom: 1px solid rgba(224, 230, 232, 1);
   min-height: 40px;
 }
 
 .mark-complete {
   padding: 10px;
   border-radius: 5px;
-  border: 1px solid rgba(183, 191, 198, 1);
-  color: rgba(100, 111, 121, 1);
+  border: 1px solid #b7bfc6;
+  color: #646f79;
   margin-left: 20px;
   align-items: center;
   font-size: .75em;
   padding: 7px 15px;
   margin-bottom: 10px;
-  min-height: 15px
+  min-height: 15px;
+  font-size: 13px;
+  font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Helvetica,Arial,sans-serif;
 }
 
 .mark-complete:hover {
-  border: 1px solid rgba(100, 111, 121, 1);
-  color: rgba(100, 111, 121, 1);
+  border: 1px solid #151b26;
+  color: #151b26;
   background-color: whitesmoke;
+}
+
+.fa-check {
+  margin-right: 5px;
 }
 
 .completed {
@@ -51,10 +57,6 @@
   min-height: 15px
 }
 
-.fa-check {
-  margin-right: 3px;
-}
-
 .close-x-task {
   margin-right: 20px;
   color: rgba(183, 191, 198, 1);
@@ -64,19 +66,31 @@
 
 .top-task {
   margin: 20px 40px 20px 40px;
-  border-bottom: 1px solid lightgrey;
+  border-bottom: 1px solid rgba(224, 230, 232, 1);
 }
 
 .task-form form {
   // margin-left: 30px;
 }
 
-.date-task {
+.date-assignee {
   display: flex;
   flex-direction: row;
   align-items: center;
   margin-left: 3px;
   margin-bottom: 10px;
+}
+
+.date-task {
+  display: flex;
+  flex-direction: row;
+  border-radius: 50px;
+  padding: 1px 10px;
+}
+
+.date-task:hover {
+  border: 1px solid lightgrey;
+  padding: 0 9px;
 }
 
 .icon-stroke-task {
@@ -87,6 +101,10 @@
   border-radius: 50%;
   margin: 10px 10px 10px 0px;
   transition: border .5s;
+}
+
+.is-date {
+  border: 1px solid rgba(183, 191, 198, 1);
 }
 
 .task-show-icon {
@@ -106,8 +124,10 @@
 }
 
 .task-date-text {
-  font-size: .8em;
-  color: rgba(100, 111, 121, 1);
+  font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  color: rgba(132, 143, 153, 1);
 }
 
 .task-name-input {
@@ -117,6 +137,14 @@
   color: #151b26;
   width: 100%;
   height: auto;
+  border-radius: 5px;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+.task-name-input:hover {
+  border: 1px solid rgba(224, 230, 232, 1);
+  padding: 9px;
 }
 
 .description-task {
@@ -154,7 +182,7 @@
 }
 
 .task-description:focus, .task-description:hover {
-  border: 1px solid rgba(183, 191, 198, 1);
+  border: 1px solid rgba(224, 230, 232, 1);
   border-radius: 5px;
   resize: vertical;
 }
@@ -178,7 +206,7 @@
 .bottom-task-info {
   display: flex;
   flex-direction: column;
-  border-top: 1px solid rgba(183, 191, 198, 1);
+  border-top: 1px solid rgba(224, 230, 232, 1);
   margin-left: 40px;
   margin-right: 40px;
   margin-top: 60px;
@@ -232,10 +260,13 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
+  font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Helvetica,Arial,sans-serif
 }
 
 .date-text {
-  font-size: .9em;
+  padding-top: 2px;
+  color: rgba(100, 111, 121, 1);
+  font-size: 13px;
 }
 
 
