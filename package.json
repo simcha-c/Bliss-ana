@@ -10,6 +10,7 @@
     "moment": "^2.22.2",
     "moment-timezone": "^0.5.21",
     "react": "^16.4.1",
+    "react-beautiful-dnd": "^9.0.2",
     "react-dom": "^16.4.1",
     "react-moment": "^0.7.9",
     "react-onclickoutside": "^6.7.1",
