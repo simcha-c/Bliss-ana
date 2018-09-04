@@ -2,6 +2,7 @@ import React from 'react';
 // import Modal from '../modal/modal';
 // import { Link, withRouter } from 'react-router-dom';
 import TasksContainer from '../tasks/tasks_container';
+import { DragDropContext, Droppable } from 'react-beautiful-dnd';
 
 class Columns extends React.Component {
 
@@ -58,11 +59,13 @@ class Columns extends React.Component {
     }
   }
 
-  tasks(task_ids){
+  tasks(task_ids, provided){
     const props = this.props;
     const tasks = this.props.tasks;
-    return task_ids.map(task_id => {
-      return <TasksContainer key={task_id} props={props} task={tasks[task_id]} />
+    return task_ids.map((task_id, index) => {
+      return <TasksContainer key={task_id} props={props} task={tasks[task_id]}
+          provided={provided} {...provided.droppableProps} index={index}
+      />
     })
   }
 
@@ -95,22 +98,27 @@ class Columns extends React.Component {
       const active = (column.id === this.state.id && column.id !== 0) ? 'active' : 'hidden';
       const adding = (this.state.addTaskId === column.id) ? 'adding' : 'hidden';
       return (
-        <div className="col-wrapper" key={column.id}>
-          <span className="cols-top">
-            <section className="title">
-              <p className="cols-title">{column.title}</p>
-              <div onClick={(e) => this.togglePopup(e, column.id)} className="edit-title"><i></i></div>
-              <div className={active}>{this.editRemoveColPopup()}</div>
-            </section>
-            <div onClick={(e) => this.toggleAddTask(e, column.id)} className="add-task">+</div>
-          </span>
-          <section className={taskIncluded}>
-            <form onClick={(e) => { e.stopPropagation() }} id={column.id} className={adding} onSubmit={(e) => this.addTask(e, column)}>
-              <input className="add-task-text" type="text" onChange={(e) => this.updateTaskName(e)} value={this.state.name} placeholder="New Task Name" autoFocus></input>
-            </form>
-            {this.tasks(column.task_ids)}
-          </section>
-        </div>
+        <Droppable droppableId={column.id.toString()} key={column.id}>
+          {provided => (
+            <div className="col-wrapper" key={column.id} ref={provided.innerRef}>
+              <span className="cols-top">
+                <section className="title">
+                  <p className="cols-title">{column.title}</p>
+                  <div onClick={(e) => this.togglePopup(e, column.id)} className="edit-title"><i></i></div>
+                  <div className={active}>{this.editRemoveColPopup()}</div>
+                </section>
+                <div onClick={(e) => this.toggleAddTask(e, column.id)} className="add-task">+</div>
+              </span>
+              <section className={taskIncluded}>
+                <form onClick={(e) => { e.stopPropagation() }} id={column.id} className={adding} onSubmit={(e) => this.addTask(e, column)}>
+                  <input className="add-task-text" type="text" onChange={(e) => this.updateTaskName(e)} value={this.state.name} placeholder="New Task Name" autoFocus></input>
+                </form>
+                {this.tasks(column.task_ids, provided)}
+                {provided.placeholder}
+              </section>
+            </div>
+          )}
+        </Droppable>
       );
     });
     return cols;
@@ -173,14 +181,25 @@ class Columns extends React.Component {
     this.setState({ id: 0, addCol: false, title: "", name: "" });
   }
 
+  dragEnd(result) {
+    const { destination, source, draggableId, reason } = result;
+    if (destination !== null && reason !== 'CANCEL') {
+      if (destination.droppableId !== source.droppableId && destination.index !== source.index) {
+        console.log(result);
+      }
+    }
+  }
+
   render() {
     return (
-      <div onClick={(e) => this.clearState()} onKeyDown={(e) => this.handleKeyPress(e)} className="project-page">
-        <div className="columns">
-          {this.columns()}
-          {this.addColumn()}
+        <div onClick={(e) => this.clearState()} onKeyDown={(e) => this.handleKeyPress(e)} className="project-page">
+          <div className="columns">
+            <DragDropContext onDragEnd={this.dragEnd}>
+              {this.columns()}
+            </DragDropContext>
+            {this.addColumn()}
+          </div>
         </div>
-      </div>
     )
   }
 

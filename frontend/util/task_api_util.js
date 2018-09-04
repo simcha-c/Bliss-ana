@@ -27,3 +27,13 @@ export const deleteTask = (id) => {
     })
   );
 };
+
+export const updateTaskOrder = (orderInfo) => {
+  return (
+    $.ajax({
+      method: "PATCH",
+      url: `/api/tasks/${task.id}/update_order`,
+      data: {orderInfo}
+    })
+  );
+};
