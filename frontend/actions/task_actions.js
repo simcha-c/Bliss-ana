@@ -41,6 +41,12 @@ export const updateTask = (task) => dispatch => {
   );
 };
 
+export const updateTaskOrder = (orderInfo) => dispatch => {
+  return TaskAPIUtil.updateTaskOrder(orderInfo).then(
+    payload => dispatch(receiveUpdatedTask(payload))
+  );
+};
+
 export const deleteTask = (id) => dispatch => {
   return TaskAPIUtil.deleteTask(id).then(
     payload => dispatch(removeTask(payload))

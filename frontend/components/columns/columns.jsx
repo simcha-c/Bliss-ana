@@ -22,6 +22,7 @@ class Columns extends React.Component {
     this.tasks = this.tasks.bind(this);
     this.toggleAddTask = this.toggleAddTask.bind(this);
     this.addTask = this.addTask.bind(this);
+    this.dragEnd = this.dragEnd.bind(this);
   }
 
   componentDidMount() {
@@ -184,8 +185,15 @@ class Columns extends React.Component {
   dragEnd(result) {
     const { destination, source, draggableId, reason } = result;
     if (destination !== null && reason !== 'CANCEL') {
-      if (destination.droppableId !== source.droppableId && destination.index !== source.index) {
+      if (destination.droppableId !== source.droppableId || destination.index !== source.index) {
         console.log(result);
+        const currentCol = this.props.allColumns[source.droppableId];
+        const futureCol = this.props.allColumns[destination.droppableId];
+        const currentTaskId = currentCol.task_ids[source.index];
+        // currentCol.task_ids = currentCol.task_ids.slice(0, source.index).concat(currentCol.task_ids.slice(source.index+1));
+        futureCol.task_ids = futureCol.task_ids.slice(0, destination.index).concat(currentTaskId).concat(futureCol.task_ids.slice(destination.index));
+        const orderInfo = {future_ord: futureCol.task_ids, index: destination.index, future_col: futureCol.id, task_id: currentTaskId}
+        this.props.updateTaskOrder(orderInfo);
       }
     }
   }

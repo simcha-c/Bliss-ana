@@ -173,6 +173,7 @@ class Task extends React.Component {
               <div className={this.state.delete}>{this.RemoveTaskPopup()}</div>
               <div onClick={(e) => this.togglePopup(e)} className={`down-arrow edit-title`}><i></i></div>
             </section>
+            {this.props.task.id}
             <section className={`task-info ${lowerOpacity}`}>
               {this.assignee()}
               {this.date()}

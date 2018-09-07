@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import { fetchProject, createProject, updateProject, deleteProject } from '../../actions/project_actions';
 import { createColumn, updateColumn, deleteColumn } from '../../actions/column_actions';
-import { createTask } from '../../actions/task_actions';
+import { createTask, updateTaskOrder } from '../../actions/task_actions';
 import { openModal } from '../../actions/modal_actions';
 import { withRouter } from 'react-router-dom';
 import { closeSidebar } from '../../actions/sidebar_actions';
@@ -28,6 +28,7 @@ const mapState = (state, ownProps) => {
     project,
     projects, // projects as array
     columns,
+    allColumns: state.entities.columns,
     tasks: state.entities.tasks,
     projectId: parseInt(ownProps.match.params.projectId),
   };
@@ -43,6 +44,7 @@ const mapDispatch = (dispatch) => {
     deleteColumn: (id) => dispatch(deleteColumn(id)),
     closeSidebar: () => dispatch(closeSidebar()),
     createTask: (task) => dispatch(createTask(task)),
+    updateTaskOrder: (orderInfo) => dispatch(updateTaskOrder(orderInfo)),
   };
 };
 

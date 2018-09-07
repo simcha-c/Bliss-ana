@@ -35,8 +35,8 @@ const columnsReducer = (state = {}, action) => {
   case LOGOUT_CURRENT_USER:
     return {};
 
-    default:
-      return state;
+  default:
+    return state;
   }
   return state;
 };
