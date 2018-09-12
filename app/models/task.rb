@@ -56,4 +56,9 @@ class Task < ApplicationRecord
     through: :column,
     source: :head
 
+  # def find_tasks(task, future_ord, task_idx)
+  #   # related_tasks = {}
+  #
+  # end
+
 end

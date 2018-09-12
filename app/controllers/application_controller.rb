@@ -26,10 +26,8 @@ class ApplicationController < ActionController::Base
 
   def column_ord(column) #technically input can be a task or a column.
     all_tasks = column.tasks
-
     task_hash = {}
-    head = nil
-    tail = nil
+    head, tail = nil
     all_tasks.length.times do |idx|
       current_task = all_tasks[idx]
       task_hash[current_task.id] = current_task

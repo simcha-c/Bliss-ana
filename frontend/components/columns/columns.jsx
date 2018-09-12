@@ -192,7 +192,8 @@ class Columns extends React.Component {
         const currentTaskId = currentCol.task_ids[source.index];
         // currentCol.task_ids = currentCol.task_ids.slice(0, source.index).concat(currentCol.task_ids.slice(source.index+1));
         futureCol.task_ids = futureCol.task_ids.slice(0, destination.index).concat(currentTaskId).concat(futureCol.task_ids.slice(destination.index));
-        const orderInfo = {future_ord: futureCol.task_ids, index: destination.index, future_col: futureCol.id, task_id: currentTaskId}
+        const orderInfo = {future_ord: futureCol.task_ids, index: destination.index, future_col: futureCol.id, task_id: currentTaskId, task: this.props.tasks[currentTaskId]}
+        debugger
         this.props.updateTaskOrder(orderInfo);
       }
     }

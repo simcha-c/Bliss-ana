@@ -20,6 +20,9 @@ const columnsReducer = (state = {}, action) => {
   case RECEIVE_NEW_TASK:
     return merge(newState, action.columns);
 
+  case RECEIVE_UPDATED_TASK:
+    debugger
+
   case REMOVE_TASK:
     newState[Object.keys(action.column)[0]] = Object.values(action.column)[0];
     return newState;

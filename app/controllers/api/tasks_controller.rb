@@ -37,23 +37,37 @@ class Api::TasksController < ApplicationController
   end
 
   def update_order
-    @task = Task.find(params[:id])
-    @prev_task = @task.prev
-    @next_task = @task.next
-    @future_prev = Tasks.find(task_params[:prev_id])
-    @next_prev = Tasks.find(task_params[:next_id])
+    task_idx = params[:orderInfo][:index].to_i
+    future_ord = params[:orderInfo][:future_ord]
+
+    @task = Task.find(params[:orderInfo][:task_id])
+    arr = [@task]
+    # related_task_ids = [@task[:id].to_i, @task[:prev_id].to_i, @task[:next_id].to_i, future_ord[task_idx +1].to_i, future_ord[task_idx -1].to_i]
+    unless @task.prev_id.nil?
+      @prev_task = Task.find(@task.prev_id)
+      arr << @prev_task
+    end
+    unless @task.next_id.nil?
+      @next_task = Task.find(@task.next_id)
+      arr << @next_task
+    end
+    if (task_idx - 1) >= 0
+      @future_prev = Task.find(future_ord[task_idx - 1].to_i)
+      arr << @future_prev
+    end
+    unless future_ord[task_idx + 1].nil?
+      @future_next = Task.find(future_ord[task_idx + 1].to_i)
+      arr << @future_next
+    end
 
     update_related_tasks
-
     begin
       Task.transaction do
-        @task.save!
-        @prev_task.save!
-        @next_task.save!
-        @future_prev.save!
-        @next_prev.save!
+        arr.each do |task|
+          task.save!
+        end
       end
-      render :show
+      # render :show
     rescue ActiveRecord::RecordInvalid
       render json: @task.errors.full_messages, status: 401
     end
@@ -99,16 +113,21 @@ class Api::TasksController < ApplicationController
 
   def task_params
     params.require(:task)
-    .permit(:name, :creator_id, :column_id, :description, :due_date, :completed_date, :completer_id, :assignee_id, :prev_id, :next_id)
+    .permit(:name, :creator_id, :column_id, :description, :due_date,
+      :completed_date, :completer_id, :assignee_id, :prev_id, :next_id,
+      :orderInfo)
   end
 
   def update_related_tasks
-    @prev_task.next_id = @next_task.id
-    @next_task.prev_id = @prev_task.id
-    @future_prev.next_id = @task.id
-    @next_prev.prev_id = @task.id
-    @task.next_id = task_params[:next_id]
-    @task.next_id = task_params[:prev_id]
+    @prev_task.next_id = @task.next_id if @prev_task
+    @next_task.prev_id = @task.prev_id if @next_task
+
+    @future_prev.next_id = @task.id if @future_prev
+    @future_next.prev_id = @task.id if @future_next
+
+    @future_next ? @task.next_id = @future_next.id : @task.next_id = nil
+    @future_prev ? @task.prev_id = @future_prev.id : @task.prev_id = nil
+    @task.column_id = params[:orderInfo][:future_col].to_i
   end
 
 end

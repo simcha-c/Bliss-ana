@@ -24,7 +24,8 @@ json.tasks do
 
     json.set! task.id do
       json.extract! task, :id, :name, :description, :due_date, :completed_date,
-      :column_id, :creator_id, :assignee_id, :completer_id, :created_at, :updated_at
+      :column_id, :creator_id, :assignee_id, :completer_id, :created_at, :updated_at,
+      :next_id, :prev_id
     end
 
   end
