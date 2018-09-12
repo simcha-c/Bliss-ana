@@ -2,6 +2,7 @@ import * as TaskAPIUtil from '../util/task_api_util';
 
 export const RECEIVE_NEW_TASK = "RECEIVE_NEW_TASK";
 export const RECEIVE_UPDATED_TASK = "RECEIVE_UPDATED_TASK";
+export const RECEIVE_UPDATED_ORDER = "RECEIVE_UPDATED_ORDER";
 export const REMOVE_TASK = "REMOVE_TASK";
 
 export const receiveTask = ({ project, columns, tasks }) => {
@@ -18,6 +19,13 @@ export const receiveUpdatedTask = ({ column, task }) => {
     type: RECEIVE_UPDATED_TASK,
     column,
     task,
+  };
+};
+
+export const receiveUpdatedOrder = (payload) => {
+  return {
+    type: RECEIVE_UPDATED_ORDER,
+    payload,
   };
 };
 
@@ -43,7 +51,7 @@ export const updateTask = (task) => dispatch => {
 
 export const updateTaskOrder = (orderInfo) => dispatch => {
   return TaskAPIUtil.updateTaskOrder(orderInfo).then(
-    payload => dispatch(receiveUpdatedTask(payload))
+    payload => dispatch(receiveUpdatedOrder(payload))
   );
 };
 

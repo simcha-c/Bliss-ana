@@ -41,6 +41,8 @@ class Api::TasksController < ApplicationController
     future_ord = params[:orderInfo][:future_ord]
 
     @task = Task.find(params[:orderInfo][:task_id])
+    @prev_col = Column.find(@task.column_id)
+    @next_col = Column.find(params[:orderInfo][:future_col].to_i)
     arr = [@task]
     # related_task_ids = [@task[:id].to_i, @task[:prev_id].to_i, @task[:next_id].to_i, future_ord[task_idx +1].to_i, future_ord[task_idx -1].to_i]
     unless @task.prev_id.nil?
@@ -67,7 +69,7 @@ class Api::TasksController < ApplicationController
           task.save!
         end
       end
-      # render :show
+      render :order
     rescue ActiveRecord::RecordInvalid
       render json: @task.errors.full_messages, status: 401
     end

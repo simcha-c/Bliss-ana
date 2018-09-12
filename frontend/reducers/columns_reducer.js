@@ -2,7 +2,7 @@ import { RECEIVE_CURRENT_USER, LOGOUT_CURRENT_USER } from '../actions/session_ac
 import { RECEIVE_NEW_TEAM, REMOVE_TEAM } from '../actions/team_actions';
 import { RECEIVE_NEW_PROJECT, REMOVE_PROJECT } from '../actions/project_actions';
 import { RECEIVE_NEW_COLUMN, REMOVE_COLUMN } from '../actions/column_actions';
-import { RECEIVE_NEW_TASK, RECEIVE_UPDATED_TASK, REMOVE_TASK } from '../actions/task_actions';
+import { RECEIVE_NEW_TASK, RECEIVE_UPDATED_TASK, RECEIVE_UPDATED_ORDER, REMOVE_TASK } from '../actions/task_actions';
 
 import { merge } from 'lodash';
 
@@ -20,8 +20,13 @@ const columnsReducer = (state = {}, action) => {
   case RECEIVE_NEW_TASK:
     return merge(newState, action.columns);
 
-  case RECEIVE_UPDATED_TASK:
-    debugger
+  case RECEIVE_UPDATED_ORDER:
+    const columns = action.payload.columns;
+    Object.keys(columns).forEach(colIdx => {
+      newState[parseInt(colIdx)] = columns[parseInt(colIdx)];
+    });
+    // debugger
+    return newState;
 
   case REMOVE_TASK:
     newState[Object.keys(action.column)[0]] = Object.values(action.column)[0];
@@ -41,7 +46,6 @@ const columnsReducer = (state = {}, action) => {
   default:
     return state;
   }
-  return state;
 };
 
 export default columnsReducer;
