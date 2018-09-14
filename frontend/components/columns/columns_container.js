@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import { fetchProject, createProject, updateProject, deleteProject } from '../../actions/project_actions';
-import { createColumn, updateColumn, deleteColumn } from '../../actions/column_actions';
+import { createColumn, updateColumn, deleteColumn, updateOrderFrontEnd } from '../../actions/column_actions';
 import { createTask, updateTaskOrder } from '../../actions/task_actions';
 import { openModal } from '../../actions/modal_actions';
 import { withRouter } from 'react-router-dom';
@@ -45,6 +45,7 @@ const mapDispatch = (dispatch) => {
     closeSidebar: () => dispatch(closeSidebar()),
     createTask: (task) => dispatch(createTask(task)),
     updateTaskOrder: (orderInfo) => dispatch(updateTaskOrder(orderInfo)),
+    updateOrderFrontEnd: (payload) => dispatch(updateOrderFrontEnd(payload)),
   };
 };
 

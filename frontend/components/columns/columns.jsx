@@ -16,6 +16,7 @@ class Columns extends React.Component {
     this.togglePopup = this.togglePopup.bind(this);
     this.addColumn = this.addColumn.bind(this);
     this.clearState = this.clearState.bind(this);
+    this.clearSomeState = this.clearSomeState.bind(this);
     this.updateTitle = this.updateTitle.bind(this);
     this.showAddColumn = this.showAddColumn.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -88,7 +89,7 @@ class Columns extends React.Component {
       task_obj = { name: this.state.name, column_id: column.id, next_id: column.task_ids[0] }
     }
     this.props.createTask(task_obj)
-    .then(this.clearSomeState());
+    .then(this.clearSomeState);
   }
 
 
@@ -192,13 +193,15 @@ class Columns extends React.Component {
         const currentTaskId = currentCol.task_ids[source.index];
         // currentCol.task_ids = currentCol.task_ids.slice(0, source.index).concat(currentCol.task_ids.slice(source.index+1));
         futureCol.task_ids = futureCol.task_ids.slice(0, destination.index).concat(currentTaskId).concat(futureCol.task_ids.slice(destination.index));
-        const orderInfo = {future_ord: futureCol.task_ids, index: destination.index, future_col: futureCol.id, task_id: currentTaskId, task: this.props.tasks[currentTaskId]}
+        const orderInfo = {result: result, future_ord: futureCol.task_ids, index: destination.index, future_col: futureCol.id, task_id: currentTaskId, task: this.props.tasks[currentTaskId]}
+        this.props.updateOrderFrontEnd(orderInfo);
         this.props.updateTaskOrder(orderInfo);
       }
     }
   }
 
   render() {
+    debugger
     return (
         <div onClick={(e) => this.clearState()} onKeyDown={(e) => this.handleKeyPress(e)} className="project-page">
           <div className="columns">

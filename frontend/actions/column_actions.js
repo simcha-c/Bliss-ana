@@ -2,6 +2,8 @@ import * as ColumnAPIUtil from '../util/column_api_util';
 
 export const RECEIVE_NEW_COLUMN = "RECEIVE_NEW_COLUMN";
 export const REMOVE_COLUMN = "REMOVE_COLUMN";
+export const UPDATE_ORDER_FRONT_END = "UPDATE_ORDER_FRONT_END";
+
 
 export const receiveColumn = ({ project, columns, tasks }) => {
   return {
@@ -20,6 +22,15 @@ export const removeColumn = ({ project, column }) => {
   };
 };
 
+export const updateOrderFrontEnd = (payload) => {
+  return {
+    type: UPDATE_ORDER_FRONT_END,
+    payload,
+  };
+};
+
+
+
 export const createColumn = (column) => dispatch => {
   return ColumnAPIUtil.createColumn(column).then(
     payload => dispatch(receiveColumn(payload))
@@ -37,3 +48,7 @@ export const deleteColumn = (id) => dispatch => {
     payload => dispatch(removeColumn(payload))
   );
 };
+
+// export const updateOrderFrontEnd = (payload) => dispatch => {
+//   dispatch(updateOrderFrontEnd(payload));
+// };

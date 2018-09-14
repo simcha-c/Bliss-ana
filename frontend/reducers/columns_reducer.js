@@ -1,7 +1,7 @@
 import { RECEIVE_CURRENT_USER, LOGOUT_CURRENT_USER } from '../actions/session_actions';
 import { RECEIVE_NEW_TEAM, REMOVE_TEAM } from '../actions/team_actions';
 import { RECEIVE_NEW_PROJECT, REMOVE_PROJECT } from '../actions/project_actions';
-import { RECEIVE_NEW_COLUMN, REMOVE_COLUMN } from '../actions/column_actions';
+import { RECEIVE_NEW_COLUMN, REMOVE_COLUMN, UPDATE_ORDER_FRONT_END } from '../actions/column_actions';
 import { RECEIVE_NEW_TASK, RECEIVE_UPDATED_TASK, RECEIVE_UPDATED_ORDER, REMOVE_TASK } from '../actions/task_actions';
 
 import { merge } from 'lodash';
@@ -25,7 +25,16 @@ const columnsReducer = (state = {}, action) => {
     Object.keys(columns).forEach(colIdx => {
       newState[parseInt(colIdx)] = columns[parseInt(colIdx)];
     });
-    // debugger
+    return newState;
+
+  case UPDATE_ORDER_FRONT_END:
+    let payload = action.payload;
+    const sourceIdx = payload.result.source.index;
+    const futureIdx = payload.result.destination.index;
+    let sourceCol = newState[payload.task.column_id];
+    let futureCol = newState[payload.future_col];
+    newState[futureCol.id].task_ids = payload.future_ord;
+    newState[sourceCol.id].task_ids.splice(payload.result.source.index, 1);
     return newState;
 
   case REMOVE_TASK:
