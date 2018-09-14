@@ -23,7 +23,6 @@ export const receiveUpdatedTask = ({ column, task }) => {
 };
 
 export const receiveUpdatedOrder = (payload) => {
-  debugger
   return {
     type: RECEIVE_UPDATED_ORDER,
     payload,
@@ -51,7 +50,6 @@ export const updateTask = (task) => dispatch => {
 };
 
 export const updateTaskOrder = (orderInfo) => dispatch => {
-  debugger
   return TaskAPIUtil.updateTaskOrder(orderInfo).then(
     payload => dispatch(receiveUpdatedOrder(payload))
   );

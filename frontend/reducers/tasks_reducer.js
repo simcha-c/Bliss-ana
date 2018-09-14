@@ -2,7 +2,7 @@ import { RECEIVE_CURRENT_USER, LOGOUT_CURRENT_USER } from '../actions/session_ac
 // import { RECEIVE_NEW_TEAM, REMOVE_TEAM } from '../actions/team_actions';
 // import { RECEIVE_USER } from '../actions/user_actions';
 import { RECEIVE_NEW_PROJECT, REMOVE_PROJECT } from '../actions/project_actions';
-import { RECEIVE_NEW_COLUMN, REMOVE_COLUMN } from '../actions/column_actions';
+import { RECEIVE_NEW_COLUMN, REMOVE_COLUMN, UPDATE_ORDER_FRONT_END } from '../actions/column_actions';
 import { RECEIVE_NEW_TASK, REMOVE_TASK, RECEIVE_UPDATED_TASK } from '../actions/task_actions';
 import { merge } from 'lodash';
 
@@ -23,6 +23,10 @@ const tasksReducer = (state = {}, action) => {
   case RECEIVE_UPDATED_TASK:
     task = Object.values(action.task)[0];
     newState[task.id] = task;
+    return newState;
+
+  case UPDATE_ORDER_FRONT_END:
+    newState[action.payload.task.id].column_id = action.payload.future_col;
     return newState;
 
   case REMOVE_TASK:

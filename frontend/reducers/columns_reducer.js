@@ -33,8 +33,12 @@ const columnsReducer = (state = {}, action) => {
     const futureIdx = payload.result.destination.index;
     let sourceCol = newState[payload.task.column_id];
     let futureCol = newState[payload.future_col];
-    newState[futureCol.id].task_ids = payload.future_ord;
-    newState[sourceCol.id].task_ids.splice(payload.result.source.index, 1);
+    if (futureCol === sourceCol) {
+      newState[sourceCol.id].task_ids.splice(payload.result.source.index + 1, 1);
+    } else {
+      newState[futureCol.id].task_ids = payload.future_ord;
+      newState[sourceCol.id].task_ids.splice(payload.result.source.index, 1);
+    }
     return newState;
 
   case REMOVE_TASK:

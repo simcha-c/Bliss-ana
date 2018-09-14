@@ -64,7 +64,12 @@ class Columns extends React.Component {
   tasks(task_ids, provided){
     const props = this.props;
     const tasks = this.props.tasks;
+    let arr = [];
     return task_ids.map((task_id, index) => {
+      if (arr.includes(task_id)) {
+        return;
+      };
+      arr.push(task_id);
       return <TasksContainer key={task_id} props={props} task={tasks[task_id]}
           provided={provided} {...provided.droppableProps} index={index}
       />
@@ -201,7 +206,6 @@ class Columns extends React.Component {
   }
 
   render() {
-    debugger
     return (
         <div onClick={(e) => this.clearState()} onKeyDown={(e) => this.handleKeyPress(e)} className="project-page">
           <div className="columns">
