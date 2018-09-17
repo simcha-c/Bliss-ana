@@ -192,13 +192,14 @@ class Columns extends React.Component {
     const { destination, source, draggableId, reason } = result;
     if (destination !== null && reason !== 'CANCEL') {
       if (destination.droppableId !== source.droppableId || destination.index !== source.index) {
-        console.log(result);
         const currentCol = this.props.allColumns[source.droppableId];
         const futureCol = this.props.allColumns[destination.droppableId];
         const currentTaskId = currentCol.task_ids[source.index];
-        // currentCol.task_ids = currentCol.task_ids.slice(0, source.index).concat(currentCol.task_ids.slice(source.index+1));
+        debugger
+        currentCol.task_ids = currentCol.task_ids.slice(0, source.index).concat(currentCol.task_ids.slice(source.index+1));
         futureCol.task_ids = futureCol.task_ids.slice(0, destination.index).concat(currentTaskId).concat(futureCol.task_ids.slice(destination.index));
-        const orderInfo = {result: result, future_ord: futureCol.task_ids, index: destination.index, future_col: futureCol.id, task_id: currentTaskId, task: this.props.tasks[currentTaskId]}
+        const orderInfo = {result: result, future_ord: futureCol.task_ids, curr_ord:currentCol.task_ids, index: destination.index, future_col: futureCol.id, task_id: currentTaskId, task: this.props.tasks[currentTaskId]}
+        debugger
         this.props.updateOrderFrontEnd(orderInfo);
         this.props.updateTaskOrder(orderInfo);
       }

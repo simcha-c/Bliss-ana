@@ -40,7 +40,7 @@ class Task < ApplicationRecord
 
   has_one :next,
     foreign_key: :id,
-    primary_key: :prev_id,
+    primary_key: :next_id,
     class_name: :Task
 
   has_one :prev,
