@@ -62,9 +62,7 @@ class Api::TasksController < ApplicationController
       arr << @future_next
     end
 
-    # debugger
     update_related_tasks
-    # debugger
 
     begin
       Task.transaction do
@@ -124,7 +122,6 @@ class Api::TasksController < ApplicationController
   end
 
   def update_related_tasks
-    # debugger
     @prev_task.next_id = @task.next_id if @prev_task
     @next_task.prev_id = @task.prev_id if @next_task
 
@@ -133,7 +130,6 @@ class Api::TasksController < ApplicationController
     @future_next ? @task.next_id = @future_next.id : @task.next_id = nil
     @future_prev ? @task.prev_id = @future_prev.id : @task.prev_id = nil
     @task.column_id = params[:orderInfo][:future_col].to_i
-    # debugger
   end
 
 end
