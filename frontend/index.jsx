@@ -27,12 +27,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const root = document.getElementById('root');
 
-  window.store = store;
-  window.getState = store.getState;
-  window.dispatch = store.dispatch;
-
-  window.createTask = createTask;
-  window.updateTask = updateTask;
-  window.deleteTask = deleteTask;
+  // window.store = store;
+  // window.getState = store.getState;
+  // window.dispatch = store.dispatch;
+  //
+  // window.createTask = createTask;
+  // window.updateTask = updateTask;
+  // window.deleteTask = deleteTask;
   ReactDOM.render(<Root store={store} />, root);
 });
