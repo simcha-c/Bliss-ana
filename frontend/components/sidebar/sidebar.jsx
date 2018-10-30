@@ -103,6 +103,9 @@ class Sidebar extends React.Component {
     return (
       <section key={user.id}>
         <p className="hover-name">{user.first} {user.last}</p>
+        <p className="hover-role">{user.role}</p>
+        <p className="hover-dep">{user.department}</p>
+        <p className="hover-about">{user.about_me}</p>
       </section>
     )
   }
