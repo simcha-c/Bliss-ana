@@ -15,6 +15,7 @@ class Sidebar extends React.Component {
     this.removeProject = this.removeProject.bind(this);
     this.handleRemoveProject = this.handleRemoveProject.bind(this);
     this.toggleOptionsPopout = this.toggleOptionsPopout.bind(this);
+    this.memberHoverBox = this.memberHoverBox.bind(this);
   }
 
 // with the fetchUser - 21 queries. Without - 16.
@@ -97,11 +98,24 @@ class Sidebar extends React.Component {
     );
   }
 
+  memberHoverBox(user) {
+    if (user.first === " ") { return }
+    return (
+      <section key={user.id}>
+        <p className="hover-name">{user.first} {user.last}</p>
+      </section>
+    )
+  }
+
   memberList() {
     const membersInfo = this.props.users.map((user) => {
       const initials = `${user.first[0]}${user.last[0]}`;
+      const hoverBox = this.memberHoverBox(user);
       return (
-        <div key={user.id} className="circle" >{initials}</div>
+        <section className="member-initials" key={user.id}>
+          <div className="circle" >{initials}</div>
+          <div className="member-hover-box">{hoverBox}</div>
+        </section>
       );
     });
     return (

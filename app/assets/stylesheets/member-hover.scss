@@ -1,0 +1,14 @@
+.member-hover-box {
+  background: blue;
+  height: 175px;
+  width: 175px;
+  display: none;
+  border-radius: 4px;
+  z-index: 10000;
+  padding-top: 5px;
+}
+
+.member-initials:hover .member-hover-box {
+  display: block;
+  position: absolute;
+}
