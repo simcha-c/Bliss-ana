@@ -60,7 +60,7 @@ class Sidebar extends React.Component {
         <button id={projectId} className="remove-project" onClick={() => this.handleRemoveProject(projectId)}>Delete Project</button>
         <div onClick={(e) => this.toggleOptionsPopout()} className="full-page-div"> </div>
       </div>
-    )
+    );
   }
 
   toggleOptionsPopout(id) {
@@ -88,7 +88,7 @@ class Sidebar extends React.Component {
           </div>
           {this.removeProject(project.id)}
         </div>
-      )
+      );
     });
 
     return (
@@ -99,7 +99,7 @@ class Sidebar extends React.Component {
   }
 
   memberHoverBox(user) {
-    if (user.first === " ") { return }
+    if (user.first === " ") { return; }
     return (
       <section key={user.id}>
         <p className="hover-name">{user.first} {user.last}</p>
@@ -107,7 +107,7 @@ class Sidebar extends React.Component {
         <p className="hover-dep">{user.department}</p>
         <p className="hover-about">{user.about_me}</p>
       </section>
-    )
+    );
   }
 
   memberList() {
