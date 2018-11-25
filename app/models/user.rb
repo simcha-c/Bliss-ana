@@ -21,6 +21,8 @@ class User < ApplicationRecord
   attr_reader :password
   after_initialize :ensure_session_token
 
+  has_one_attached :photo
+
 # A user has many team memberships
   has_many :team_memberships,
     foreign_key: :user_id,
