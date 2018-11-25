@@ -39,7 +39,9 @@ class Navbar extends React.Component {
   };
 
   avatar(){
-    const initials = `${this.props.currentUser.first[0].toUpperCase()}${this.props.currentUser.last[0].toUpperCase()}`
+    const user = this.props.currentUser;
+    let initials = <div className="circle" >{`${user.first[0]}${user.last[0]}`}</div>
+    if (user.photoUrl) {initials = <img className="circle border" src={user.photoUrl} /> }
 
     let firstTeam;
     if (Object.keys(this.props.teams).length === 0){
@@ -50,7 +52,7 @@ class Navbar extends React.Component {
     return (
       <section className="avatar" onClick={this.props.openDropdown}>
         <div className="link">{firstTeam.name}</div>
-        <div className="circle" >{initials}</div>
+        {initials}
       </section>
     )
   }

@@ -100,8 +100,17 @@ class Sidebar extends React.Component {
 
   memberHoverBox(user) {
     if (user.first === " ") { return }
+    debugger
+    let img;
+    const initials = `${user.first[0]}${user.last[0]}`
+    if (user.photoUrl) {
+      img = <img className="hover-img" src={user.photoUrl} />
+    } else {
+      img = <div className="hover-background"><span>{initials}</span></div>
+    }
     return (
-      <section key={user.id}>
+      <section className="member-hover-box hovering" key={user.id}>
+        {img}
         <p className="hover-name">{user.first} {user.last}</p>
         <p className="hover-role">{user.role}</p>
         <p className="hover-dep">{user.department}</p>
@@ -112,12 +121,16 @@ class Sidebar extends React.Component {
 
   memberList() {
     const membersInfo = this.props.users.map((user) => {
-      const initials = `${user.first[0]}${user.last[0]}`;
+      let initials = <div className="circle" >{`${user.first[0]}${user.last[0]}`}</div>
+      if (user.photoUrl) {
+        initials = <img className="circle border" src={user.photoUrl} />
+      }
+
       const hoverBox = this.memberHoverBox(user);
       return (
         <section className="member-initials" key={user.id}>
-          <div className="circle" >{initials}</div>
-          <div className="member-hover-box">{hoverBox}</div>
+          {initials}
+          {hoverBox}
         </section>
       );
     });

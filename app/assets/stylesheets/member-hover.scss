@@ -1,10 +1,9 @@
 .member-hover-box {
-  height: 175px;
-  width: 150px;
+  height: auto;
+  width: 170px;
   display: none;
   border-radius: 4px;
-  z-index: 10000;
-  padding-top: 5px;
+  z-index: 2;
   font-size: 14px;
   font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Helvetica,Arial,sans-serif;
 }
@@ -19,13 +18,39 @@
   padding: 10px;
 }
 
+.hovering {
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.hover-background {
+  background-color: #fd9a00;
+  height: 120px;
+}
+
+.hover-background span {
+  color: rgba(255, 255, 255, 0.09);
+  font-size: 250px;
+  line-height: 128px;
+  font-weight: bold;
+  margin-left: -60px;
+}
+
+.hover-img {
+  position: relative;
+  height: 120px;
+  object-fit: cover;
+  overflow: hidden;
+}
+
 .hover-name {
-  display: block;
-  padding-top: 50px;
+  position: absolute;
+  z-index: 1;
   border-top-left-radius: 5px;
   border-top-right-radius: 5px;
-  background: orange;
+  background: transparent;
   color: white;
+  top: 87px;
 }
 
 .hover-role {

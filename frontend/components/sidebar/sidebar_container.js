@@ -12,7 +12,7 @@ const mapState = (state, ownProps) => {
   team.project_ids = team.project_ids || [];
 
   let users = team.member_ids.map((member_id) => {
-    return state.entities.users[member_id] || { id: member_id, first: " ", last: " " };
+    return state.entities.users[member_id] || { id: member_id, first: " ", last: " ", photoUrl: "" };
   });
 
   // users = (users.includes(undefined) || users.length < 1 ) ? [] : users;

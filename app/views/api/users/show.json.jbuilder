@@ -1,5 +1,6 @@
 json.currentUser do
   json.extract! @user, :id, :first, :last, :email
+  json.photoUrl url_for(user.photo)
 end
 
 json.teams do

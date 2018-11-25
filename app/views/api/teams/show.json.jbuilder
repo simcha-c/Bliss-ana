@@ -10,6 +10,9 @@ json.members do
       membership = member.team_memberships.first
       json.extract! member, :id, :first, :last, :email
       json.extract! membership, :role, :department, :about_me
+      if member.photo.attached?
+        json.photoUrl url_for(member.photo)
+      end
     end
   end
 end
