@@ -5,8 +5,8 @@ import { merge } from 'lodash';
 class EditShowTask extends React.Component {
   constructor(props) {
     super(props);
-    let taskForm = { name: "",  assignee_id: "", completed_date: "",
-      completer_id: "", description: "", due_date: "", updated_at: "", cal: false, updateDate: false };
+    let taskForm = { name: " ",  assignee_id: " ", completed_date: " ",
+      completer_id: " ", description: " ", due_date: " ", updated_at: " ", cal: false, updateDate: false };
     this.state = merge(taskForm, props.task);
     this.changingDate = false;
     // if (this.state.completed_date === nil) { this.state.completed_date = ""; }
@@ -86,7 +86,7 @@ class EditShowTask extends React.Component {
       const completerName = `${completer.first} ${completer.last}`;
       const completedAt = this.parseDate(this.state.completed_date);
       const complete = this.state.completer_id ? '' : 'hidden';
-      const updateDate = this.state.cal ? '' : 'hidden'
+      const updateDate = this.state.cal ? '' : 'hidden';
       // const showIcon = this.state.due_date || this.state.cal ? 'hidden' : '';
 
       return (

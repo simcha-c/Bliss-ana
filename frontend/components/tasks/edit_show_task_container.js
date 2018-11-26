@@ -4,6 +4,8 @@ import { createProject } from '../../actions/project_actions';
 import { openModal, closeModal } from '../../actions/modal_actions';
 import { withRouter } from 'react-router-dom';
 import EditShowTask from './edit_show_task';
+import { updateTask } from '../../actions/task_actions';
+
 
 const mapStateToProps = (state) => {
   return {
