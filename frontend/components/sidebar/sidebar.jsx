@@ -100,7 +100,6 @@ class Sidebar extends React.Component {
 
   memberHoverBox(user) {
     if (user.first === " ") { return }
-    debugger
     let img;
     const initials = `${user.first[0]}${user.last[0]}`
     if (user.photoUrl) {
