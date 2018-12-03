@@ -23,22 +23,16 @@ const columnsReducer = (state = {}, action) => {
   case RECEIVE_UPDATED_ORDER:
     const columns = action.payload.columns;
     Object.keys(columns).forEach(colIdx => {
-      newState[parseInt(colIdx)] = columns[parseInt(colIdx)];
+      newState[parseInt(colIdx)].task_ids = columns[parseInt(colIdx)].task_ids;
     });
     return newState;
 
   case UPDATE_ORDER_FRONT_END:
     let payload = action.payload;
-    const sourceIdx = payload.result.source.index;
-    const futureIdx = payload.result.destination.index;
     let sourceCol = newState[payload.task.column_id];
     let futureCol = newState[payload.future_col];
-    if (futureCol === sourceCol) {
-      newState[sourceCol.id].task_ids.splice(payload.result.source.index + 1, 1);
-    } else {
-      newState[futureCol.id].task_ids = payload.future_ord;
-      newState[sourceCol.id].task_ids.splice(payload.result.source.index, 1);
-    }
+    newState[sourceCol.id].task_ids = sourceCol.task_ids;
+    newState[futureCol.id].task_ids = futureCol.task_ids;
     return newState;
 
   case REMOVE_TASK:

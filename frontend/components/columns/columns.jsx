@@ -8,7 +8,7 @@ class Columns extends React.Component {
 
   constructor(props) {
     super(props);
-    this.state = { id: 0, addCol: false, title: "", addTaskId: 0, addTask: false, name: "" };
+    this.state = { id: 0, addCol: false, title: "", addTaskId: 0, addTask: false, name: "", cols: this.props.columns };
 
     this.columns = this.columns.bind(this);
     this.editRemoveColPopup = this.editRemoveColPopup.bind(this);
@@ -28,7 +28,9 @@ class Columns extends React.Component {
 
   componentDidMount() {
     // if (this.props.project.id) {
-      this.props.fetchProject(this.props.projectId);
+      this.props.fetchProject(this.props.projectId).then(() => {
+        this.setState({cols: this.props.columns});
+      });
     // }
   }
 
@@ -198,7 +200,6 @@ class Columns extends React.Component {
         currentCol.task_ids = currentCol.task_ids.slice(0, source.index).concat(currentCol.task_ids.slice(source.index+1));
         futureCol.task_ids = futureCol.task_ids.slice(0, destination.index).concat(currentTaskId).concat(futureCol.task_ids.slice(destination.index));
         const orderInfo = {result: result, future_ord: futureCol.task_ids, curr_ord:currentCol.task_ids, index: destination.index, future_col: futureCol.id, task_id: currentTaskId, task: this.props.tasks[currentTaskId]}
-
         this.props.updateOrderFrontEnd(orderInfo);
         this.props.updateTaskOrder(orderInfo);
       }
