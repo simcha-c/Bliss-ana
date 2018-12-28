@@ -14,7 +14,7 @@ class Api::ColumnsController < ApplicationController
 
   def update
     column = Column.find(params[:id])
-    @project = Project.find(column_params[:project_id])
+    @project = column.project
     @columns = @project.columns.includes(:tasks)
 
     if column.update(column_params)
