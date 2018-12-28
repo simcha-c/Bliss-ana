@@ -32,7 +32,7 @@
 .title {
   display: flex;
   flex-direction: row;
-  align-items: center;
+  position: relative;
 }
 
 .title:hover {
@@ -46,6 +46,11 @@
   font-weight: 500;
   line-height: 30px;
   padding-bottom: 6px;
+}
+
+.edit-col-title {
+  vertical-align: -webkit-baseline-middle;
+  padding-top: 2px;
 }
 
 .edit-title i {
@@ -70,13 +75,13 @@
 }
 
 .edit-remove-col {
-  position: relative;
+  position: absolute;
   background-color: #fff;
   border: 1px solid #d5dce0;
   box-shadow: 0 10px 15px 0 rgba(0, 0, 0, 0.06);
   border-radius: 3px;
   text-align: center;
-  top: 30px;
+  top: 26px;
   margin-left: -12px;
   box-sizing: border-box;
 }

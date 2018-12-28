@@ -132,7 +132,7 @@ class Columns extends React.Component {
         <span className="cols-top">
           <section className="title">
             <p className="cols-title">{column.title}</p>
-            <div onClick={(e) => this.togglePopup(e, column.id)} className="edit-title"><i></i></div>
+            <div onClick={(e) => this.togglePopup(e, column.id)} className="edit-col-title edit-title"><i></i></div>
             <div className={active}>{this.editRemoveColPopup(column.title)}</div>
           </section>
           <div onClick={(e) => this.toggleAddTask(e, column.id)} className="add-task">+</div>
@@ -148,7 +148,6 @@ class Columns extends React.Component {
       const taskIncluded = (column.task_ids.length === 0) ? 'cols-tasks-no-tasks' : 'cols-task';
       const adding = (this.state.addTaskId === column.id) ? 'adding' : 'hidden';
       let titleInfo = this.title(column);
-      console.log(this.state.editCol, this.state.id);
       
       return (
         <Droppable droppableId={column.id.toString()} key={column.id}>
