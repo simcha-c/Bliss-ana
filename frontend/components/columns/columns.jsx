@@ -120,23 +120,18 @@ class Columns extends React.Component {
     if (this.state.editCol && column.id === this.state.id) {
       // if editing this col title.
       return (
-        <span className="cols-top">
-          <form onClick={(e) => { e.stopPropagation(); }} onSubmit={(e) => this.updateColumn(e)}>
-            <input className="new-column-input" type="text" onChange={(e) => this.updateTitle(e)} value={this.state.title} autoFocus></input>
-          </form>
-        </span>
+        <form onClick={(e) => { e.stopPropagation(); }} onSubmit={(e) => this.updateColumn(e)}>
+          <input className="new-column-input" type="text" onChange={(e) => this.updateTitle(e)} value={this.state.title} autoFocus></input>
+        </form>
       );
     } else {
       // if not editing column title.
       return (
-        <span className="cols-top">
-          <section className="title">
-            <p className="cols-title">{column.title}</p>
-            <div onClick={(e) => this.togglePopup(e, column.id)} className="edit-col-title edit-title"><i></i></div>
-            <div className={active}>{this.editRemoveColPopup(column.title)}</div>
-          </section>
-          <div onClick={(e) => this.toggleAddTask(e, column.id)} className="add-task">+</div>
-        </span>
+        <section className="title">
+          <p className="cols-title">{column.title}</p>
+          <div onClick={(e) => this.togglePopup(e, column.id)} className="edit-col-title edit-title"><i></i></div>
+          <div className={active}>{this.editRemoveColPopup(column.title)}</div>
+        </section>
       );
     }
 
@@ -153,7 +148,10 @@ class Columns extends React.Component {
         <Droppable droppableId={column.id.toString()} key={column.id}>
           {provided => (
             <div className="col-wrapper" key={column.id} ref={provided.innerRef}>
-              {titleInfo}
+              <span className="cols-top">
+                {titleInfo}
+                <div onClick={(e) => this.toggleAddTask(e, column.id)} className="add-task">+</div>
+              </span>
               <section className={taskIncluded}>
                 <form onClick={(e) => { e.stopPropagation() }} id={column.id} className={adding} onSubmit={(e) => this.addTask(e, column)}>
                   <input className="add-task-text" type="text" onChange={(e) => this.updateTaskName(e)} value={this.state.name} placeholder="New Task Name" autoFocus></input>
