@@ -40,7 +40,7 @@ const mapDispatch = (dispatch) => {
     fetchTeam: (id) => dispatch(fetchTeam(id)),
     fetchProject: (id) => dispatch(fetchProject(id)),
     createColumn: (column) => dispatch(createColumn(column)),
-    updateColumn: (id) => dispatch(updateColumn(id)),
+    updateColumn: (column) => dispatch(updateColumn(column)),
     deleteColumn: (id) => dispatch(deleteColumn(id)),
     closeSidebar: () => dispatch(closeSidebar()),
     createTask: (task) => dispatch(createTask(task)),
