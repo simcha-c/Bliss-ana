@@ -8,11 +8,12 @@ class Columns extends React.Component {
 
   constructor(props) {
     super(props);
-    this.state = { id: 0, addCol: false, title: "", addTaskId: 0, addTask: false, name: "", cols: this.props.columns };
+    this.state = { id: 0, editCol: false, addCol: false, title: "", addTaskId: 0, addTask: false, name: "", cols: this.props.columns };
 
     this.columns = this.columns.bind(this);
     this.editRemoveColPopup = this.editRemoveColPopup.bind(this);
     this.deleteColumn = this.deleteColumn.bind(this);
+    this.updateColumn = this.updateColumn.bind(this);
     this.togglePopup = this.togglePopup.bind(this);
     this.addColumn = this.addColumn.bind(this);
     this.clearState = this.clearState.bind(this);
@@ -24,6 +25,7 @@ class Columns extends React.Component {
     this.toggleAddTask = this.toggleAddTask.bind(this);
     this.addTask = this.addTask.bind(this);
     this.dragEnd = this.dragEnd.bind(this);
+    this.title = this.title.bind(this);
   }
 
   componentDidMount() {
@@ -42,14 +44,28 @@ class Columns extends React.Component {
 
   deleteColumn(e) {
     e.stopPropagation();
-    this.props.deleteColumn(parseInt(this.state.id));
+    const id = parseInt(this.state.id);
+    this.props.deleteColumn(id);
     this.setState({ id: 0 });
   }
 
-  editRemoveColPopup(){
+  updateColumn(e) {
+    e.preventDefault();
+    const id = parseInt(this.state.id);
+    this.props.updateColumn({id: id, title: this.state.title})
+    .then(() => (this.setState({ id: 0, editCol: false, title: "" })));
+  }
+  
+  renameColumn(e, title) {
+    e.stopPropagation();
+    this.setState({editCol: true, title: title});
+  }
+
+  editRemoveColPopup(title){
     return (
       <div className="edit-remove-col">
-        <button className="remove-project" onClick={(e) => this.deleteColumn(e)}>Delete Column</button>
+        <button className="remove-project" onClick={(e) => this.renameColumn(e, title)}>Rename Column</button>
+        <button className="remove-project" onClick={(e) => this.deleteColumn(e, title)}>Delete Column</button>
       </div>
     )
   }
@@ -99,25 +115,46 @@ class Columns extends React.Component {
     .then(this.clearSomeState);
   }
 
+  title(column) {
+    const active = (column.id === this.state.id && column.id !== 0) ? 'active' : 'hidden';
+    if (this.state.editCol && column.id === this.state.id) {
+      // if editing this col title.
+      return (
+        <span className="cols-top">
+          <form onClick={(e) => { e.stopPropagation(); }} onSubmit={(e) => this.updateColumn(e)}>
+            <input className="new-column-input" type="text" onChange={(e) => this.updateTitle(e)} value={this.state.title} autoFocus></input>
+          </form>
+        </span>
+      );
+    } else {
+      // if not editing column title.
+      return (
+        <span className="cols-top">
+          <section className="title">
+            <p className="cols-title">{column.title}</p>
+            <div onClick={(e) => this.togglePopup(e, column.id)} className="edit-title"><i></i></div>
+            <div className={active}>{this.editRemoveColPopup(column.title)}</div>
+          </section>
+          <div onClick={(e) => this.toggleAddTask(e, column.id)} className="add-task">+</div>
+        </span>
+      );
+    }
+
+  }
 
   columns() {
     const cols = this.props.columns.map(column => {
       if (!column.id || !column.task_ids) { return };
       const taskIncluded = (column.task_ids.length === 0) ? 'cols-tasks-no-tasks' : 'cols-task';
-      const active = (column.id === this.state.id && column.id !== 0) ? 'active' : 'hidden';
       const adding = (this.state.addTaskId === column.id) ? 'adding' : 'hidden';
+      let titleInfo = this.title(column);
+      console.log(this.state.editCol, this.state.id);
+      
       return (
         <Droppable droppableId={column.id.toString()} key={column.id}>
           {provided => (
             <div className="col-wrapper" key={column.id} ref={provided.innerRef}>
-              <span className="cols-top">
-                <section className="title">
-                  <p className="cols-title">{column.title}</p>
-                  <div onClick={(e) => this.togglePopup(e, column.id)} className="edit-title"><i></i></div>
-                  <div className={active}>{this.editRemoveColPopup()}</div>
-                </section>
-                <div onClick={(e) => this.toggleAddTask(e, column.id)} className="add-task">+</div>
-              </span>
+              {titleInfo}
               <section className={taskIncluded}>
                 <form onClick={(e) => { e.stopPropagation() }} id={column.id} className={adding} onSubmit={(e) => this.addTask(e, column)}>
                   <input className="add-task-text" type="text" onChange={(e) => this.updateTaskName(e)} value={this.state.name} placeholder="New Task Name" autoFocus></input>
