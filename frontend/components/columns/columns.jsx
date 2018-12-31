@@ -65,7 +65,7 @@ class Columns extends React.Component {
     return (
       <div className="edit-remove-col">
         <button className="remove-project" onClick={(e) => this.renameColumn(e, title)}>Rename Column</button>
-        <button className="remove-project" onClick={(e) => this.deleteColumn(e, title)}>Delete Column</button>
+        <button className="remove-project" onClick={(e) => this.deleteColumn(e)}>Delete Column</button>
       </div>
     )
   }
@@ -73,9 +73,9 @@ class Columns extends React.Component {
   togglePopup(e, id) {
     e.stopPropagation();
     if (this.state.id > 1) {
-      this.setState({id: 0});
+      this.setState({ id: 0, title: "", editCol: false });
     } else {
-      this.setState({id: id});
+      this.setState({ id: id, title: "", editCol: false });
     }
   }
 
@@ -221,7 +221,8 @@ class Columns extends React.Component {
 
   clearState(e) {
     event.stopPropagation();
-    this.setState({ id: 0, addCol: false, title: "", addTaskId: 0, addTask: false, name: "", editCol: false });
+    this.setState({ id: 0, addCol: false, title: "", addTaskId: 0, 
+      addTask: false, name: "", editCol: false });
   }
 
   clearSomeState() {
