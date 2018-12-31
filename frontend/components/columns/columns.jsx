@@ -121,7 +121,7 @@ class Columns extends React.Component {
       // if editing this col title.
       return (
         <form onClick={(e) => { e.stopPropagation(); }} onSubmit={(e) => this.updateColumn(e)}>
-          <input className="new-column-input" type="text" onChange={(e) => this.updateTitle(e)} value={this.state.title} autoFocus></input>
+          <input className="new-column-input edit-col" type="text" onChange={(e) => this.updateTitle(e)} value={this.state.title} autoFocus></input>
         </form>
       );
     } else {
