@@ -154,7 +154,11 @@ class Columns extends React.Component {
               </span>
               <section className={taskIncluded}>
                 <form onClick={(e) => { e.stopPropagation() }} id={column.id} className={adding} onSubmit={(e) => this.addTask(e, column)}>
-                  <input className="add-task-text" type="text" onChange={(e) => this.updateTaskName(e)} value={this.state.name} placeholder="New Task Name" autoFocus></input>
+                  <input className="add-task-text" type="text" 
+                    onChange={(e) => this.updateTaskName(e)} 
+                    value={this.state.name} placeholder="New Task Name" 
+                    autoFocus>
+                  </input>
                 </form>
                 {this.tasks(column.task_ids, provided)}
                 {provided.placeholder}
@@ -217,11 +221,11 @@ class Columns extends React.Component {
 
   clearState(e) {
     event.stopPropagation();
-    this.setState({ id: 0, addCol: false, title: "", addTaskId: 0, addTask: false, name: "" });
+    this.setState({ id: 0, addCol: false, title: "", addTaskId: 0, addTask: false, name: "", editCol: false });
   }
 
   clearSomeState() {
-    this.setState({ id: 0, addCol: false, title: "", name: "" });
+    this.setState({ id: 0, addCol: false, title: "", name: "", editCol: false });
   }
 
   dragEnd(result) {
