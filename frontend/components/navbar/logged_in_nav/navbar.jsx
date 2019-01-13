@@ -104,7 +104,7 @@ class Navbar extends React.Component {
 
           <section className="avatar-section">
             <ul className="avatar-list">
-
+              <li onClick={() => this.props.openModal('My Profile Settings')} className="avatar-link">My Profile Settings...</li>
               <li className="avatar-link">{this.logoutButton()}</li>
             </ul>
           </section>

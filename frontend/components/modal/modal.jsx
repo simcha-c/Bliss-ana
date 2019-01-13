@@ -7,6 +7,7 @@ import CreateTeamFormContainer from '../workspace_form/create_team_form_containe
 import EditTeamFormContainer from '../workspace_form/edit_team_form_container';
 import AddProjectFormContainer from '../add_project_form/add_project_form_container';
 import EditShowTaskContainer from '../tasks/edit_show_task_container';
+import MySettingsContainer from '../my_settings/my_settings_container.js';
 
 function Modal({modal, closeModal}) {
   if (!modal) {
@@ -31,6 +32,9 @@ function Modal({modal, closeModal}) {
       break;
     case 'Task':
       component = <EditShowTaskContainer />;
+      break;
+    case 'My Profile Settings':
+      component = <MySettingsContainer />;
       break;
     default:
       return null;
