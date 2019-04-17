@@ -9,24 +9,25 @@ const usersReducer = (state = {}, action) => {
 
   switch (action.type) {
 
-  // case RECEIVE_CURRENT_USER:
-  //   return merge({}, {[action.user.id]: action.user});
+    // case RECEIVE_CURRENT_USER:
+    //   return merge({}, {[action.user.id]: action.user});
 
-  case RECEIVE_USER:
-  case RECEIVE_CURRENT_USER:
-    newState[action.user.id] = action.user;
-    return newState;
+    case RECEIVE_USER:
+      return merge({}, state, action.user);
 
-  case RECEIVE_NEW_TEAM:
-    return merge({}, state, action.members);
+    case RECEIVE_CURRENT_USER:
+      newState[action.user.id] = action.user;
+      return newState;
 
-  case LOGOUT_CURRENT_USER:
-    return {};
+    case RECEIVE_NEW_TEAM:
+      return merge({}, state, action.members);
 
-    default:
-      return state;
+    case LOGOUT_CURRENT_USER:
+      return {};
+
+  default:
+    return state;
   }
-  return state;
 };
 
 export default usersReducer;

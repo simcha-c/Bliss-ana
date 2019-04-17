@@ -1,8 +1,64 @@
 .settings-form {
     background-color: white;
+    border-radius: 5px;
     display: flex;
     flex-direction: column;
-    height: 100%;
-    justify-content: space-around;
     padding: 10%;
+    max-width: 700px;
+    box-sizing: border-box;
+    margin: 0 auto;
+}
+
+.member-initials {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding-bottom: 30px;
+  padding-left: 36px;
+}
+
+.settings-input {
+  height: 40px;
+  width: 80%;
+  border: 0.25px solid #9ca6af;
+  border-radius: 5px;
+  margin-left: 10px;
+  color: black;
+  padding-left: 10px;
+}
+
+
+.settings-input::placeholder {
+  color: gray;
+}
+
+#member-input {
+  width: 250px;
+}
+
+.circle-settings {
+  width: 40px;
+  height: 40px;
+  line-height: 40px;
+  font-size: 18px;
+  margin-right: 0px;
+}
+
+.other-setting-inputs {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.flex-input {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 100%;
+  color: #848f99;
+  font-size: 12px;
+  font-weight: 500;
+  font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Helvetica,Arial,sans-serif;
+  padding-bottom: 30px;
+  justify-content: flex-end;
 }

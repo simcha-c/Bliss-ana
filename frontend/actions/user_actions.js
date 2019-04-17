@@ -16,3 +16,10 @@ export const fetchUser = (id) => dispatch => {
     errors => dispatch(receiveErrors(errors.responseJSON))
   );
 };
+
+export const updateUser = (user) => dispatch => {
+  return UserAPIUtil.updateUser(user).then(
+    payload => dispatch(receiveUser(payload)),
+    errors => dispatch(receiveErrors(errors.responseJSON))
+  );
+};
