@@ -3,10 +3,16 @@
     border-radius: 5px;
     display: flex;
     flex-direction: column;
-    padding: 10%;
+    justify-content: space-between;
     max-width: 700px;
+    height: 90%;
     box-sizing: border-box;
     margin: 0 auto;
+    padding: 30px;
+}
+
+.all-settings-inputs {
+  padding-left: 10%;
 }
 
 .member-initials {
@@ -14,22 +20,42 @@
   flex-direction: row;
   align-items: center;
   padding-bottom: 30px;
-  padding-left: 36px;
+}
+
+.settings-member-initials {
+  padding-left: 45px;
+}
+
+.bigger {
+  width: 50px !important;
+  height: 50px !important;
+  line-height: 50px !important;
+  font-size: 21px !important;
+
 }
 
 .settings-input {
   height: 40px;
   width: 80%;
-  border: 0.25px solid #9ca6af;
+  border: 1px solid #d5dce0;
   border-radius: 5px;
   margin-left: 10px;
   color: black;
   padding-left: 10px;
 }
 
+#about-me-input {
+  height: 150px;
+  word-break: break-all;
+}
+
+#about-me-input::placeholder {
+  word-break: break-all;
+}
+
 
 .settings-input::placeholder {
-  color: gray;
+  color: #9ca6af;
 }
 
 #member-input {
@@ -57,7 +83,7 @@
   width: 100%;
   color: #848f99;
   font-size: 12px;
-  font-weight: 500;
+  font-weight: 600;
   font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Helvetica,Arial,sans-serif;
   padding-bottom: 30px;
   justify-content: flex-end;
