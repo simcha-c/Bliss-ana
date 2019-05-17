@@ -53,7 +53,10 @@ class MySettings extends React.Component {
     return (
       <React.Fragment>
         <form onSubmit={this.handleSubmit()} className="settings-form">
-          <span>My Profile Settings</span>
+          <section className="settings-header">
+            <h1>My Profile Settings</h1>
+            <p>Profile</p>
+          </section>
           <div className="all-settings-inputs">
             <section className="member-initials settings-member-initials">
               {this.userIcon('bigger')}
@@ -79,13 +82,13 @@ class MySettings extends React.Component {
               </label>
 
               <label className="flex-input"> <p>About Me</p>
-              <input id="about-me-input" type="textarea" value={this.state.about_me} className="settings-input"
-                  onChange={this.update('about')} placeholder="I usually work from 9am-5pm EST. Feel free to assign me a task with a due date anytime. Also, I love dogs!" />
+              <textarea id="about-me-input" value={this.state.about_me} className="settings-input"
+                  onChange={this.update('about_me')} placeholder="I usually work from 9am-5pm EST. Feel free to assign me a task with a due date anytime. Also, I love dogs!" />
               </label> 
             </span>
           </div>
 
-          <input type="submit" value="Update Profile"/>
+          <input type="submit" className="settings-submit" value="Update Profile"/>
         </form>
       </React.Fragment>
     )
