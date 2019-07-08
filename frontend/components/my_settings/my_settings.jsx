@@ -3,7 +3,6 @@ import React from 'react';
 
 class MySettings extends React.Component {
 
-  // <p style={{background: 'white'}}>Hello</p>
   constructor(props) {
       super(props);
 
