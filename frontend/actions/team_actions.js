@@ -3,12 +3,13 @@ import * as TeamAPIUtil from '../util/team_api_util';
 export const RECEIVE_NEW_TEAM = "RECEIVE_NEW_TEAM";
 export const REMOVE_TEAM = "REMOVE_TEAM";
 
-export const receiveTeam = ({ members, team, projects }) => {
+export const receiveTeam = ({ members, team, projects, team_memberships }) => {
   return {
     type: RECEIVE_NEW_TEAM,
     members,
     team,
     projects,
+    team_memberships,
   };
 };
 

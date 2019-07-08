@@ -15,6 +15,7 @@ document.addEventListener('DOMContentLoaded', () => {
       entities: {
         users: { [window.currentUser.id]: window.currentUser },
         teams: window.teams,
+        teamMemberships: window.team_memberships,
       },
       session: { id: window.currentUser.id },
     };

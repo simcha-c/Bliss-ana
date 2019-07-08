@@ -7,24 +7,28 @@ class MySettings extends React.Component {
   constructor(props) {
       super(props);
 
-      this.state = { id: "", name: "", img: "", role: "", depart: "", pronouns: "", about_me: "" };
+      this.state = { id: "", name: "", img: "", role: "", department: "", pronouns: "", about_me: "" };
       this.createState(false);
       this.createState = this.createState.bind(this);
   }
 
   createState(changeState = true) {
-    const user = { id: "", name: "", img: "", role: "", depart: "", pronouns: "", about_me: "" };
+    const user = { id: "", name: "", img: "", role: "", department: "", pronouns: "", about_me: "" };
     const fullName = this.props.currentUser.first + ' ' + this.props.currentUser.last;
     Object.keys(user).forEach(el => {
-      user[el] = el === 'name' ? fullName || "" : this.props.currentUser[el] || "";
+      if (el === 'name') {
+        user[el] = fullName || "";
+      } else {
+        user[el] = this.props.currentUser[el] || this.props.teamMembershipInfo[el] || "";
+      }
     });
     changeState ? this.setState(user) : this.state = user;
   }
 
-  // componentDidMount() {
-  //   this.props.fetchUser(this.props.currentUser.id).then( () => 
-  //     this.createState(true));
-  // }
+  componentDidMount() {
+    this.props.fetchUser(this.props.currentUser.id).then( () => 
+      this.createState(true));
+  }
 
   update(field) {
     return e => this.setState({
@@ -45,7 +49,8 @@ class MySettings extends React.Component {
   handleSubmit() {
     return e => {
       e.preventDefault();
-      this.props.updateUser(this.state).then(this.props.closeModal);
+      debugger
+      this.props.updateMembership(this.state).then(this.props.closeModal);
     }
   }
 
@@ -67,12 +72,12 @@ class MySettings extends React.Component {
 
             <span className="other-setting-inputs">
               <label className="flex-input"> <p>Role</p>
-                  <input type="text" value={this.state.role} className="settings-input"
-                      onChange={this.update('role')} />
+                <input type="text" value={this.state.role} className="settings-input"
+                  onChange={this.update('role')} />
               </label>
 
               <label className="flex-input"> <p>Department</p>
-              <input type="text" value={this.state.depart} className="settings-input"
+                <input type="text" value={this.state.department} className="settings-input"
                   onChange={this.update('depart')} />
               </label>
 

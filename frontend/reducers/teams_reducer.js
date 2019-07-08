@@ -18,6 +18,7 @@ const teamsReducer = (state = {}, action) => {
     return merge({}, action.teams);
 
   case RECEIVE_NEW_TEAM:
+    debugger
     action.team.project_ids.sort();
     newState[action.team.id] = action.team;
     return newState;
@@ -27,6 +28,7 @@ const teamsReducer = (state = {}, action) => {
     return newState;
 
   case RECEIVE_NEW_PROJECT:
+    debugger
     team = newState[action.project.team_id];
     team.project_ids.sort();
     if (team.project_ids.includes(action.project.id)) {

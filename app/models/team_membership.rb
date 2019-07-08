@@ -10,6 +10,7 @@
 #  about_me   :text
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
+#  pronouns   :string
 #
 
 class TeamMembership < ApplicationRecord

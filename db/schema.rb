@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_11_15_021100) do
+ActiveRecord::Schema.define(version: 2019_05_17_194050) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -76,6 +76,7 @@ ActiveRecord::Schema.define(version: 2018_11_15_021100) do
     t.text "about_me"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "pronouns"
     t.index ["team_id"], name: "index_team_memberships_on_team_id"
     t.index ["user_id", "team_id"], name: "index_team_memberships_on_user_id_and_team_id", unique: true
     t.index ["user_id"], name: "index_team_memberships_on_user_id"
