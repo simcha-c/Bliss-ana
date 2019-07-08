@@ -2,6 +2,7 @@ import { RECEIVE_CURRENT_USER, LOGOUT_CURRENT_USER } from '../actions/session_ac
 import { RECEIVE_NEW_TEAM, REMOVE_TEAM } from '../actions/team_actions';
 import { RECEIVE_USER } from '../actions/user_actions';
 import { RECEIVE_NEW_PROJECT, REMOVE_PROJECT } from '../actions/project_actions';
+import { RECEIVE_MEMBERSHIPS } from '../actions/membership_actions';
 import { merge } from 'lodash';
 
 const teamsReducer = (state = {}, action) => {
@@ -18,7 +19,6 @@ const teamsReducer = (state = {}, action) => {
     return merge({}, action.teams);
 
   case RECEIVE_NEW_TEAM:
-    debugger
     action.team.project_ids.sort();
     newState[action.team.id] = action.team;
     return newState;
@@ -28,7 +28,6 @@ const teamsReducer = (state = {}, action) => {
     return newState;
 
   case RECEIVE_NEW_PROJECT:
-    debugger
     team = newState[action.project.team_id];
     team.project_ids.sort();
     if (team.project_ids.includes(action.project.id)) {

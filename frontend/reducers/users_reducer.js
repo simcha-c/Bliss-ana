@@ -1,6 +1,7 @@
 import { RECEIVE_CURRENT_USER, LOGOUT_CURRENT_USER } from '../actions/session_actions';
 import { RECEIVE_USER } from '../actions/user_actions';
 import { RECEIVE_NEW_TEAM } from '../actions/team_actions';
+import { RECEIVE_MEMBERSHIPS } from '../actions/membership_actions';
 import { merge } from 'lodash';
 
 const usersReducer = (state = {}, action) => {
@@ -11,8 +12,8 @@ const usersReducer = (state = {}, action) => {
 
     // case RECEIVE_CURRENT_USER:
     //   return merge({}, {[action.user.id]: action.user});
-
     case RECEIVE_USER:
+    case RECEIVE_MEMBERSHIPS:
       return merge({}, state, action.user);
 
     case RECEIVE_CURRENT_USER:

@@ -1,21 +1,18 @@
 import * as MembershipAPIUtil from '../util/membership_api_util';
 
-export const RECEIVE_USER = "RECEIVE_USER";
+export const RECEIVE_MEMBERSHIPS = "RECEIVE_MEMBERSHIPS";
 
-export const receiveUser = ({ currentUser, teams }) => {
+export const receiveMemberships = ({ members, team, team_memberships }) => {
   return {
-    type: RECEIVE_USER,
-    user: currentUser,
-    teams: teams,
+    type: RECEIVE_MEMBERSHIPS,
+    members,
+    team_memberships,
   };
 };
 
 export const updateMembership = (user) => dispatch => {
-  return MembershipAPIUtil.updateMembership(user).then(response => { 
-      console.log(response);
-      debugger
-    }
-    // payload => dispatch(receiveUser(payload)),
-    // errors => dispatch(receiveErrors(errors.responseJSON))
+  return MembershipAPIUtil.updateMembership(user).then(payload => {
+    dispatch(receiveMemberships(payload));
+  }
   );
 };

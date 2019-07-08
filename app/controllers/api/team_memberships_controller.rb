@@ -13,7 +13,6 @@ class Api::TeamMembershipsController < ApplicationController
   def update
     @membership = TeamMembership.find(params[:id])
     @team = @membership.team
-    debugger
     if @membership.update(team_membership_params)
       render "/api/teams/show"
     else

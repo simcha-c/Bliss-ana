@@ -12,7 +12,7 @@ class MySettings extends React.Component {
   }
 
   createState(changeState = true) {
-    const user = { id: "", name: "", img: "", role: "", department: "", pronouns: "", about_me: "" };
+    const user = { name: "", img: "", role: "", department: "", pronouns: "", about_me: "" };
     const fullName = this.props.currentUser.first + ' ' + this.props.currentUser.last;
     Object.keys(user).forEach(el => {
       if (el === 'name') {
@@ -21,6 +21,7 @@ class MySettings extends React.Component {
         user[el] = this.props.currentUser[el] || this.props.teamMembershipInfo[el] || "";
       }
     });
+    user["id"] = this.props.teamMembershipInfo.id;
     changeState ? this.setState(user) : this.state = user;
   }
 
@@ -48,7 +49,6 @@ class MySettings extends React.Component {
   handleSubmit() {
     return e => {
       e.preventDefault();
-      debugger
       this.props.updateMembership(this.state).then(this.props.closeModal);
     }
   }
@@ -77,7 +77,7 @@ class MySettings extends React.Component {
 
               <label className="flex-input"> <p>Department</p>
                 <input type="text" value={this.state.department} className="settings-input"
-                  onChange={this.update('depart')} />
+                  onChange={this.update('department')} />
               </label>
 
               <label className="flex-input"> <p>Pronouns</p>
