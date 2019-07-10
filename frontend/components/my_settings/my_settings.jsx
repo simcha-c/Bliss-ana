@@ -75,8 +75,7 @@ class MySettings extends React.Component {
             <section className="member-initials settings-member-initials">
               {this.userIcon('bigger')}
 
-              <input type="text" value={this.state.name} required id="member-input" className="settings-input"
-                onChange={this.update('name')} placeholder="Full name" />
+              <p id="member-input">{this.state.name}</p>
             </section>
 
             <span className="other-setting-inputs">
