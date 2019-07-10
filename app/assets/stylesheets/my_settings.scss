@@ -15,12 +15,25 @@
   padding: 0px 30px;
 }
 
-.settings-header > h1 {
+.settings-profile-header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.settings-profile-header > h1 {
   font-size: 24px;
   font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Helvetica,Arial,sans-serif;
   color: #151b26;
   font-weight: 500;
   padding: 10px 0;
+}
+
+.settings-profile-header > span {
+  color: #b7bfc6;
+  cursor: pointer;
+  font-size: 24px;
 }
 
 .settings-header > p {

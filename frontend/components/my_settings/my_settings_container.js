@@ -7,7 +7,7 @@ import { withRouter } from 'react-router-dom';
 
 const msp = (state, ownProps) => {
   const currentUser = state.entities.users[state.session.id];
-  const teamId = ownProps.location.pathname.match(/\/([^\/]+)\/?$/)[1];
+  const teamId = ownProps.location.pathname.split('/')[2];
   const teamMembershipId = currentUser.team_membership_ids[teamId];
   const teamMembershipInfo = state.entities.teamMemberships[teamMembershipId];
 

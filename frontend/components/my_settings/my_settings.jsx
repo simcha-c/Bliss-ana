@@ -53,12 +53,22 @@ class MySettings extends React.Component {
     }
   }
 
+  closeModal() {
+    return (e) => {
+      e.stopPropagation();
+      this.props.closeModal();
+    }
+  }
+
   render() { 
     return (
       <React.Fragment>
         <form onSubmit={this.handleSubmit()} className="settings-form">
           <section className="settings-header">
-            <h1>My Profile Settings</h1>
+            <div className="settings-profile-header">
+              <h1>My Profile Settings</h1>
+              <span onClick={this.closeModal()}>×</span>
+            </div>
             <p>Profile</p>
           </section>
           <div className="all-settings-inputs">
