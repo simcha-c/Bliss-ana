@@ -13,7 +13,7 @@ import Modal from './modal/modal';
 const App = (props) => {
   const clickHandler = props.dropdownOpen ? props.closeDropdown : null;
   return (
-    <div className="app" onClick={clickHandler}>
+    <div className="app" onClick={clickHandler} >
 
       <Switch>
         <AuthRoute exact path='/login' component={LoginPage} />

@@ -142,6 +142,7 @@ class Sidebar extends React.Component {
 
   render() {
     const visible = this.props.sidebar ? '' : 'aside-hidden';
+    debugger
     return (
       <div id="hamburger-aside" className={visible}>
         <aside className="sidebar">

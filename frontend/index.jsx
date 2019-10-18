@@ -30,7 +30,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // window.store = store;
   // window.getState = store.getState;
-  // window.dispatch = store.dispatch;
+  window.dispatch = store.dispatch;
   //
   // window.createTask = createTask;
   // window.updateTask = updateTask;

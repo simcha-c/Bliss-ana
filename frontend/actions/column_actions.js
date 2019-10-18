@@ -29,8 +29,6 @@ export const updateOrderFrontEnd = (payload) => {
   };
 };
 
-
-
 export const createColumn = (column) => dispatch => {
   return ColumnAPIUtil.createColumn(column).then(
     payload => dispatch(receiveColumn(payload))

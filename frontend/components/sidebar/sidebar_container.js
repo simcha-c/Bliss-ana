@@ -22,7 +22,7 @@ const mapState = (state, ownProps) => {
   });
 
   const project = state.entities.projects[ownProps.match.params.projectId] || {};
-
+  debugger
   return {
     currentUser: state.entities.users[state.session.id],
     users,
