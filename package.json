@@ -8,7 +8,7 @@
     "babel-preset-react": "^6.24.1",
     "lodash": "^4.17.10",
     "moment": "^2.22.2",
-    "moment-timezone": "^0.5.21",
+    "moment-timezone": "^0.5.35",
     "react": "^16.4.1",
     "react-beautiful-dnd": "^9.0.2",
     "react-dom": "^16.4.1",
