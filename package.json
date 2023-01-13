@@ -47,7 +47,7 @@
   },
   "homepage": "https://github.com/simcha-c/Bliss-ana#readme",
   "devDependencies": {
-    "webpack-cli": "^3.0.8",
+    "webpack-cli": "^3.3.12",
     "redux-logger": "^3.0.6"
   }
 }
